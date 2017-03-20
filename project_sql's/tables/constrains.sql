@@ -1,0 +1,14 @@
+ALTER TABLE "Факультет" ADD CONSTRAINT "Факультет_uc" UNIQUE ("Название_факультета");
+ALTER TABLE "Специальность" ADD CONSTRAINT "Специальность_fk0" FOREIGN KEY ("Код_факультета") REFERENCES "Факультет"("Код_факультета");
+ALTER TABLE "Дисциплина" ADD CONSTRAINT "Дисциплина_fk0" FOREIGN KEY ("Код_специальности") REFERENCES "Специальность"("Код_специальности");
+ALTER TABLE "Лабораторные" ADD CONSTRAINT "Лабораторные_fk0" FOREIGN KEY ("Код_дисциплины") REFERENCES "Дисциплина"("Код_дисциплины");
+ALTER TABLE "Студенты" ADD CONSTRAINT "Студенты_fk0" FOREIGN KEY ("Код_подгруппы") REFERENCES "Подгруппы"("Код_подгруппы");
+ALTER TABLE "Подгруппы" ADD CONSTRAINT "Подгруппы_fk0" FOREIGN KEY ("Код_группы") REFERENCES "Группы"("Код_группы");
+ALTER TABLE "Успеваемость" ADD CONSTRAINT "Успеваемость_fk0" FOREIGN KEY ("Код_дисциплины") REFERENCES "Дисциплина"("Код_дисциплины");
+ALTER TABLE "Успеваемость" ADD CONSTRAINT "Успеваемость_fk1" FOREIGN KEY ("Код_преподавателя") REFERENCES "Преподаватель"("Код_преподавателя");
+ALTER TABLE "Успеваемость" ADD CONSTRAINT "Успеваемость_fk2" FOREIGN KEY ("Номер_лабораторной") REFERENCES "Лабораторные"("Номер_лабораторной");
+ALTER TABLE "Успеваемость" ADD CONSTRAINT "Успеваемость_fk3" FOREIGN KEY ("Код_студента") REFERENCES "Студенты"("Код_студента");
+ALTER TABLE "Нагрузка_преподавателя" ADD CONSTRAINT "Нагрузка_преподавателя_fk0" FOREIGN KEY ("Код_подгруппы") REFERENCES "Подгруппы"("Код_подгруппы");
+ALTER TABLE "Нагрузка_преподавателя" ADD CONSTRAINT "Нагрузка_преподавателя_fk1" FOREIGN KEY ("Код_преподавателя") REFERENCES "Преподаватель"("Код_преподавателя");
+ALTER TABLE "Нагрузка_преподавателя" ADD CONSTRAINT "Нагрузка_преподавателя_fk2" FOREIGN KEY ("Код_дисциплины") REFERENCES "Дисциплина"("Код_дисциплины");
+ALTER TABLE "Группы" ADD CONSTRAINT "Группы_fk0" FOREIGN KEY ("Код_специальности") REFERENCES "Специальность"("Код_специальности");

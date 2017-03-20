@@ -1,0 +1,7 @@
+CREATE sequence "Факультет_SEQ";
+CREATE sequence "Дисциплина_SEQ";
+CREATE sequence "Преподаватель_SEQ";
+CREATE sequence "Лабораторные_SEQ";
+CREATE sequence "Студенты_SEQ";
+CREATE sequence "Подгруппы_SEQ";
+CREATE sequence "Группы_SEQ";
