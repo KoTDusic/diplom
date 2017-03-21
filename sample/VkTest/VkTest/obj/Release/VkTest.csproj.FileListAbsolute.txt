@@ -1,0 +1,7 @@
+d:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\bin\Release\VkTest.exe
+d:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\bin\Release\VkTest.pdb
+d:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Release\VkTest.Form1.resources
+d:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Release\VkTest.Properties.Resources.resources
+d:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Release\VkTest.csproj.GenerateResource.Cache
+d:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Release\VkTest.exe
+d:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Release\VkTest.pdb

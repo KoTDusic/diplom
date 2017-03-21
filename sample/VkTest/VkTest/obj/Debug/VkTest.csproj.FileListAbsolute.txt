@@ -1,0 +1,10 @@
+D:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\bin\Debug\VkTest.exe
+D:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\bin\Debug\VkTest.pdb
+D:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Debug\VkTest.csprojResolveAssemblyReference.cache
+D:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Debug\VkTest.Form1.resources
+D:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Debug\VkTest.Properties.Resources.resources
+D:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Debug\VkTest.csproj.GenerateResource.Cache
+D:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Debug\VkTest.exe
+D:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Debug\VkTest.pdb
+d:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\bin\Debug\Newtonsoft.Json.dll
+d:\Дмитрий\Программы\ООП С шарп\мои\VkTest\VkTest\obj\Debug\VkTest.Form2.resources
