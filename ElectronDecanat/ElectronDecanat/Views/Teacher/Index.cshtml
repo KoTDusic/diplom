@@ -1,7 +1,55 @@
-﻿
+﻿@using ElectronDecanat.Code;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Model[0].teacherNamel;
 }
 
-<h2>Index</h2>
+<style type="text/css">
+    table {
+        margin: 20px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+    th {
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+<table>
+<thead>
+    <tr>
+        <th>Преподаватель</th>
+        <th>Код_специальности</th>
+        <th>Имя_специальности</th>
+        <th>Наименование_дисциплины</th>
+        <th>Курс</th>
+        <th>Год_поступления</th>
+        <th>Код_подгруппы</th>
+        <th>Номер_группы</th>
+        <th>Номер_подгруппы</th>
+    </tr>
+</thead>
+    <tbody>
+        @{
+            for (int i = 0; i < Model.Count; i++)
+            {
+
+                <tr>
+                    <td>@Model[i].teacherNamel</td>
+                    <td>@Model[i].specialityCode</td>
+                    <td>@Model[i].specialityName</td>
+                    <td>@Model[i].disciplineName</td>
+                    <td>@Model[i].coors</td>
+                    <td>@Model[i].year</td>
+                    <td>@Model[i].groupNumber</td>
+                    <td>@Model[i].subgroopNumber</td>
+                    <td>@Model[i].coors</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 

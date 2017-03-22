@@ -64,6 +64,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Oracle.ManagedDataAccess">
+      <HintPath>..\packages\Oracle.OracleClient.4.121.2\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -191,6 +194,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Code\CustomProvider.cs" />
+    <Compile Include="Code\RequestHelper.cs" />
+    <Compile Include="Code\SingltoneConnection.cs" />
+    <Compile Include="Code\TeacherWork.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
