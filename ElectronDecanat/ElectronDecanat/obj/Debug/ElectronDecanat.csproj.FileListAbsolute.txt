@@ -72,27 +72,6 @@ d:\Дмитрий\Программы\диплом\репозиторий\Electro
 d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.csprojResolveAssemblyReference.cache
 d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.dll
 d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.pdb
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.AspNet.dll
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.Core.dll
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.OAuth.Consumer.dll
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.OAuth.dll
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.OpenId.dll
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\System.Net.Http.Extensions.dll
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\System.Net.Http.Primitives.dll
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\Org.Mentalis.Security.Cryptography.dll
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\Mono.Math.dll
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.AspNet.xml
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.Core.xml
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.OAuth.xml
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.OAuth.Consumer.xml
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.OpenId.xml
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\System.Net.Http.Extensions.xml
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\System.Net.Http.Primitives.xml
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\Org.Mentalis.Security.Cryptography.xml
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\Mono.Math.xml
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.csproj.App.config
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\bin\ElectronDecanat.dll.config
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\bin\ElectronDecanat.dll
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\bin\ElectronDecanat.pdb
@@ -189,3 +168,5 @@ C:\Prokopovich\диплом Прокопович\репозиторий\Electron
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.csprojResolveAssemblyReference.cache
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.dll
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.pdb
+d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\Oracle.ManagedDataAccess.dll
+D:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\Duke.Owin.VkontakteMiddleware.dll

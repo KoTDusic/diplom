@@ -6,11 +6,15 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using ElectronDecanat.Models;
+using Microsoft.Owin.Security.OAuth;
+using Duke.Owin.VkontakteMiddleware;
 
 namespace ElectronDecanat
 {
     public partial class Startup
     {
+        private const string appID = "5940864";
+        private const string appSecret = "RdPFBQxbWcY7s56lFkh6";
         // Дополнительные сведения о настройке проверки подлинности см. по адресу: http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -44,6 +48,13 @@ namespace ElectronDecanat
             // Если выбрать этот параметр, то на устройстве, с помощью которого вы входите, будет сохранен второй шаг проверки при входе.
             // Точно так же действует параметр RememberMe при входе.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
+            /*VkAuthenticationOptions options = new VkAuthenticationOptions();
+            options.AppId = appID;
+            options.AppSecret = appSecret;
+            options.Version = "5.63";
+            options.Scope = "";
+            options.CallbackPath = PathString.FromUriComponent("/Account");
+            app.UseVkontakteAuthentication(options);*/
             // Раскомментируйте приведенные далее строки, чтобы включить вход с помощью сторонних поставщиков входа
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
@@ -57,11 +68,11 @@ namespace ElectronDecanat
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "721841998219-kvsve5m4770dp6v9bve0c2no0ks5qoqg.apps.googleusercontent.com",
+                ClientSecret = "trDh_J5o_KvkKOxhnoHRZ1JE"
+            });
         }
     }
 }
