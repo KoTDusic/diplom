@@ -13,4 +13,5 @@ else begin
   raise_application_error(-20001,'Ошибка, такой факультет уже существует');
   end;
 end if;
+commit;
 end ADD_FACULTY;

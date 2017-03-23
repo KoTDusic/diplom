@@ -9,25 +9,25 @@ using System.Data;
 
 namespace ElectronDecanat.Code
 {
-    public class RequestHelper
+    public static class RequestHelper
     {
-        public List<TeacherWork> getTeacherWork()
+        private static string LastError;
+        public static string GetLastError() { return LastError; }
+        public static List<TeacherWork> getTeacherWork(string id)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = @"select * from TEACHER_DISCIPLINE_LIST";// WHERE AGES < :max_ages;";
-                /* OracleParameter maxAges = new OracleParameter()
+                command.CommandText = "select * from TEACHER_DISCIPLINE_LIST WHERE \"Код_преподавателя\" = :id";
+                 OracleParameter idenitificator = new OracleParameter()
                 {
-                  ParameterName = "max_ages",
+                  ParameterName = "id",
                   Direction = ParameterDirection.Input,
-                  OracleDbType = OracleDbType.Decimal,
-                  Value = 27
+                  OracleDbType = OracleDbType.Varchar2,
+                  Value = id
                 };
-
-                command.Parameters.Add(maxAges);
-                */
+                command.Parameters.Add(idenitificator);
                 using(OracleDataReader reader = command.ExecuteReader())
                 {
                     List<TeacherWork> result=new List<TeacherWork>();
@@ -51,7 +51,42 @@ namespace ElectronDecanat.Code
                     return result;
                 }
             }
-
+        }
+        public static bool RegistrationTeacher(string FIO, string id)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ADD_TEACHER";// WHERE AGES < :max_ages;";
+                OracleParameter fio_oracle = new OracleParameter()
+                {
+                  ParameterName = "fio",
+                  Direction = ParameterDirection.Input,
+                  OracleDbType = OracleDbType.Varchar2,
+                  Value = FIO
+                };
+                 OracleParameter id_oracle = new OracleParameter()
+                {
+                  ParameterName = "identificator",
+                  Direction = ParameterDirection.Input,
+                  OracleDbType = OracleDbType.Varchar2,
+                  Value = id
+                };
+                command.Parameters.Add(fio_oracle);
+                command.Parameters.Add(id_oracle);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch(Exception e)
+                {
+                    LastError = e.Message;
+                    return false;
+                }
+                
+            }
         }
     }
 }

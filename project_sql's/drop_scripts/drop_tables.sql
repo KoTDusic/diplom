@@ -1,0 +1,10 @@
+drop TABLE "Факультет";
+drop TABLE "Специальность";
+drop TABLE "Дисциплина";
+drop TABLE "Преподаватель";
+drop TABLE "Лабораторные";
+drop TABLE "Студенты";
+drop TABLE "Подгруппы";
+drop TABLE "Успеваемость";
+drop TABLE "Нагрузка_преподавателя"; 
+drop TABLE "Группы";

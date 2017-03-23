@@ -24,4 +24,5 @@ else begin
   raise_application_error(-20001,'Ошибка, в базе нет такой группы');
   end;
 end if;
+commit;
 end ADD_SUBGROUP;

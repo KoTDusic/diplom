@@ -9,7 +9,7 @@ status "Успеваемость"."Статус_сдачи"%TYPE)
 is
 discipline_code number;
 lab_code number;
-teacher_kode number;
+teacher_kode nvarchar2(50);
 student_kode number;
 subgroup_kode number;
 hasStr number;
@@ -54,4 +54,5 @@ if Valid<>0 then
   raise_application_error(-20001,'Ошибка, этот преподаватель не преподаёт эту дисциплину у этой подгруппы');
   end;
 end if;
+commit;
 end SET_PROGRESS;

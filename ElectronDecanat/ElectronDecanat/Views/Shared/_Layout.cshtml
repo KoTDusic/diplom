@@ -7,6 +7,14 @@
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        footer
+        {
+            position:fixed;
+            top:91%;
+            left:87%;
+        }
+    </style>
 
 </head>
 <body>
@@ -31,8 +39,9 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        
         <footer>
+            <hr />
             <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
         </footer>
     </div>

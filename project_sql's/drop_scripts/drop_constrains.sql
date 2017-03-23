@@ -1,0 +1,14 @@
+ALTER TABLE "Факультет" drop CONSTRAINT "Факультет_uc";
+ALTER TABLE "Специальность" drop CONSTRAINT "Специальность_fk0";
+ALTER TABLE "Дисциплина" drop CONSTRAINT "Дисциплина_fk0";
+ALTER TABLE "Лабораторные" drop CONSTRAINT "Лабораторные_fk0";
+ALTER TABLE "Студенты" drop CONSTRAINT "Студенты_fk0";
+ALTER TABLE "Подгруппы" drop CONSTRAINT "Подгруппы_fk0";
+ALTER TABLE "Успеваемость" drop CONSTRAINT "Успеваемость_fk0";
+ALTER TABLE "Успеваемость" drop CONSTRAINT "Успеваемость_fk1";
+ALTER TABLE "Успеваемость" drop CONSTRAINT "Успеваемость_fk2";
+ALTER TABLE "Успеваемость" drop CONSTRAINT "Успеваемость_fk3";
+ALTER TABLE "Нагрузка_преподавателя" drop CONSTRAINT "Нагрузка_преподавателя_fk0";
+ALTER TABLE "Нагрузка_преподавателя" drop CONSTRAINT "Нагрузка_преподавателя_fk1";
+ALTER TABLE "Нагрузка_преподавателя" drop CONSTRAINT "Нагрузка_преподавателя_fk2";
+ALTER TABLE "Группы" drop CONSTRAINT "Группы_fk0";

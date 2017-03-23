@@ -52,8 +52,8 @@ namespace ElectronDecanat.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Адрес электронной почты")]
         [EmailAddress]
+        [Display(Name = "Адрес электронной почты")]
         public string Email { get; set; }
 
         [Required]

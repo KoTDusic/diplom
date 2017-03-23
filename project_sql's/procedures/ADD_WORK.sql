@@ -11,7 +11,7 @@ valid integer;
 group_kode number;
 subgroup_kode number;
 discipline_kode number;
-teacher_kode number;
+teacher_kode nvarchar2(50);
 begin
 if (speciality_code IS NULL OR age IS NULL OR group_number IS NULL OR subgroup_number IS NULL OR teacher_name IS NULL OR discipline_name IS NULL) then
 raise_application_error(-20001,'Неверные значения');
@@ -35,4 +35,5 @@ else begin
   raise_application_error(-20001,'Ошибка, такая запись уже есть');
   end;
 end if;
+commit;
 end ADD_WORK;

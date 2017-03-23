@@ -16,4 +16,5 @@ else begin
   raise_application_error(-20001,'Ошибка, такой записи нет в базе');
   end;
 end if;
+commit;
 end REMOVE_SPECIALITIS;

@@ -5,7 +5,9 @@
 
 <style type="text/css">
     table {
-        margin: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
         border: 1px solid black;
         border-collapse: collapse;
     }
@@ -16,7 +18,7 @@
     th {
         border: 1px solid black;
         padding: 10px;
-        font-size: 10px;
+        font-size: 14px;
     }
 </style>
 <table>
@@ -24,10 +26,10 @@
     <tr>
         <th>Преподаватель</th>
         <th>Специальность</th>
-        <th>Код специальности</th>
+        <!--<th>Код специальности</th>-->
         <th>Дисциплина</th>
         <th>Курс</th>
-        <th>Год_поступления</th>
+        <!--<th>Год_поступления</th>-->
         <th>Группа</th>
         <th>Подгруппа</th>
     </tr>
@@ -40,10 +42,10 @@
                 <tr>
                     <td>@Model[i].teacherNamel</td>
                     <td>@Model[i].specialityName</td>
-                    <td>@Model[i].specialityCode</td>
+                    <!--<td>Model[i].specialityCode</td>-->
                     <td>@Model[i].disciplineName</td>
                     <td>@Model[i].coors</td>
-                    <td>@Model[i].year</td>
+                    <!--<td>Model[i].year</td>-->
                     <td>@Model[i].groupNumber</td>
                     <td>@Model[i].subgroopNumber</td>
                 </tr>

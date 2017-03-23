@@ -32,4 +32,5 @@ else begin
   raise_application_error(-20001,'Ошибка, такой записи нет в базе'||'group_kode='||group_kode||'subgroup_kode='||subgroup_kode||'discipline_kode='||discipline_kode||'teacher_kode='||teacher_kode);
   end;
 end if;
+commit;
 end REMOVE_WORK;

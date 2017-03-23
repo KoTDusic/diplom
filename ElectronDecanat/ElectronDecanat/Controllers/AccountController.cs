@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ElectronDecanat.Models;
+using ElectronDecanat.Code;
 
 namespace ElectronDecanat.Controllers
 {
@@ -70,10 +71,10 @@ namespace ElectronDecanat.Controllers
             {
                 return View(model);
             }
-
+            ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
             // Сбои при входе не приводят к блокированию учетной записи
             // Чтобы ошибки при вводе пароля инициировали блокирование учетной записи, замените на shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -158,15 +159,21 @@ namespace ElectronDecanat.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см. по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Отправка сообщения электронной почты с этой ссылкой
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Подтверждение учетной записи", "Подтвердите вашу учетную запись, щелкнув <a href=\"" + callbackUrl + "\">здесь</a>");
-
-                    return RedirectToAction("Index", "Main");
+                    string id = user.Id;
+                    if (RequestHelper.RegistrationTeacher(user.UserName, user.Id))
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        // Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см. по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Отправка сообщения электронной почты с этой ссылкой
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Подтверждение учетной записи", "Подтвердите вашу учетную запись, щелкнув <a href=\"" + callbackUrl + "\">здесь</a>");
+                    }
+                    else
+                    {
+                        UserManager.Delete(user);
+                    }
+                    return RedirectToAction("Index", "Teacher");
                 }
                 AddErrors(result);
             }
@@ -432,7 +439,7 @@ namespace ElectronDecanat.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Main");
+            return RedirectToAction("Index", "Teacher");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

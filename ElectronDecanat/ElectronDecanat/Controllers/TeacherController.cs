@@ -4,6 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ElectronDecanat.Code;
+using Microsoft.AspNet.Identity;
+ 
+ 
+
+
 
 namespace ElectronDecanat.Controllers
 {
@@ -13,8 +18,7 @@ namespace ElectronDecanat.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-            RequestHelper requestHelper = new RequestHelper();
-            List<TeacherWork> array = requestHelper.getTeacherWork();
+            List<TeacherWork> array = RequestHelper.getTeacherWork(User.Identity.GetUserId());
             return View(array);
         }
     }

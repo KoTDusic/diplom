@@ -38,7 +38,7 @@ execute ADD_TEACHER('Преподаватель1');
 execute ADD_TEACHER('Преподаватель2');
 execute ADD_TEACHER('Преподаватель3');
 execute ADD_TEACHER('Ганс');
-execute REMOVE_TEACHER('Преподаватель2');
+execute REMOVE_TEACHER('asdasd-12-asf');
 execute ADD_TEACHER('Бутылка Рома Ёхохович');
 
 select * from "Факультет";
@@ -151,10 +151,9 @@ select * from  "Нагрузка_преподавателя"
 select count(*) from "Нагрузка_преподавателя"
 where "Код_подгруппы" = 16 AND "Код_преподавателя" = 43
 AND "Код_дисциплины" = 2;
-
-select count(*) from "Успеваемость" 
-where "Код_дисциплины"=2 AND "Код_преподавателя"=43
-AND "Номер_лабораторной"=5 AND "Код_студента"=5;
+select * from "Успеваемость";
+select * from TEACHER_DISCIPLINE_LIST;
+select * from LAB_LIST;
 
 select "Код_группы",
        "Имя_специальности",

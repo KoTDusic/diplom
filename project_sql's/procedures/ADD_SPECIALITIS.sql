@@ -19,4 +19,5 @@ else begin
   raise_application_error(-20001,'Ошибка, такая запись уже есть в базе');
   end;
 end if;
+commit;
 end ADD_SPECIALITIS;
