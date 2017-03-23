@@ -32,6 +32,7 @@ order by "Имя_специальности";
 
 select * from "Подгруппы"
 select * from "Группы"
+select * from TEACHER_DISCIPLINE_LIST "3fa7114d-5fb9-4f64-be58-a77c16e1dbf1"
 
 select * from "Преподаватель";
 execute ADD_TEACHER('Преподаватель1');
