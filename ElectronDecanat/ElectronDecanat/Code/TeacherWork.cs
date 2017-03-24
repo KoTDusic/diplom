@@ -7,7 +7,7 @@ namespace ElectronDecanat.Code
 {
     public class TeacherWork
     {
-        public string teacherNamel;
+        public string teacherName;
         public string specialityCode;
         public string specialityName;
         public string disciplineName;

@@ -22,3 +22,34 @@ select,
 textarea {
     max-width: 280px;
 }
+.dataTables_wrapper {
+    margin-top: 5%;
+}
+td {
+    border: 1px solid black;
+    padding: 10px;
+}
+th {
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 14px;
+}
+.clicable:hover
+{
+    cursor:pointer;
+    background-color:lightgray;
+    text-decoration:none;
+}
+.clicable a
+{
+    text-decoration:none;
+    color:blue;
+}
+.clicable a:hover
+{
+    color:blue;
+}
+.clicable a:visited
+{
+    color:blue;
+}

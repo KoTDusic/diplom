@@ -36,7 +36,7 @@ namespace ElectronDecanat.Code
                     {
                         element=new TeacherWork();
                         //, , , , 
-                        element.teacherNamel = reader["Преподаватель"].ToString();
+                        element.teacherName = reader["Преподаватель"].ToString();
                         element.specialityCode = reader["Код_специальности"].ToString();
                         element.specialityName = reader["Имя_специальности"].ToString();
                         element.disciplineName = reader["Наименование_дисциплины"].ToString();
@@ -46,6 +46,64 @@ namespace ElectronDecanat.Code
                         element.subgroopNumber = Convert.ToInt32(reader["Номер_подгруппы"]);
                         element.subgroopCode = Convert.ToInt32(reader["Код_подгруппы"]);
                         element.coors = Convert.ToInt32(reader["Номер_подгруппы"]);
+                        result.Add(element);
+                    }
+                    return result;
+                }
+            }
+        }
+        public static List<LabProgress> getPeopleLabList(TeacherWork user, bool for_subgroup = false)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select * from LAB_LIST WHERE \"Преподаватель\" = :teacher AND \"Наименование_дисциплины\"=:discipline";
+                List<OracleParameter> parametrs = new List<OracleParameter>();
+                parametrs.Add(new OracleParameter()
+                {
+                    ParameterName = "teacher",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = user.teacherName
+                });
+                parametrs.Add(new OracleParameter()
+                {
+                    ParameterName = "discipline",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = user.disciplineName
+                });
+                if(for_subgroup)
+                {
+                    command.CommandText += " AND \"Код_подгруппы\"=:group_code";
+                    parametrs.Add(new OracleParameter()
+                    {
+                        ParameterName = "group_code",
+                        Direction = ParameterDirection.Input,
+                        OracleDbType = OracleDbType.Varchar2,
+                        Value = user.subgroopCode
+                    });
+                }
+                command.Parameters.AddRange(parametrs.ToArray());
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    List<LabProgress> result = new List<LabProgress>();
+                    LabProgress element;
+                    while (reader.Read())
+                    {
+                        element = new LabProgress();
+                        element.studentCode = Convert.ToInt32(reader["Код_студента"].ToString());
+                        element.specialityCode = reader["Код_специальности"].ToString();
+                        element.disciplineName = reader["Наименование_дисциплины"].ToString();
+                        element.teacherName = reader["Преподаватель"].ToString();
+                        element.studentName = reader["Студент"].ToString();
+                        element.coors = Convert.ToInt32(reader["Курс"]);
+                        element.subgroopCode = Convert.ToInt32(reader["Код_подгруппы"]);
+                        element.subgroopNumber = Convert.ToInt32(reader["Номер_подгруппы"]);
+                        element.groupNumber = Convert.ToInt32(reader["Номер_группы"]);
+                        element.labName = reader["Название_лабораторной"].ToString();
+                        element.labStatus = LabProgress.GetStatusFromText(reader["Статус_сдачи"].ToString());
                         result.Add(element);
                     }
                     return result;

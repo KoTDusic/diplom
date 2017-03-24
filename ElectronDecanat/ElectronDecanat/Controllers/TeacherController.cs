@@ -21,5 +21,11 @@ namespace ElectronDecanat.Controllers
             List<TeacherWork> array = RequestHelper.getTeacherWork(User.Identity.GetUserId());
             return View(array);
         }
+        public ActionResult Labs(string discipline )
+        {
+            string name=User.Identity.GetUserName();
+            List<LabProgress> array = RequestHelper.getPeopleLabList(new TeacherWork { teacherName = name, disciplineName = discipline });
+            return View(array);
+        }
     }
 }

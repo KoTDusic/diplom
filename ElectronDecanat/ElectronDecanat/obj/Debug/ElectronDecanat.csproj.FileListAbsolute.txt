@@ -144,9 +144,9 @@ C:\Prokopovich\диплом Прокопович\репозиторий\Electron
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\bin\ru\Microsoft.Owin.Security.Google.resources.dll
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.csprojResolveAssemblyReference.cache
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.dll
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.pdb
 d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\Oracle.ManagedDataAccess.dll
 D:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\Duke.Owin.VkontakteMiddleware.dll
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\bin\Duke.Owin.VkontakteMiddleware.dll
+C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.csprojResolveAssemblyReference.cache
