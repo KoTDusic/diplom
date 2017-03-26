@@ -96,6 +96,7 @@ namespace ElectronDecanat.Code
                         element.studentCode = Convert.ToInt32(reader["Код_студента"].ToString());
                         element.specialityCode = reader["Код_специальности"].ToString();
                         element.disciplineName = reader["Наименование_дисциплины"].ToString();
+                        element.disciplineCode = Convert.ToInt32(reader["Код_дисциплины"]);
                         element.teacherName = reader["Преподаватель"].ToString();
                         element.studentName = reader["Студент"].ToString();
                         element.coors = Convert.ToInt32(reader["Курс"]);
@@ -103,7 +104,7 @@ namespace ElectronDecanat.Code
                         element.subgroopNumber = Convert.ToInt32(reader["Номер_подгруппы"]);
                         element.groupNumber = Convert.ToInt32(reader["Номер_группы"]);
                         element.labName = reader["Название_лабораторной"].ToString();
-                        element.labStatus = LabProgress.GetStatusFromText(reader["Статус_сдачи"].ToString());
+                        element.labStatus = reader["Статус_сдачи"].ToString();
                         result.Add(element);
                     }
                     return result;

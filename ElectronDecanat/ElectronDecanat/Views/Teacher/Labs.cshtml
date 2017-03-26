@@ -17,9 +17,10 @@
         </thead>
         <tbody>
             @{
+                string status;
                 for (int i = 0; i < Model.Count; i++)
                 {
-
+                    status=Model[i].labStatus;
                     <tr>
                         <td>@Model[i].disciplineName</td>
                         <td>@Model[i].studentName</td>
@@ -27,12 +28,25 @@
                         <td>@Model[i].groupNumber</td>
                         <td>@Model[i].subgroopNumber</td>
                         <td>@Model[i].labName</td>
-                        <td>@ElectronDecanat.Code.LabProgress.GetStatusText(Model[i].labStatus)</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink(status, "ChangeLabStatus",
+                        new 
+                        {
+                            student_code = Model[i].studentCode,
+                            labName = Model[i].labName, 
+                            discipline_code = Model[i].disciplineCode, 
+                            labStatus = status,
+                            discipline = Model[i].disciplineName,
+                            student = Model[i].studentName
+                        })
+                        </td>
                 </tr>
                 }
             }
         </tbody>
     </table>
+    <div>
+        @Html.ActionLink("Назад", "Index")
+    </div>
     <script type="text/javascript">
         document.onload=new function () {
             $('#main-table').DataTable(russian_lang);

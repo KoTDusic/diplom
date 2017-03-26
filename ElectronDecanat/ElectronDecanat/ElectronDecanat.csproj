@@ -245,6 +245,7 @@
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Teacher\Labs.cshtml" />
+    <Content Include="Views\Teacher\ChangeLabStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
