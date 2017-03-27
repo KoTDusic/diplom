@@ -7,9 +7,18 @@ select * from "Лабораторные";
 select * from "Дисциплина";
 
 select * from "Подгруппы";
-
+select * from "Успеваемость";
 select * from "Студенты";
+exec LOAD_LABS(22);
 
+
+
+
+
+
+select STUDENT_DISCIPLINE."Код_дисциплины","Преподаватель","Код_студента",
+        "Название_лабораторной" from STUDENT_DISCIPLINE,"Лабораторные" 
+        where "Лабораторные"."Код_дисциплины"=STUDENT_DISCIPLINE."Код_дисциплины" AND "Код_студента"=28;
 select count(*) from "Нагрузка_преподавателя" 
 where "Код_подгруппы" = 42 AND "Код_преподавателя" = 23 AND "Код_дисциплины" = 123;
 
@@ -67,7 +76,7 @@ execute ADD_DISCIPLINE('1-1101','Системное программирование');
 execute ADD_DISCIPLINE('1-1101','Программирование в Internet');
 execute ADD_DISCIPLINE('1-1102','Схемотехника');
 execute REMOVE_DISCIPLINE('1-1101','Программирование в Internet');
-execute REMOVE_DISCIPLINE('007','литaние ленты в соц сетях');
+execute REMOVE_DISCIPLINE('007','листaние ленты в соц сетях');
 select * from "Лабораторные";
 execute ADD_LAB('Системное программирование','Агрегирование');
 execute ADD_LAB('Системное программирование','Делегирование');

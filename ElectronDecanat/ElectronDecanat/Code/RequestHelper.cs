@@ -147,5 +147,65 @@ namespace ElectronDecanat.Code
                 
             }
         }
+        public static bool UpdateLab(LabProgress lab)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "SET_PROGRESS";// WHERE AGES < :max_ages;";
+                //discipline_code teacher_name student_code lab_name status
+                OracleParameter discipline_code = new OracleParameter()
+                {
+                    ParameterName = "discipline_code",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Int32,
+                    Value = lab.disciplineCode
+                };
+                OracleParameter teacher_name = new OracleParameter()
+                {
+                    ParameterName = "teacher_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = lab.teacherName
+                };
+                OracleParameter student_code = new OracleParameter()
+                {
+                    ParameterName = "student_code",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Int32,
+                    Value = lab.studentCode
+                };
+                OracleParameter lab_name = new OracleParameter()
+                {
+                    ParameterName = "lab_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = lab.labName
+                };
+                OracleParameter status = new OracleParameter()
+                {
+                    ParameterName = "status",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = lab.labStatus
+                };
+                command.Parameters.Add(discipline_code);
+                command.Parameters.Add(teacher_name);
+                command.Parameters.Add(student_code);
+                command.Parameters.Add(lab_name);
+                command.Parameters.Add(status);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    LastError = e.Message;
+                    return false;
+                }
+            }
+        }
     }
 }

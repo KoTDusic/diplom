@@ -17,5 +17,6 @@
 @procedures/REMOVE_TEACHER.sql
 @procedures/REMOVE_WORK.sql
 @procedures/SET_PROGRESS.sql
+@procedures/LOAD_LABS.sql
 
 @functions/GET_KOORS_BY_YEAR.sql

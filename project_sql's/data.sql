@@ -1,69 +1,129 @@
 set serveroutput on;
 
-execute ADD_TEACHER('Преподаватель1','asdasd-12-asf');
-execute ADD_TEACHER('Преподаватель2','ertedr-123-fgf');
-execute ADD_TEACHER('Преподаватель3','ghkjrtre-54732-rtyrtr');
-
-
 execute ADD_FACULTY('ФИТ');
 execute ADD_FACULTY('ИЭФ');
 execute ADD_FACULTY('ТОВ');
 
-execute ADD_SPECIALITIS('ФИТ','1-1101','ИСиТ');
-execute ADD_SPECIALITIS('ФИТ','1-1102','ПОиСОИ');
+execute ADD_SPECIALITIS('ФИТ','1400201','Информационные системы и технологии (издательско-полиграфический комплекс)');
+execute ADD_SPECIALITIS('ФИТ','1400101','Программное обеспечение информационных технологий');
+execute ADD_SPECIALITIS('ФИТ','1980103','Пограммное обеспечение информационной безопасности мобильных систем');
+execute ADD_SPECIALITIS('ФИТ','1470102','Дизайн электронных и web-изданий');
 execute ADD_SPECIALITIS('ТОВ','1-1103','Химик-технолог');
 execute ADD_SPECIALITIS('ТОВ','1-1105','Химик-полиграфист');
 execute ADD_SPECIALITIS('ИЭФ','1-1104','Экономист');
 execute ADD_SPECIALITIS('ИЭФ','1-1114','Экономист-технолог');
-execute ADD_SPECIALITIS('ФИТ','1111_123','Что то');
 
-execute ADD_DISCIPLINE('1-1101','Системное программирование');
-execute ADD_DISCIPLINE('1-1101','Программирование в Internet');
-execute ADD_DISCIPLINE('1-1102','Схемотехника');
+
+execute ADD_DISCIPLINE('1400201','Web-дизайн и шаблоны проектирования');
+execute ADD_DISCIPLINE('1400201','Администрирование баз данных и приложений');
+execute ADD_DISCIPLINE('1400201','Администрирование и безопасность Интернет-систем');
+execute ADD_DISCIPLINE('1400201','Арифметико-логические основы цифровых вычислительных машин и архитектура компьютера');
+execute ADD_DISCIPLINE('1400201','Базы данных');
+execute ADD_DISCIPLINE('1400201','Безопасность программного обеспечения мобильных систем');
+execute ADD_DISCIPLINE('1400201','Встроенные системы');
+execute ADD_DISCIPLINE('1400201','Защита информации и надежность информационных систем');
+execute ADD_DISCIPLINE('1400201','Компьютерные мультимедийные системы');
+execute ADD_DISCIPLINE('1400201','Компьютерные мультимедийные системы в издательском деле');
+execute ADD_DISCIPLINE('1400201','Компьютерные сети');
+execute ADD_DISCIPLINE('1400201','Компьютерные системы и сети');
+execute ADD_DISCIPLINE('1400201','Компьютерные языки разметки');
+execute ADD_DISCIPLINE('1400201','Корпоративные информационные системы');
+execute ADD_DISCIPLINE('1400201','Криптографические методы защиты информации');
+execute ADD_DISCIPLINE('1400201','Математические основы криптографии');
+execute ADD_DISCIPLINE('1400201','Математическое программирование');
+execute ADD_DISCIPLINE('1400201','Моделирование и оптимизация процессов и систем');
+execute ADD_DISCIPLINE('1400201','Надежность программного обеспечения');
+execute ADD_DISCIPLINE('1400201','Облачные технологии');
+execute ADD_DISCIPLINE('1400201','Объектно-ориентированное программирование');
+execute ADD_DISCIPLINE('1400201','Объектно-ориентированные технологии программирования и стандарты проектирования');
+execute ADD_DISCIPLINE('1400201','Операционные системы');
+execute ADD_DISCIPLINE('1400201','Операционные системы и системное программирование');
+execute ADD_DISCIPLINE('1400201','Операционные системы мобильных устройств');
+execute ADD_DISCIPLINE('1400201','Основы алгоритмизации и программирования');
+execute ADD_DISCIPLINE('1400201','Основы дискретной математики и теории алгоритмов');
+execute ADD_DISCIPLINE('1400201','Основы защиты информации(с модулем Основы управления интеллектуальной собственностью)');
+execute ADD_DISCIPLINE('1400201','Основы информационных технологий');
+execute ADD_DISCIPLINE('1400201','Основы программирования интернет-приложений');
+execute ADD_DISCIPLINE('1400201','Программирование web-сервисов');
+execute ADD_DISCIPLINE('1400201','Программирование Интернет-серверов');
+execute ADD_DISCIPLINE('1400201','Программирование в Интернет');
+execute ADD_DISCIPLINE('1400201','Программирование и безопасность баз данных web-приложений');
+execute ADD_DISCIPLINE('1400201','Программирование и безопасность баз данных мобильных систем');
+execute ADD_DISCIPLINE('1400201','Программирование и безопасность сетевых приложений');
+execute ADD_DISCIPLINE('1400201','Программирование мобильных систем');
+execute ADD_DISCIPLINE('1400201','Программирование мультимедийных и многомерных мобильных приложений');
+execute ADD_DISCIPLINE('1400201','Программирование мультимедийных и многомерных приложений');
+execute ADD_DISCIPLINE('1400201','Программирование серверных кросплатформенных приложений');
+execute ADD_DISCIPLINE('1400201','Программирование сетевых приложений');
+execute ADD_DISCIPLINE('1400201','Программное обеспечение безопасных мобильных систем');
+execute ADD_DISCIPLINE('1400201','Программное обеспечение встроенных и smart систем');
+execute ADD_DISCIPLINE('1400201','Проектирование Интернет-систем');
+execute ADD_DISCIPLINE('1400201','Проектирование программного обеспечения мобильных систем');
+execute ADD_DISCIPLINE('1400201','Разработка динамических web-приложений');
+execute ADD_DISCIPLINE('1400201','Распределенные информационные системы');
+execute ADD_DISCIPLINE('1400201','Распределенные системы');
+execute ADD_DISCIPLINE('1400201','Система разработки кросплатформенных мобильных приложений');
+execute ADD_DISCIPLINE('1400201','Системное программирование');
+execute ADD_DISCIPLINE('1400201','Системы и технологии интеллектуальной обработки данных');
+execute ADD_DISCIPLINE('1400201','Системы мобильной связи');
+execute ADD_DISCIPLINE('1400201','Системы управления контентом');
+execute ADD_DISCIPLINE('1400201','Современные технологии программирования в Интернет');
+execute ADD_DISCIPLINE('1400201','Современные технологии программирования мобильных систем');
+execute ADD_DISCIPLINE('1400201','Стандартизация и сертификация информационных систем и технологий');
+execute ADD_DISCIPLINE('1400201','Стандартизация информационных систем и технологий');
+execute ADD_DISCIPLINE('1400201','Тестирование и стандартизация программного обеспечения мобильных устройств');
+execute ADD_DISCIPLINE('1400201','Тестирование программного обеспечения');
+execute ADD_DISCIPLINE('1400201','Управление IT-проектами и информационный менеджмент');
+execute ADD_DISCIPLINE('1400201','Языки программирования');
+
 
 execute ADD_LAB('Системное программирование','Агрегирование');
 execute ADD_LAB('Системное программирование','Делегирование');
 execute ADD_LAB('Системное программирование','COM EXE');
-execute ADD_LAB('Программирование в Internet','Сервлет');
-execute ADD_LAB('Программирование в Internet','AJAX');
-execute ADD_LAB('Схемотехника','ShemBuilder');
+execute ADD_LAB('Программирование в Интернет','Сервлет');
+execute ADD_LAB('Программирование в Интернет','AJAX');
 
-execute ADD_GROUP('1-1101',2013,1);
-execute ADD_GROUP('1-1101',2013,2);
-execute ADD_GROUP('1-1102',2013,1);
-execute ADD_GROUP('1-1102',2013,2);
-execute ADD_GROUP('1-1105',2013,1);
-execute ADD_GROUP('1-1103',2014,1);
-execute ADD_GROUP('1-1103',2014,2);
-execute ADD_GROUP('1-1104',2012,1);
+select * from LAB_LIST
+select * from LAB_LIST WHERE "Преподаватель" = 'Преподаватель2' AND "Наименование_дисциплины"='Программирование в Интернет'
 
-execute ADD_SUBGROUP('1-1105',2013,1,1);
-execute ADD_SUBGROUP('1-1101',2013,1,1);
-execute ADD_SUBGROUP('1-1101',2013,1,2);
-execute ADD_SUBGROUP('1-1101',2013,2,1);
-execute ADD_SUBGROUP('1-1101',2013,2,2);
-execute ADD_SUBGROUP('1-1102',2013,1,1);
-execute ADD_SUBGROUP('1-1102',2013,2,1);
+select * from "Дисциплина"
 
-execute ADD_STUDENT('1-1101',2013,2,1,'Студент1');
-execute ADD_STUDENT('1-1101',2013,1,1,'Студент2');
-execute ADD_STUDENT('1-1101',2013,1,2,'Студент3');
-execute ADD_STUDENT('1-1101',2013,2,2,'Студент4');
-execute ADD_STUDENT('1-1101',2013,2,1,'Студент5');
-execute ADD_STUDENT('1-1101',2013,1,1,'Студент6');
-execute ADD_STUDENT('1-1102',2013,2,1,'Студент7');
-execute ADD_STUDENT('1-1105',2013,1,1,'Никон');
-execute ADD_STUDENT('1-1105',2013,1,1,'Кэнон');
-execute ADD_STUDENT('1-1105',2013,1,1,'Зенит');
+execute ADD_GROUP('1400201',2013,1);
+execute ADD_GROUP('1400201',2013,2);
+execute ADD_GROUP('1400201',2013,1);
+execute ADD_GROUP('1400201',2013,2);
+execute ADD_GROUP('1400201',2013,1);
+execute ADD_GROUP('1400201',2014,1);
+execute ADD_GROUP('1400201',2014,2);
+execute ADD_GROUP('1400201',2012,1);
 
-execute ADD_WORK('1-1101',2013,1,1,'Преподаватель2','Системное программирование');
-execute ADD_WORK('1-1101',2013,1,1,'Преподаватель2','Программирование в Internet');
-execute ADD_WORK('1-1101',2013,2,1,'Преподаватель1','Системное программирование');
-execute ADD_WORK('1-1101',2013,2,1,'Преподаватель1','Программирование в Internet');
-execute ADD_WORK('1-1102',2013,2,1,'Преподаватель3','Схемотехника');
+execute ADD_SUBGROUP('1400201',2013,1,1);
+execute ADD_SUBGROUP('1400201',2013,1,2);
+execute ADD_SUBGROUP('1400201',2013,2,1);
+execute ADD_SUBGROUP('1400201',2013,2,2);
 
-execute SET_PROGRESS(1,'Преподаватель2',6,'Делегирование','Не сдано');
-execute SET_PROGRESS(1,'Преподаватель2',6,'Делегирование','Сдано');
-execute SET_PROGRESS(1,'Преподаватель2',2,'Делегирование','Сдано');
-execute SET_PROGRESS(3,'Преподаватель3',7,'ShemBuilder','Сдано');
-execute SET_PROGRESS(1,'Преподаватель2',2,'Агрегирование','Сдано');
+execute ADD_STUDENT('1400201',2013,2,1,'Студент1');
+execute ADD_STUDENT('1400201',2013,1,1,'Студент2');
+execute ADD_STUDENT('1400201',2013,1,2,'Студент3');
+execute ADD_STUDENT('1400201',2013,2,2,'Студент4');
+execute ADD_STUDENT('1400201',2013,2,1,'Студент5');
+execute ADD_STUDENT('1400201',2013,1,1,'Студент6');
+execute ADD_STUDENT('1400201',2013,2,1,'Студент7');
+execute ADD_STUDENT('1400201',2013,1,1,'Никон');
+execute ADD_STUDENT('1400201',2013,1,1,'Кэнон');
+execute ADD_STUDENT('1400201',2013,1,1,'Зенит');
+
+select * from "Успеваемость";
+select * from "Лабораторные";
+select * from "Дисциплина";
+
+execute ADD_WORK('1400201',2013,1,1,'Преподаватель2','Системное программирование');
+execute ADD_WORK('1400201',2013,1,1,'Преподаватель2','Программирование в Интернет');
+execute ADD_WORK('1400201',2013,2,1,'Преподаватель1','Системное программирование');
+execute ADD_WORK('1400201',2013,2,1,'Преподаватель1','Программирование в Интернет');
+
+execute SET_PROGRESS(70,'Преподаватель2',26,'Делегирование','Не сдано');
+execute SET_PROGRESS(70,'Преподаватель2',22,'Делегирование','Сдано');
+execute SET_PROGRESS(70,'Преподаватель2',26,'Делегирование','Сдано');
+execute SET_PROGRESS(53,'Преподаватель2',22,'Агрегирование','Сдано');
+execute SET_PROGRESS(53,'Преподаватель2',26,'Агрегирование','Сдано');

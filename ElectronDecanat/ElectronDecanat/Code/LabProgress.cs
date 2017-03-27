@@ -57,5 +57,14 @@ namespace ElectronDecanat.Code
             }
         }
         public IEnumerable<SelectListItem> Statuses { get; set; }
+        public static IEnumerable<string> GetAllStatus()
+        {
+            return new List<string>
+            {
+                "Сдано",
+                "Не сдано",
+                "Проверяется"
+            };
+        }
     }
 }

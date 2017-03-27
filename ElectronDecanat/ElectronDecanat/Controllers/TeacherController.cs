@@ -27,19 +27,11 @@ namespace ElectronDecanat.Controllers
             List<LabProgress> array = RequestHelper.getPeopleLabList(new TeacherWork { teacherName = name, disciplineName = discipline });
             return View(array);
         }
-        private IEnumerable<string> GetAllStatus()
-        {
-            return new List<string>
-            {
-                "Сдано",
-                "Не сдано",
-                "Проверяется"
-            };
-        }
+        
         public ActionResult ChangeLabStatus(int student_code, string discipline, string student, string labName, int discipline_code, string labStatus)
         {
             var selectList = new List<SelectListItem>();
-            foreach (var element in GetAllStatus())
+            foreach (var element in LabProgress.GetAllStatus())
             {
                 selectList.Add(new SelectListItem
                 {
@@ -60,6 +52,14 @@ namespace ElectronDecanat.Controllers
                 labStatus = labStatus
             };
             return View(lab);
+        }
+        [HttpPost]
+        public ActionResult ChangeLabStatus(LabProgress item)
+        {
+            string name = User.Identity.GetUserName();
+            bool complete = RequestHelper.UpdateLab(item);
+            List<LabProgress> array = RequestHelper.getPeopleLabList(new TeacherWork { teacherName = name, disciplineName = item.disciplineName });
+            return View("Labs", array);
         }
     }
 }
