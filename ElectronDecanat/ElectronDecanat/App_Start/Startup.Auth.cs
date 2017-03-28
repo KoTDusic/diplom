@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Twitter;
 using Owin;
 using ElectronDecanat.Models;
 using Microsoft.Owin.Security.OAuth;
@@ -62,7 +63,7 @@ namespace ElectronDecanat
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
-            //   consumerSecret: "");
+             //  consumerSecret: "");
 
             //app.UseFacebookAuthentication(
             //   appId: "",

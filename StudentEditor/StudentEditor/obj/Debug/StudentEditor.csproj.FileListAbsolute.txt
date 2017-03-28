@@ -1,0 +1,13 @@
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\bin\Debug\StudentEditor.exe.config
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\obj\Debug\StudentEditor.csprojResolveAssemblyReference.cache
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\obj\Debug\MainWindow.baml
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\obj\Debug\MainWindow.g.cs
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\obj\Debug\App.g.cs
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\obj\Debug\StudentEditor_MarkupCompile.cache
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\obj\Debug\StudentEditor.g.resources
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\obj\Debug\StudentEditor.Properties.Resources.resources
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\obj\Debug\StudentEditor.csproj.GenerateResource.Cache
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\bin\Debug\StudentEditor.exe
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\bin\Debug\StudentEditor.pdb
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\obj\Debug\StudentEditor.exe
+C:\Prokopovich\диплом Прокопович\репозиторий\StudentEditor\StudentEditor\obj\Debug\StudentEditor.pdb
