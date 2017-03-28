@@ -25,7 +25,13 @@ namespace StudentEditor
         {
             InitializeComponent();
             model = new StudentViewModel();
+            model.inputs = InputsField;
             this.DataContext = model;
+        }
+
+        private void InputsField_Error(object sender, ValidationErrorEventArgs e)
+        {
+            
         }
     }
 }
