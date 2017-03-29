@@ -165,6 +165,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Code\Lab.cs" />
     <Compile Include="Code\LabProgress.cs" />
     <Compile Include="Code\RequestHelper.cs" />
     <Compile Include="Code\SingltoneConnection.cs" />
@@ -246,6 +247,9 @@
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Teacher\Labs.cshtml" />
     <Content Include="Views\Teacher\ChangeLabStatus.cshtml" />
+    <Content Include="Views\Teacher\LabsList.cshtml" />
+    <Content Include="Views\Teacher\LabsOnDisciplineList.cshtml" />
+    <Content Include="Views\Teacher\EditLab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

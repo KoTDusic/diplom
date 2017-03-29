@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "LabList";
+}
+<body>
+    <table id="main-table">
+        <thead>
+            <tr>
+                <th>Дисциплина</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>@Model[i]</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Перейти к лабораторным", "LabsOnDisciplineList", new { discipline = Model[i] })</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        document.onload = new function ()
+        {
+            $('#main-table').DataTable(russian_lang);
+        }
+    </script>
+</body>
+

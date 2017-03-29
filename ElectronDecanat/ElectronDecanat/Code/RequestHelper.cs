@@ -13,6 +13,102 @@ namespace ElectronDecanat.Code
     {
         private static string LastError;
         public static string GetLastError() { return LastError; }
+        public static List<string> getTeacherDisciplines(string name)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select \"Наименование_дисциплины\" from \"TEACHER_DISCIPLINE\" where \"Преподаватель\" = :name";
+                OracleParameter name_param = new OracleParameter()
+                {
+                    ParameterName = "name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = name
+                };
+                command.Parameters.Add(name_param);
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    List<string> disciplines = new List<string>();
+                    while (reader.Read())
+                    {
+                        disciplines.Add(reader["Наименование_дисциплины"].ToString());
+                    }
+                    return disciplines;
+                }
+            }
+        }
+        public static bool EditLab(Lab lab)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "EDIT_LAB";
+                OracleParameter discipline_name = new OracleParameter()
+                {
+                    ParameterName = "discipline_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = lab.discipline
+                };
+                OracleParameter lab_name = new OracleParameter()
+                {
+                    ParameterName = "lab_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = lab.oldLabName
+                };
+                OracleParameter new_lab_name = new OracleParameter()
+                {
+                    ParameterName = "new_lab_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = lab.newLabName
+                };
+                command.Parameters.Add(discipline_name);
+                command.Parameters.Add(lab_name);
+                command.Parameters.Add(new_lab_name);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    LastError = e.Message;
+                    return false;
+                }
+
+            }
+        }
+        public static List<string> getLabInDiscipline(string discipline)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select * from \"LABS_DISCIPLINE\" where \"Наименование_дисциплины\" = :discipline";
+                OracleParameter discipline_param = new OracleParameter()
+                {
+                    ParameterName = "discipline",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = discipline
+                };
+                command.Parameters.Add(discipline_param);
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    List<string> labs = new List<string>();
+                    while (reader.Read())
+                    {
+                        labs.Add(reader["Название_лабораторной"].ToString());
+                    }
+                    return labs;
+                }
+            }
+        }
         public static List<TeacherWork> getTeacherWork(string id)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
@@ -139,12 +235,10 @@ namespace ElectronDecanat.Code
                     command.ExecuteNonQuery();
                     return true;
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
-                    LastError = e.Message;
                     return false;
                 }
-                
             }
         }
         public static bool UpdateLab(LabProgress lab)

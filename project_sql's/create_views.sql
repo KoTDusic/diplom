@@ -4,3 +4,5 @@
 @views/KOORS_LIST.sql
 @views/FACULTY_LIST.sql
 @views/STUDENT_DISCIPLINE.sql
+@views/TEACHER_DISCIPLINE.sql
+@views/LAB_DISCIPLINE.sql
