@@ -311,7 +311,6 @@ namespace ElectronDecanat.Code
                 }
             }
         }
-
         public static bool UpdateLab(LabProgress lab)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
