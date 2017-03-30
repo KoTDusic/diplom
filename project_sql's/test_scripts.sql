@@ -10,8 +10,7 @@ select * from "Подгруппы";
 select * from "Успеваемость";
 select * from "Студенты";
 exec LOAD_LABS(22);
-
-
+select * from "Нагрузка_преподавателя";
 
 
 

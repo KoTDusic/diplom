@@ -8,20 +8,24 @@
             <tr>
                 <th>Лабораторная</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @{
-                for (int i = 1; i < Model.Count; i++)
+                for (int i = 0; i < Model.Count; i++)
                 {
                     <tr>
-                        <td>@Model[i]</td>
-                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Редактировать", "EditLab", new { discipline = Model[0], lab_name=Model[i] })</td>
+                        <td>@Model[i].oldLabName</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Редактировать", "EditLab", new { discipline = Model[0].discipline, lab_name = Model[i].oldLabName })</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Удалить", "DeleteLab", new { discipline = Model[0].discipline, lab_name = Model[i].oldLabName })</td>
                     </tr>
                 }
             }
         </tbody>
     </table>
+    <button class="clicable btn btn-default">@Html.ActionLink("Добавить", "AddLab", new { discipline = Model[0].discipline })</button>
+    <br />
     @Html.ActionLink("Назад", "LabsList")
     <script type="text/javascript">
         document.onload = new function ()

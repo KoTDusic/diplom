@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
     @Scripts.Render("~/Scripts/jquery.dataTables.min.js")
+    <link href="@Url.Content("~/Content/dropdownMenu.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         window.russian_lang =
             {
@@ -64,7 +65,13 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Домашняя страница", "Index", "Main")</li>
-                    <li>@Html.ActionLink("Преподаватель", "Index", "Teacher")</li>
+                    <li>
+                        <a href="#">Преподаватель</a>
+                        <ul class="dropdown-menu nav navbar-nav">
+                            <li>@Html.ActionLink("Успеваемость", "Index", "Teacher")</li>
+                            <li>@Html.ActionLink("Редактирование лабораторных", "LabsList", "Teacher")</li>
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

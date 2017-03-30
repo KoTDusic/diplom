@@ -12,7 +12,9 @@ namespace ElectronDecanat.Code
         public string discipline { get; set; }
         [Display(Name = "Лабораторная")]
         public string oldLabName { get; set; }
+        [Required]
         [Display(Name = "Новое название лабораторной")]
         public string newLabName { get; set; }
+        public string error{ get; set; }
     }
 }

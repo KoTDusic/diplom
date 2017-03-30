@@ -72,9 +72,13 @@ namespace ElectronDecanat.Controllers
                 return View(model);
             }
             ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
+            var result = SignInStatus.Failure;
+            if(user!=null)
+            {
+                result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            }
             // Сбои при входе не приводят к блокированию учетной записи
             // Чтобы ошибки при вводе пароля инициировали блокирование учетной записи, замените на shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -157,6 +161,15 @@ namespace ElectronDecanat.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                switch(user.UserName)
+                {
+                    case "ADMIN":
+                        await UserManager.AddToRoleAsync(user.Id, "admin");
+                        break;
+                    default: await UserManager.AddToRoleAsync(user.Id, "teacher");
+                        break;
+                }
+                
                 if (result.Succeeded)
                 {
                     string id = user.Id;
@@ -173,7 +186,11 @@ namespace ElectronDecanat.Controllers
                     {
                         UserManager.Delete(user);
                     }
-                    return RedirectToAction("Index", "Teacher");
+                    switch (user.UserName)
+                    {
+                        case "ADMIN": return RedirectToAction("Index", "Main");
+                        default: return RedirectToAction("Index", "Teacher");
+                    }
                 }
                 AddErrors(result);
             }
@@ -379,12 +396,22 @@ namespace ElectronDecanat.Controllers
                 }
                 var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
+                await UserManager.AddToRoleAsync(user.Id, "teacher");
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        string id = user.Id;
+                        if (RequestHelper.RegistrationTeacher(user.UserName, user.Id))
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        }
+                        else
+                        {
+                            UserManager.Delete(user);
+                        }
+                        
                         return RedirectToLocal(returnUrl);
                     }
                 }
