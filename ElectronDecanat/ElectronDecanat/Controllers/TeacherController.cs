@@ -31,43 +31,50 @@ namespace ElectronDecanat.Controllers
         public ActionResult LabsList()
         {
             string name = User.Identity.GetUserName();
-            List<string> disciplines = RequestHelper.getTeacherDisciplines(name);
+            List<Disciplines> disciplines = RequestHelper.getTeacherDisciplines(name);
             return View(disciplines);
         }
-        public ActionResult LabsOnDisciplineList(string discipline, string error)
+        public ActionResult LabsOnDisciplineList(string discipline, string speciality)
         {
             string name = User.Identity.GetUserName();
-            List<Lab> labs = RequestHelper.getLabInDiscipline(discipline);
+            List<Lab> labs = RequestHelper.getLabInDiscipline(discipline, speciality);
+            ViewBag.discipline = discipline;
+            ViewBag.speciality = speciality;
             return View(labs);
         }
-        public ActionResult AddLab(string discipline)
+        public ActionResult AddLab(string discipline, string speciality)
         {
             Lab lab = new Lab();
             lab.discipline = discipline;
+            lab.speciality = speciality;
             return View(lab);
         }
         [HttpPost]
         public ActionResult AddLab(Lab item)
         {
             RequestHelper.AddLab(item);
-            List<Lab> labs = RequestHelper.getLabInDiscipline(item.discipline);
+            List<Lab> labs = RequestHelper.getLabInDiscipline(item.discipline,item.speciality);
+            ViewBag.discipline = item.discipline;
+            ViewBag.speciality = item.speciality;
             return View("LabsOnDisciplineList", labs);
         }
-        public ActionResult DeleteLab(string discipline,string lab_name)
+        public ActionResult DeleteLab(string discipline, string speciality, string lab_name)
         {
-            Lab lab = new Lab() { discipline = discipline, oldLabName = lab_name };
+            Lab lab = new Lab() { discipline = discipline, oldLabName = lab_name, speciality = speciality };
             return View(lab);
         }
         [HttpPost]
         public ActionResult DeleteLab(Lab item)
         {
             RequestHelper.RemoveLab(item);
-            List<Lab> labs = RequestHelper.getLabInDiscipline(item.discipline);
+            List<Lab> labs = RequestHelper.getLabInDiscipline(item.discipline,item.speciality);
+            ViewBag.discipline = item.discipline;
+            ViewBag.speciality = item.speciality;
             return View("LabsOnDisciplineList", labs);
         }
-        public ActionResult EditLab(string discipline, string lab_name)
+        public ActionResult EditLab(string discipline, string speciality, string lab_name)
         {
-            Lab lab = new Lab { discipline = discipline, oldLabName = lab_name };
+            Lab lab = new Lab { discipline = discipline, oldLabName = lab_name, speciality = speciality };
             return View(lab);
         }
         [HttpPost]
@@ -77,7 +84,9 @@ namespace ElectronDecanat.Controllers
             {
                 RequestHelper.EditLab(item);
             }
-            List<Lab> labs = RequestHelper.getLabInDiscipline(item.discipline);
+            ViewBag.discipline = item.discipline;
+            ViewBag.speciality = item.speciality;
+            List<Lab> labs = RequestHelper.getLabInDiscipline(item.discipline, item.speciality);
             return View("LabsOnDisciplineList", labs);
         }
         public ActionResult ChangeLabStatus(int student_code, string discipline, string student, string labName, int discipline_code, string labStatus)
@@ -109,7 +118,7 @@ namespace ElectronDecanat.Controllers
         public ActionResult ChangeLabStatus(LabProgress item)
         {
             string name = User.Identity.GetUserName();
-            bool complete = RequestHelper.UpdateLab(item);
+            RequestHelper.UpdateLab(item);
             List<LabProgress> array = RequestHelper.getPeopleLabList(new TeacherWork { teacherName = name, disciplineName = item.disciplineName });
             return View("Labs", array);
         }

@@ -165,6 +165,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Code\Disciplines.cs" />
     <Compile Include="Code\Lab.cs" />
     <Compile Include="Code\LabProgress.cs" />
     <Compile Include="Code\RequestHelper.cs" />

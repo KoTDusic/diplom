@@ -11,13 +11,13 @@ namespace ElectronDecanat.Code
 {
     public static class RequestHelper
     {
-        public static List<string> getTeacherDisciplines(string name)
+        public static List<Disciplines> getTeacherDisciplines(string name)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select \"Наименование_дисциплины\" from \"TEACHER_DISCIPLINE\" where \"Преподаватель\" = :name";
+                command.CommandText = "select \"Наименование_дисциплины\",\"Имя_специальности\",\"Код_дисциплины\" from \"TEACHER_DISCIPLINE\" where \"ФИО\" = :name";
                 OracleParameter name_param = new OracleParameter()
                 {
                     ParameterName = "name",
@@ -28,22 +28,34 @@ namespace ElectronDecanat.Code
                 command.Parameters.Add(name_param);
                 using (OracleDataReader reader = command.ExecuteReader())
                 {
-                    List<string> disciplines = new List<string>();
+                    List<Disciplines> disciplines = new List<Disciplines>();
                     while (reader.Read())
                     {
-                        disciplines.Add(reader["Наименование_дисциплины"].ToString());
+                        disciplines.Add(new Disciplines
+                        {
+                            disciplineName = reader["Наименование_дисциплины"].ToString(),
+                            disciplineCode = Convert.ToInt32(reader["Код_дисциплины"].ToString()),
+                            specialityName = reader["Имя_специальности"].ToString()
+                        } );
                     }
                     return disciplines;
                 }
             }
         }
-        public static bool AddLab(Lab lab)
+        public static void AddLab(Lab lab)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
             {
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "ADD_LAB";
+                OracleParameter speciality_name = new OracleParameter()
+                {
+                    ParameterName = "speciality_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = lab.speciality
+                };
                 OracleParameter discipline_name = new OracleParameter()
                 {
                     ParameterName = "discipline_name",
@@ -58,27 +70,26 @@ namespace ElectronDecanat.Code
                     OracleDbType = OracleDbType.Varchar2,
                     Value = lab.newLabName
                 };
+                command.Parameters.Add(speciality_name);
                 command.Parameters.Add(discipline_name);
                 command.Parameters.Add(lab_name);
-                try
-                {
-                    command.ExecuteNonQuery();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-
+                command.ExecuteNonQuery();
             }
         }
-        public static bool EditLab(Lab lab)
+        public static void EditLab(Lab lab)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
             {
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "EDIT_LAB";
+                OracleParameter speciality_name = new OracleParameter()
+                {
+                    ParameterName = "speciality_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = lab.speciality
+                };
                 OracleParameter discipline_name = new OracleParameter()
                 {
                     ParameterName = "discipline_name",
@@ -100,27 +111,27 @@ namespace ElectronDecanat.Code
                     OracleDbType = OracleDbType.Varchar2,
                     Value = lab.newLabName
                 };
+                command.Parameters.Add(speciality_name);
                 command.Parameters.Add(discipline_name);
                 command.Parameters.Add(lab_name);
                 command.Parameters.Add(new_lab_name);
-                try
-                {
-                    command.ExecuteNonQuery();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+                command.ExecuteNonQuery();
             }
         }
-        public static bool RemoveLab(Lab lab)
+        public static void RemoveLab(Lab lab)
         {
              OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
             {
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "REMOVE_LAB";
+                OracleParameter speciality_name = new OracleParameter()
+                {
+                    ParameterName = "speciality_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = lab.speciality
+                };
                 OracleParameter discipline_name = new OracleParameter()
                 {
                     ParameterName = "discipline_name",
@@ -135,35 +146,19 @@ namespace ElectronDecanat.Code
                     OracleDbType = OracleDbType.Varchar2,
                     Value = lab.oldLabName
                 };
+                command.Parameters.Add(speciality_name);
                 command.Parameters.Add(discipline_name);
                 command.Parameters.Add(lab_name);
-                try
-                {
-                    command.ExecuteNonQuery();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-
+                command.ExecuteNonQuery();
             }
         }
-        public static List<Lab> getLabInDiscipline(string discipline)
+        public static List<Lab> getLabInDiscipline(string discipline, string speciality)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
             {
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select * from \"LABS_DISCIPLINE\" where \"Наименование_дисциплины\" = :discipline";
-                OracleParameter discipline_param = new OracleParameter()
-                {
-                    ParameterName = "discipline",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = discipline
-                };
-                command.Parameters.Add(discipline_param);
+                command.CommandText = "select * from LABS_DISCIPLINE where \"Наименование_дисциплины\" = '" + discipline + "' AND \"Имя_специальности\"= '" + speciality + "'";
                 using (OracleDataReader reader = command.ExecuteReader())
                 {
                     List<Lab> labs = new List<Lab>();
@@ -172,7 +167,8 @@ namespace ElectronDecanat.Code
                         labs.Add(new Lab 
                         { 
                             oldLabName = reader["Название_лабораторной"].ToString(),
-                            discipline = discipline
+                            discipline = discipline,
+                            speciality = speciality
                         });
                     }
                     return labs;
@@ -305,14 +301,15 @@ namespace ElectronDecanat.Code
                     command.ExecuteNonQuery();
                     return true;
                 }
-                catch(Exception)
+                catch
                 {
                     return false;
                 }
+                
             }
         }
 
-        public static bool UpdateLab(LabProgress lab)
+        public static void UpdateLab(LabProgress lab)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
@@ -360,15 +357,7 @@ namespace ElectronDecanat.Code
                 command.Parameters.Add(student_code);
                 command.Parameters.Add(lab_name);
                 command.Parameters.Add(status);
-                try
-                {
-                    command.ExecuteNonQuery();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+                command.ExecuteNonQuery();
             }
         }
     }

@@ -8,6 +8,8 @@ namespace ElectronDecanat.Code
 {
     public class Lab
     {
+        [Display(Name = "Специальность")]
+        public string speciality { get; set; }
         [Display(Name = "Дисциплина")]
         public string discipline { get; set; }
         [Display(Name = "Лабораторная")]

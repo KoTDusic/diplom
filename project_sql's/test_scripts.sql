@@ -1,17 +1,20 @@
 
-delete from "Преподаватель"
 
 set serveroutput on;
-
+delete from "Преподаватель" where "ФИО"='Смелов'
+select * from "Преподаватель"
 select * from "Лабораторные";
+delete from "Лабораторные";
+select * from "Дисциплина";
+select * from "Специальность";
 select * from "Дисциплина";
 
 select * from "Подгруппы";
 select * from "Успеваемость";
 select * from "Студенты";
 exec LOAD_LABS(22);
-select * from "Нагрузка_преподавателя";
-
+select * from LABS_DISCIPLINE;
+select * from LABS_DISCIPLINE where "Наименование_дисциплины" = 'Программирование в Интернет' AND "Имя_специальности"= 'Информационные системы и технологии (издательско-полиграфический комплекс)'
 
 
 
@@ -125,15 +128,23 @@ execute ADD_STUDENT('1-1105',2013,1,1,'Кэнон');
 execute ADD_STUDENT('1-1105',2013,1,1,'Зенит');
 execute REMOVE_STUDENT('1',3012,2,1,'asfa');
 
+select * from "Специальность";
+select * from "Дисциплина" order by "Наименование_дисциплины";
 select * from "Подгруппы";
+select * from "Группы";
+select * from "Преподаватель";
 select * from "Нагрузка_преподавателя";
-execute ADD_WORK('1-1101',2013,1,1,'Преподаватель2','Системное программирование');
-execute ADD_WORK('1-1101',2013,1,1,'Преподаватель2','Программирование в Internet');
-execute ADD_WORK('1-1101',2013,2,1,'Преподаватель1','Системное программирование');
-execute ADD_WORK('1-1101',2013,2,1,'Преподаватель1','Программирование в Internet');
-execute ADD_WORK('1-1102',2013,2,1,'Преподаватель3','Схемотехника');
-execute ADD_WORK('1-1105',2013,1,1,'Ганс','смешивание красненького и голубенького');
-execute REMOVE_WORK('1-1101',2013,2,1,'Преподаватель1','Системное программирование');
+select * from TEACHER_DISCIPLINE
+execute REMOVE_WORK(21,'Смелов','Базы данных');
+execute REMOVE_WORK(22,'Смелов','Базы данных');
+
+execute ADD_WORK(21,'Смелов','Системное программирование');
+execute ADD_WORK(21,'Смелов','Программирование в Интернет');
+execute ADD_WORK(22,'Смелов','Программирование в Интернет');
+execute ADD_WORK(21,'Смелов','Базы данных');
+execute ADD_WORK(22,'Смелов','Базы данных');
+execute ADD_WORK(21,'Смелов','Распределенные информационные системы');
+execute ADD_WORK(22,'Смелов','Распределенные информационные системы');
 
 select * from "Дисциплина"
 select * from "Студенты";

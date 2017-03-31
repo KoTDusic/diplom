@@ -7,6 +7,13 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.speciality, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.speciality, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.speciality, "", new { @class = "text-danger" })
+            </div>
+        </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.discipline, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -30,7 +37,7 @@
 }
 
 <div>
-    @Html.ActionLink("Назад", "LabsOnDisciplineList", new { discipline = Model.discipline })
+    @Html.ActionLink("Назад", "LabsOnDisciplineList", new { discipline = Model.discipline, speciality = Model.speciality })
 </div>
 
 @section Scripts {

@@ -17,14 +17,14 @@
                 {
                     <tr>
                         <td>@Model[i].oldLabName</td>
-                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Редактировать", "EditLab", new { discipline = Model[0].discipline, lab_name = Model[i].oldLabName })</td>
-                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Удалить", "DeleteLab", new { discipline = Model[0].discipline, lab_name = Model[i].oldLabName })</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Редактировать", "EditLab", new { discipline = ViewBag.discipline, speciality = ViewBag.speciality, lab_name = Model[i].oldLabName })</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Удалить", "DeleteLab", new { discipline = ViewBag.discipline, speciality = ViewBag.speciality, lab_name = Model[i].oldLabName })</td>
                     </tr>
                 }
             }
         </tbody>
     </table>
-    <button class="clicable btn btn-default">@Html.ActionLink("Добавить", "AddLab", new { discipline = Model[0].discipline })</button>
+    <button class="clicable btn btn-default">@Html.ActionLink("Добавить", "AddLab", new { discipline = ViewBag.discipline, speciality = ViewBag.speciality })</button>
     <br />
     @Html.ActionLink("Назад", "LabsList")
     <script type="text/javascript">

@@ -1,5 +1,6 @@
 --Редактирование лабораторной
 create or replace procedure EDIT_LAB(
+speciality_name "Специальность"."Имя_специальности"%TYPE,
 discipline_name "Дисциплина"."Наименование_дисциплины"%TYPE,
 lab_name "Лабораторные"."Название_лабораторной"%TYPE,
 new_lab_name "Лабораторные"."Название_лабораторной"%TYPE)
@@ -10,7 +11,10 @@ begin
 if (discipline_name IS NULL OR lab_name IS NULL) then
 raise_application_error(-20001,'Неверные значения');
 end if;
-select "Код_дисциплины" into kod from "Дисциплина" where "Наименование_дисциплины"=discipline_name;
+select "Код_дисциплины" into kod from "Специальность","Дисциплина" 
+where "Специальность"."Код_специальности"="Дисциплина"."Код_специальности"
+AND "Дисциплина"."Наименование_дисциплины"=discipline_name
+AND "Специальность"."Имя_специальности"=speciality_name;
 select count(*) into valid from "Лабораторные" where "Код_дисциплины"=kod AND "Название_лабораторной"=lab_name;
 if valid=1 then
 DBMS_OUTPUT.PUT_LINE(kod||'  '||lab_name);
