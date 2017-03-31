@@ -165,18 +165,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-<<<<<<< HEAD
     <Compile Include="Code\Disciplines.cs" />
-=======
-    <Compile Include="Code\Facultet.cs" />
->>>>>>> a70e79ce8047c99d61d90d7bd7cb11a116a7e7a0
     <Compile Include="Code\Lab.cs" />
     <Compile Include="Code\LabProgress.cs" />
     <Compile Include="Code\RequestHelper.cs" />
     <Compile Include="Code\SingltoneConnection.cs" />
     <Compile Include="Code\TeacherWork.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
@@ -260,7 +255,6 @@
     <Content Include="Views\Teacher\EditLab.cshtml" />
     <Content Include="Views\Teacher\AddLab.cshtml" />
     <Content Include="Views\Teacher\DeleteLab.cshtml" />
-    <Content Include="Views\Admin\Facultes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

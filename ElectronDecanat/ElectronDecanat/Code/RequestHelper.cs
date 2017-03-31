@@ -308,12 +308,7 @@ namespace ElectronDecanat.Code
                 
             }
         }
-<<<<<<< HEAD
-
         public static void UpdateLab(LabProgress lab)
-=======
-        public static bool UpdateLab(LabProgress lab)
->>>>>>> a70e79ce8047c99d61d90d7bd7cb11a116a7e7a0
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
