@@ -17,6 +17,5 @@ namespace ElectronDecanat.Code
         [Required]
         [Display(Name = "Новое название лабораторной")]
         public string newLabName { get; set; }
-        public string error{ get; set; }
     }
 }

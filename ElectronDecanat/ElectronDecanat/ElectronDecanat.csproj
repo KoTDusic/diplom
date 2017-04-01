@@ -165,13 +165,17 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Code\AdminRequestHelper.cs" />
     <Compile Include="Code\Disciplines.cs" />
+    <Compile Include="Code\Faculty.cs" />
     <Compile Include="Code\Lab.cs" />
     <Compile Include="Code\LabProgress.cs" />
-    <Compile Include="Code\RequestHelper.cs" />
+    <Compile Include="Code\Speciality.cs" />
+    <Compile Include="Code\TeacherRequestHelper.cs" />
     <Compile Include="Code\SingltoneConnection.cs" />
     <Compile Include="Code\TeacherWork.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
@@ -255,6 +259,10 @@
     <Content Include="Views\Teacher\EditLab.cshtml" />
     <Content Include="Views\Teacher\AddLab.cshtml" />
     <Content Include="Views\Teacher\DeleteLab.cshtml" />
+    <Content Include="Views\Admin\Facultes.cshtml" />
+    <Content Include="Views\Admin\AddFaculty.cshtml" />
+    <Content Include="Views\Admin\EditFaculty.cshtml" />
+    <Content Include="Views\Admin\DeleteFaculty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

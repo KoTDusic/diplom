@@ -82,7 +82,12 @@ namespace ElectronDecanat.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    switch (user.UserName)
+                    {
+                        case "ADMIN":
+                            return RedirectToAction("Facultes", "Admin");
+                            default:return RedirectToAction("Index", "Teacher");
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -173,7 +178,7 @@ namespace ElectronDecanat.Controllers
                 if (result.Succeeded)
                 {
                     string id = user.Id;
-                    if (RequestHelper.RegistrationTeacher(user.UserName, user.Id))
+                    if (TeacherRequestHelper.RegistrationTeacher(user.UserName, user.Id))
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         // Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см. по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
@@ -403,7 +408,7 @@ namespace ElectronDecanat.Controllers
                     if (result.Succeeded)
                     {
                         string id = user.Id;
-                        if (RequestHelper.RegistrationTeacher(user.UserName, user.Id))
+                        if (TeacherRequestHelper.RegistrationTeacher(user.UserName, user.Id))
                         {
                             await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         }

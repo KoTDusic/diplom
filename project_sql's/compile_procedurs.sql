@@ -20,5 +20,6 @@
 @procedures/LOAD_LABS.sql
 @procedures/EDIT_LAB.sql
 @procedures/LOAD_LABS_SUBGROUP.sql
+@procedures/EDIT_FACULTY.sql
 
 @functions/GET_KOORS_BY_YEAR.sql

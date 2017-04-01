@@ -4,4 +4,43 @@
 }
 
 <h2>Facultes</h2>
+<body>
+    <table id="main-table">
+        <thead>
+            <tr>
+                <th>Факультет</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                for (int i = 0; i < Model.Count; i++)
+                {
+                <tr>
+                    <td>@Model[i].Name</td>
+                    <td class="clicable" onclick="this.firstChild.click()">
+                        @Html.ActionLink("Подробнее", "Specialitis", new {faculty_name = Model[i].Name})
+                    </td>
+                    <td class="clicable" onclick="this.firstChild.click()">
+                        @Html.ActionLink("Редактировать", "EditFaculty", new { faculty_name = Model[i].Name })
+                    </td>
+                    <td class="clicable" onclick="this.firstChild.click()">
+                        @Html.ActionLink("Удалить", "DeleteFaculty", new { faculty_name = Model[i].Name })
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        <button class="clicable btn btn-default" onclick="this.firstChild.click()">@Html.ActionLink("Добавить", "AddFaculty", new { })</button>
+    </div>
+    <script type="text/javascript">
+        document.onload=new function () {
+            $('#main-table').DataTable(russian_lang);
+        };
+    </script>
+</body>
 

@@ -18,26 +18,26 @@ namespace ElectronDecanat.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-            List<TeacherWork> array = RequestHelper.getTeacherWork(User.Identity.GetUserId());
+            List<TeacherWork> array = TeacherRequestHelper.getTeacherWork(User.Identity.GetUserId());
             return View(array);
         }
         public ActionResult Labs(string discipline )
         {
             string name=User.Identity.GetUserName();
-            List<LabProgress> array = RequestHelper.getPeopleLabList(new TeacherWork { teacherName = name, disciplineName = discipline });
+            List<LabProgress> array = TeacherRequestHelper.getPeopleLabList(new TeacherWork { teacherName = name, disciplineName = discipline });
             return View(array);
         }
         
         public ActionResult LabsList()
         {
             string name = User.Identity.GetUserName();
-            List<Disciplines> disciplines = RequestHelper.getTeacherDisciplines(name);
+            List<Disciplines> disciplines = TeacherRequestHelper.getTeacherDisciplines(name);
             return View(disciplines);
         }
         public ActionResult LabsOnDisciplineList(string discipline, string speciality)
         {
             string name = User.Identity.GetUserName();
-            List<Lab> labs = RequestHelper.getLabInDiscipline(discipline, speciality);
+            List<Lab> labs = TeacherRequestHelper.getLabInDiscipline(discipline, speciality);
             ViewBag.discipline = discipline;
             ViewBag.speciality = speciality;
             return View(labs);
@@ -52,8 +52,8 @@ namespace ElectronDecanat.Controllers
         [HttpPost]
         public ActionResult AddLab(Lab item)
         {
-            RequestHelper.AddLab(item);
-            List<Lab> labs = RequestHelper.getLabInDiscipline(item.discipline,item.speciality);
+            TeacherRequestHelper.AddLab(item);
+            List<Lab> labs = TeacherRequestHelper.getLabInDiscipline(item.discipline,item.speciality);
             ViewBag.discipline = item.discipline;
             ViewBag.speciality = item.speciality;
             return View("LabsOnDisciplineList", labs);
@@ -66,8 +66,8 @@ namespace ElectronDecanat.Controllers
         [HttpPost]
         public ActionResult DeleteLab(Lab item)
         {
-            RequestHelper.RemoveLab(item);
-            List<Lab> labs = RequestHelper.getLabInDiscipline(item.discipline,item.speciality);
+            TeacherRequestHelper.RemoveLab(item);
+            List<Lab> labs = TeacherRequestHelper.getLabInDiscipline(item.discipline,item.speciality);
             ViewBag.discipline = item.discipline;
             ViewBag.speciality = item.speciality;
             return View("LabsOnDisciplineList", labs);
@@ -82,11 +82,11 @@ namespace ElectronDecanat.Controllers
         {
             if (item.newLabName != null)
             {
-                RequestHelper.EditLab(item);
+                TeacherRequestHelper.EditLab(item);
             }
             ViewBag.discipline = item.discipline;
             ViewBag.speciality = item.speciality;
-            List<Lab> labs = RequestHelper.getLabInDiscipline(item.discipline, item.speciality);
+            List<Lab> labs = TeacherRequestHelper.getLabInDiscipline(item.discipline, item.speciality);
             return View("LabsOnDisciplineList", labs);
         }
         public ActionResult ChangeLabStatus(int student_code, string discipline, string student, string labName, int discipline_code, string labStatus)
@@ -118,8 +118,8 @@ namespace ElectronDecanat.Controllers
         public ActionResult ChangeLabStatus(LabProgress item)
         {
             string name = User.Identity.GetUserName();
-            RequestHelper.UpdateLab(item);
-            List<LabProgress> array = RequestHelper.getPeopleLabList(new TeacherWork { teacherName = name, disciplineName = item.disciplineName });
+            TeacherRequestHelper.UpdateLab(item);
+            List<LabProgress> array = TeacherRequestHelper.getPeopleLabList(new TeacherWork { teacherName = name, disciplineName = item.disciplineName });
             return View("Labs", array);
         }
     }

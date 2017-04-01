@@ -9,7 +9,7 @@ using System.Data;
 
 namespace ElectronDecanat.Code
 {
-    public static class RequestHelper
+    public static class TeacherRequestHelper
     {
         public static List<Disciplines> getTeacherDisciplines(string name)
         {
