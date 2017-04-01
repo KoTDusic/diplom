@@ -10,7 +10,7 @@ namespace ElectronDecanat.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
-        // GET: Admin
+        #region FACULTY
         public ActionResult Facultes()
         {
             List<Faculty> facultys = AdminRequestHelper.getFaculties();
@@ -71,5 +71,6 @@ namespace ElectronDecanat.Controllers
                 return View();
             }
         }
+        #endregion
     }
 }

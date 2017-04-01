@@ -124,5 +124,99 @@ namespace ElectronDecanat.Code
                 command.ExecuteNonQuery();
             }
         }
+        public static void AddSpeciality(Speciality speciality)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ADD_SPECIALITIS";
+                OracleParameter faculty_name = new OracleParameter()
+                {
+                    ParameterName = "faculty_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = speciality.faculty_name
+                };
+                OracleParameter speciality_code = new OracleParameter()
+                {
+                    ParameterName = "speciality_code",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = speciality.speciality_code
+                };
+                OracleParameter speciality_name = new OracleParameter()
+                {
+                    ParameterName = "speciality_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = speciality.speciality_name
+                };
+                command.Parameters.Add(faculty_name);
+                command.Parameters.Add(speciality_code);
+                command.Parameters.Add(speciality_name);
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void EditSpeciality(Speciality speciality)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "EDIT_SPECIALITIS";
+                OracleParameter faculty_name = new OracleParameter()
+                {
+                    ParameterName = "faculty_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = speciality.faculty_name
+                };
+                OracleParameter speciality_code = new OracleParameter()
+                {
+                    ParameterName = "speciality_code",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = speciality.speciality_code
+                };
+                OracleParameter new_speciality_name = new OracleParameter()
+                {
+                    ParameterName = "new_speciality_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = speciality.speciality_name
+                };
+                command.Parameters.Add(faculty_name);
+                command.Parameters.Add(speciality_code);
+                command.Parameters.Add(new_speciality_name);
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void DeleteSpeciality(Speciality speciality)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "REMOVE_SPECIALITIS";
+                OracleParameter faculty_name = new OracleParameter()
+                {
+                    ParameterName = "faculty_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = speciality.faculty_name
+                };
+                OracleParameter speciality_name = new OracleParameter()
+                {
+                    ParameterName = "speciality_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = speciality.speciality_name
+                };
+                command.Parameters.Add(faculty_name);
+                command.Parameters.Add(speciality_name);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
