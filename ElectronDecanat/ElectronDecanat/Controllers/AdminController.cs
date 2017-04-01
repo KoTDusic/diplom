@@ -46,15 +46,29 @@ namespace ElectronDecanat.Controllers
         }
         public ActionResult DeleteFaculty(string faculty_name)
         {
-            Faculty faculty = new Faculty { Name = faculty_name };
+            Faculty faculty = new Faculty { Name = faculty_name, NewName="_" };
             return View(faculty);
         }
         [HttpPost]
         public ActionResult DeleteFaculty(Faculty faculty)
         {
-            AdminRequestHelper.DeleteFaculty(faculty);
-            List<Faculty> facultys = AdminRequestHelper.getFaculties();
-            return View("Facultes", facultys);
+            try
+            {
+                AdminRequestHelper.DeleteFaculty(faculty);
+            }
+            catch(Exception)
+            {
+                ModelState.AddModelError("Name", "Невозможно удалить этот факультет, так как он не пустой");
+            }
+            if (ModelState.IsValid)
+            {
+                List<Faculty> facultys = AdminRequestHelper.getFaculties();
+                return View("Facultes", facultys);
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
