@@ -18,6 +18,7 @@ namespace ElectronDecanat.Controllers
         }
         public ActionResult Specialitis(string faculty_name)
         {
+            ViewBag.faculty_name = faculty_name;
             List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(faculty_name);
             return View(specialitys);
         }

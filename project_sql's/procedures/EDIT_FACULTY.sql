@@ -12,7 +12,7 @@ select count(*) into valid from "Факультет" where "Название_факультета"=old_name
 if valid<>0 then
 update "Факультет" set "Название_факультета"=new_name where "Название_факультета"=old_name;
 else begin
-  raise_application_error(-20001,'Ошибка, факультет '||' не найден в бд');
+  raise_application_error(-20001,'Ошибка, факультет '||old_name||' не найден в бд');
   end;
 end if;
 commit;
