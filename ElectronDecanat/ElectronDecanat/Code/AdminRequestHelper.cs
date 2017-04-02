@@ -62,6 +62,47 @@ namespace ElectronDecanat.Code
                 }
             }
         }
+        public static List<Disciplines> getDiscyplines(string faculty_name, string speciality_name)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select * from DISCIPLINE_LIST where \"Название_факультета\"=:faculty_name AND \"Имя_специальности\"=:speciality_name";
+                OracleParameter faculty_name_param = new OracleParameter()
+                {
+                    ParameterName = "faculty_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = faculty_name
+                };
+                OracleParameter speciality_name_param = new OracleParameter()
+                {
+                    ParameterName = "speciality_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = speciality_name
+                };
+                command.Parameters.Add(faculty_name_param);
+                command.Parameters.Add(speciality_name_param);
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    List<Disciplines> discyplines = new List<Disciplines>();
+                    while (reader.Read())
+                    {
+                        discyplines.Add(new Disciplines
+                        {
+                            disciplineCode = Convert.ToInt32(reader["Код_дисциплины"].ToString()),
+                            disciplineName = reader["Наименование_дисциплины"].ToString(),
+                            facultyName = reader["Название_факультета"].ToString(),
+                            specialityCode = reader["Код_специальности"].ToString(),
+                            specialityName = reader["Имя_специальности"].ToString()
+                        });
+                    }
+                    return discyplines;
+                }
+            }
+        }
         public static void AddFaculty(Faculty faculty)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
@@ -184,7 +225,7 @@ namespace ElectronDecanat.Code
                     ParameterName = "new_speciality_name",
                     Direction = ParameterDirection.Input,
                     OracleDbType = OracleDbType.Varchar2,
-                    Value = speciality.speciality_name
+                    Value = speciality.new_speciality_name
                 };
                 command.Parameters.Add(faculty_name);
                 command.Parameters.Add(speciality_code);

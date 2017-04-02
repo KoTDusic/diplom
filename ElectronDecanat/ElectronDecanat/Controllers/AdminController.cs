@@ -16,12 +16,6 @@ namespace ElectronDecanat.Controllers
             List<Faculty> facultys = AdminRequestHelper.getFaculties();
             return View(facultys);
         }
-        public ActionResult Specialitis(string faculty_name)
-        {
-            ViewBag.faculty_name = faculty_name;
-            List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(faculty_name);
-            return View(specialitys);
-        }
         public ActionResult AddFaculty()
         {
             return View();
@@ -72,5 +66,79 @@ namespace ElectronDecanat.Controllers
             }
         }
         #endregion
+        #region SPECIALITIS
+        public ActionResult Specialitis(string faculty_name)
+        {
+            ViewBag.faculty_name = faculty_name;
+            List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(faculty_name);
+            return View(specialitys);
+        }
+        public ActionResult AddSpeciality(string faculty_name)
+        {
+            ViewBag.faculty_name = faculty_name;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddSpeciality(Speciality speciality)
+        {
+            try 
+            {
+                AdminRequestHelper.AddSpeciality(speciality);
+                List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(speciality.faculty_name);
+                return View("Specialitis", specialitys);
+            }
+            catch { return View(); }
+            
+        }
+        public ActionResult EditSpeciality(string faculty_name, string speciality_name, string speciality_code)
+        {
+            Speciality speciality = new Speciality { faculty_name=faculty_name, speciality_code=speciality_code, speciality_name=speciality_name };
+            ViewBag.faculty_name = speciality.faculty_name;
+            return View(speciality);
+        }
+        [HttpPost]
+        public ActionResult EditSpeciality(Speciality speciality)
+        {
+            try
+            {
+                AdminRequestHelper.EditSpeciality(speciality);
+                List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(speciality.faculty_name);
+                ViewBag.faculty_name = speciality.faculty_name;
+                return View("Specialitis", specialitys);
+            }
+            catch { return View(); }
+        }
+        public ActionResult DeleteSpeciality(string faculty_name, string speciality_name, string speciality_code)
+        {
+            Speciality speciality = new Speciality { faculty_name = faculty_name, speciality_code = speciality_code, speciality_name = speciality_name, new_speciality_name="_" };
+            ViewBag.faculty_name = speciality.faculty_name;
+            return View(speciality);
+        }
+        [HttpPost]
+        public ActionResult DeleteSpeciality(Speciality speciality)
+        {
+            try
+            {
+                ViewBag.faculty_name = speciality.faculty_name;
+                AdminRequestHelper.DeleteSpeciality(speciality);
+                List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(speciality.faculty_name);
+                ViewBag.faculty_name = speciality.faculty_name;
+                return View("Specialitis", specialitys);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("speciality_name", "Невозможно удалить эту специальность, так как она не пустая");
+                return View();
+            }
+        }
+        #endregion
+        public ActionResult Disciplines(string faculty_name, string speciality_name, string speciality_code)
+        {
+            ViewBag.faculty_name = faculty_name;
+            ViewBag.speciality_name = speciality_name;
+            ViewBag.speciality_code = speciality_code;
+            List<Disciplines> disciplines = AdminRequestHelper.getDiscyplines(faculty_name, speciality_name);
+            return View(disciplines);
+        }
     }
 }

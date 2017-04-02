@@ -7,3 +7,4 @@
 @views/STUDENT_DISCIPLINE.sql
 @views/TEACHER_DISCIPLINE.sql
 @views/LAB_DISCIPLINE.sql
+@views/DISCIPLINE_LIST.sql

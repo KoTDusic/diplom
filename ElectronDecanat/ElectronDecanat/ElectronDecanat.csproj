@@ -264,6 +264,10 @@
     <Content Include="Views\Admin\EditFaculty.cshtml" />
     <Content Include="Views\Admin\DeleteFaculty.cshtml" />
     <Content Include="Views\Admin\Specialitis.cshtml" />
+    <Content Include="Views\Admin\AddSpeciality.cshtml" />
+    <Content Include="Views\Admin\EditSpeciality.cshtml" />
+    <Content Include="Views\Admin\DeleteSpeciality.cshtml" />
+    <Content Include="Views\Admin\Disciplines.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
