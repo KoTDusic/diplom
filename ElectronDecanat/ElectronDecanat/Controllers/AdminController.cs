@@ -85,9 +85,10 @@ namespace ElectronDecanat.Controllers
             {
                 AdminRequestHelper.AddSpeciality(speciality);
                 List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(speciality.faculty_name);
+                ViewBag.faculty_name = speciality.faculty_name;
                 return View("Specialitis", specialitys);
             }
-            catch { return View(); }
+            catch { return View(speciality); }
             
         }
         public ActionResult EditSpeciality(string faculty_name, string speciality_name, string speciality_code)
@@ -106,7 +107,7 @@ namespace ElectronDecanat.Controllers
                 ViewBag.faculty_name = speciality.faculty_name;
                 return View("Specialitis", specialitys);
             }
-            catch { return View(); }
+            catch { return View(speciality); }
         }
         public ActionResult DeleteSpeciality(string faculty_name, string speciality_name, string speciality_code)
         {
@@ -128,10 +129,11 @@ namespace ElectronDecanat.Controllers
             catch (Exception)
             {
                 ModelState.AddModelError("speciality_name", "Невозможно удалить эту специальность, так как она не пустая");
-                return View();
+                return View(speciality);
             }
         }
         #endregion
+        #region DISCIPLINES
         public ActionResult Disciplines(string faculty_name, string speciality_name, string speciality_code)
         {
             ViewBag.faculty_name = faculty_name;
@@ -140,5 +142,93 @@ namespace ElectronDecanat.Controllers
             List<Disciplines> disciplines = AdminRequestHelper.getDiscyplines(faculty_name, speciality_name);
             return View(disciplines);
         }
+        public ActionResult AddDiscipline(string faculty_name, string speciality_name, string speciality_code)
+        {
+            Code.Disciplines discipline = new Disciplines { facultyName = faculty_name, specialityName = speciality_name, specialityCode=speciality_code };
+            return View(discipline);
+        }
+        [HttpPost]
+        public ActionResult AddDiscipline(Disciplines discipline)
+        {
+            try
+            {
+                AdminRequestHelper.AddDiscipline(discipline);
+                List<Disciplines> disciplines = AdminRequestHelper.getDiscyplines(discipline.facultyName,discipline.specialityName);
+                ViewBag.faculty_name = discipline.facultyName;
+                ViewBag.speciality_name = discipline.specialityName;
+                ViewBag.speciality_code = discipline.specialityCode;
+                return View("Disciplines", disciplines);
+            }
+            catch 
+            {
+                ModelState.AddModelError("disciplineName", "ошибка добавления, возможно такая дисциплина уже есть?");
+                return View(discipline); 
+            }
+
+        }
+        public ActionResult EditDiscipline(string faculty_name, string speciality_name, string speciality_code, string discipline_name)
+        {
+            Code.Disciplines discipline = new Disciplines { facultyName = faculty_name, specialityName = speciality_name, specialityCode = speciality_code, disciplineName=discipline_name };
+            return View(discipline);
+        }
+        [HttpPost]
+        public ActionResult EditDiscipline(Disciplines discipline)
+        {
+            try
+            {
+                AdminRequestHelper.EditDiscipline(discipline);
+                List<Disciplines> disciplines = AdminRequestHelper.getDiscyplines(discipline.facultyName, discipline.specialityName);
+                ViewBag.faculty_name = discipline.facultyName;
+                ViewBag.speciality_name = discipline.specialityName;
+                ViewBag.speciality_code = discipline.specialityCode;
+                return View("Disciplines", disciplines);
+            }
+            catch 
+            {
+                ModelState.AddModelError("newDisciplineName", "ошибка переименования, возможно такая дисциплина уже есть?");
+                return View(discipline);
+            }
+        }
+        public ActionResult DeleteDiscipline(string faculty_name, string speciality_name, string speciality_code, string discipline_name)
+        {
+            Code.Disciplines discipline = new Disciplines { 
+                facultyName = faculty_name,
+                specialityName = speciality_name, 
+                specialityCode = speciality_code,
+                disciplineName=discipline_name,
+                newDisciplineName="_" };
+            return View(discipline);
+        }
+        [HttpPost]
+        public ActionResult DeleteDiscipline(Disciplines discipline)
+        {
+            try
+            {
+                AdminRequestHelper.DeleteDiscipline(discipline);
+                List<Disciplines> disciplines = AdminRequestHelper.getDiscyplines(discipline.facultyName, discipline.specialityName);
+                ViewBag.faculty_name = discipline.facultyName;
+                ViewBag.speciality_name = discipline.specialityName;
+                ViewBag.speciality_code = discipline.specialityCode;
+                return View("Disciplines", disciplines);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("disciplineName", "Невозможно удалить эту дисциплину, так как она не пустая");
+                return View(discipline);
+            }
+        }
+        #endregion
+        public ActionResult Groups(string faculty_name, string speciality_code)
+        {
+            ViewBag.faculty_name = faculty_name;
+            List<Group> groups = AdminRequestHelper.GroupsList(faculty_name, speciality_code);
+            return View(groups);
+        }
+        //public ActionResult Subgroups(string faculty_name, string speciality_code,int group_number, int year)
+        //{
+        //    ViewBag.faculty_name = faculty_name;
+        //    List<Group> groups = AdminRequestHelper.GroupsList(faculty_name, speciality_code);
+        //    return View(groups);
+        //}
     }
 }

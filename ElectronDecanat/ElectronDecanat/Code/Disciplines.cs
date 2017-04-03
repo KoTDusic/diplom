@@ -21,5 +21,8 @@ namespace ElectronDecanat.Code
         [Required]
         [Display(Name = "Дисциплина")]
         public string disciplineName { get; set; }
+        [Required]
+        [Display(Name = "Новое название дисциплины")]
+        public string newDisciplineName { get; set; }
     }
 }

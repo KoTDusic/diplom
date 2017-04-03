@@ -8,3 +8,4 @@
 @views/TEACHER_DISCIPLINE.sql
 @views/LAB_DISCIPLINE.sql
 @views/DISCIPLINE_LIST.sql
+@views/SUBGROUP_LIST.sql

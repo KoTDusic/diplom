@@ -1,0 +1,49 @@
+﻿@model ElectronDecanat.Code.Disciplines
+@{
+    ViewBag.Title = "DeleteDiscipline";
+}
+
+<h2>DeleteDiscipline</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.facultyName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.facultyName, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.facultyName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.specialityName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.specialityName, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.specialityName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.specialityCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.specialityCode, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.specialityCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.disciplineName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.disciplineName, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.disciplineName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Удалить" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Назад", "Disciplines", new { faculty_name = Model.facultyName, speciality_name = Model.specialityName, speciality_code = Model.specialityCode })
+</div>

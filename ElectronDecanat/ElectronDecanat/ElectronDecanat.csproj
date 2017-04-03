@@ -168,6 +168,7 @@
     <Compile Include="Code\AdminRequestHelper.cs" />
     <Compile Include="Code\Disciplines.cs" />
     <Compile Include="Code\Faculty.cs" />
+    <Compile Include="Code\Group.cs" />
     <Compile Include="Code\Lab.cs" />
     <Compile Include="Code\LabProgress.cs" />
     <Compile Include="Code\Speciality.cs" />
@@ -268,6 +269,10 @@
     <Content Include="Views\Admin\EditSpeciality.cshtml" />
     <Content Include="Views\Admin\DeleteSpeciality.cshtml" />
     <Content Include="Views\Admin\Disciplines.cshtml" />
+    <Content Include="Views\Admin\AddDiscipline.cshtml" />
+    <Content Include="Views\Admin\EditDiscipline.cshtml" />
+    <Content Include="Views\Admin\DeleteDiscipline.cshtml" />
+    <Content Include="Views\Admin\Groups.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
