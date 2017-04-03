@@ -224,11 +224,15 @@ namespace ElectronDecanat.Controllers
             List<Group> groups = AdminRequestHelper.GroupsList(faculty_name, speciality_code);
             return View(groups);
         }
-        //public ActionResult Subgroups(string faculty_name, string speciality_code,int group_number, int year)
-        //{
-        //    ViewBag.faculty_name = faculty_name;
-        //    List<Group> groups = AdminRequestHelper.GroupsList(faculty_name, speciality_code);
-        //    return View(groups);
-        //}
+        public ActionResult Subgroups(string faculty_name, string speciality_code, int group_number, int year,int group_code)
+        {
+            ViewBag.faculty_name = faculty_name;
+            ViewBag.speciality_code = speciality_code;
+            ViewBag.group_number = group_number;
+            ViewBag.year = year;
+            ViewBag.group_code = group_code;
+            List<Subgroup> subgroups = AdminRequestHelper.SubgroupsList(group_code);
+            return View(subgroups);
+        }
     }
 }

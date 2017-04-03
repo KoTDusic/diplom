@@ -9,6 +9,9 @@ namespace ElectronDecanat.Code
     public class Group
     {
         [Required]
+        
+        public int group_code { get; set; }
+        [Required]
         [Display(Name = "Факультет")]
         public string faculty_name { get; set; }
         [Required]

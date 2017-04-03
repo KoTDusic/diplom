@@ -9,6 +9,7 @@ namespace ElectronDecanat.Code
 {
     public static class AdminRequestHelper
     {
+        #region FACULTIES
         public static List<Faculty> getFaculties()
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
@@ -27,79 +28,6 @@ namespace ElectronDecanat.Code
                         });
                     }
                     return facultys;
-                }
-            }
-        }
-        public static List<Speciality> getSpecialitys(string faculty)
-        {
-            OracleConnection connection = SingltoneConnection.GetInstance();
-            using (OracleCommand command = connection.CreateCommand())
-            {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "select * from SPECIALITY_LIST where \"Название_факультета\"=:name";
-                OracleParameter name_param = new OracleParameter()
-                {
-                    ParameterName = "name",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = faculty
-                };
-                command.Parameters.Add(name_param);
-                using (OracleDataReader reader = command.ExecuteReader())
-                {
-                    List<Speciality> specyalitys = new List<Speciality>();
-                    while (reader.Read())
-                    {
-                        specyalitys.Add(new Speciality
-                        {
-                            faculty_name = reader["Название_факультета"].ToString(),
-                            faculty_code = Convert.ToInt32(reader["Код_факультета"].ToString()),
-                            speciality_code = reader["Код_специальности"].ToString(),
-                            speciality_name = reader["Имя_специальности"].ToString()
-                        });
-                    }
-                    return specyalitys;
-                }
-            }
-        }
-        public static List<Disciplines> getDiscyplines(string faculty_name, string speciality_name)
-        {
-            OracleConnection connection = SingltoneConnection.GetInstance();
-            using (OracleCommand command = connection.CreateCommand())
-            {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "select * from DISCIPLINE_LIST where \"Название_факультета\"=:faculty_name AND \"Имя_специальности\"=:speciality_name";
-                OracleParameter faculty_name_param = new OracleParameter()
-                {
-                    ParameterName = "faculty_name",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = faculty_name
-                };
-                OracleParameter speciality_name_param = new OracleParameter()
-                {
-                    ParameterName = "speciality_name",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = speciality_name
-                };
-                command.Parameters.Add(faculty_name_param);
-                command.Parameters.Add(speciality_name_param);
-                using (OracleDataReader reader = command.ExecuteReader())
-                {
-                    List<Disciplines> discyplines = new List<Disciplines>();
-                    while (reader.Read())
-                    {
-                        discyplines.Add(new Disciplines
-                        {
-                            disciplineCode = Convert.ToInt32(reader["Код_дисциплины"].ToString()),
-                            disciplineName = reader["Наименование_дисциплины"].ToString(),
-                            facultyName = reader["Название_факультета"].ToString(),
-                            specialityCode = reader["Код_специальности"].ToString(),
-                            specialityName = reader["Имя_специальности"].ToString()
-                        });
-                    }
-                    return discyplines;
                 }
             }
         }
@@ -163,6 +91,40 @@ namespace ElectronDecanat.Code
                 };
                 command.Parameters.Add(removing_faculty);
                 command.ExecuteNonQuery();
+            }
+        }
+        #endregion
+        #region SPECIALITYS
+        public static List<Speciality> getSpecialitys(string faculty)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select * from SPECIALITY_LIST where \"Название_факультета\"=:name";
+                OracleParameter name_param = new OracleParameter()
+                {
+                    ParameterName = "name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = faculty
+                };
+                command.Parameters.Add(name_param);
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    List<Speciality> specyalitys = new List<Speciality>();
+                    while (reader.Read())
+                    {
+                        specyalitys.Add(new Speciality
+                        {
+                            faculty_name = reader["Название_факультета"].ToString(),
+                            faculty_code = Convert.ToInt32(reader["Код_факультета"].ToString()),
+                            speciality_code = reader["Код_специальности"].ToString(),
+                            speciality_name = reader["Имя_специальности"].ToString()
+                        });
+                    }
+                    return specyalitys;
+                }
             }
         }
         public static void AddSpeciality(Speciality speciality)
@@ -259,6 +221,49 @@ namespace ElectronDecanat.Code
                 command.ExecuteNonQuery();
             }
         }
+        #endregion
+        #region DISCYPLINES
+        public static List<Disciplines> getDiscyplines(string faculty_name, string speciality_name)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select * from DISCIPLINE_LIST where \"Название_факультета\"=:faculty_name AND \"Имя_специальности\"=:speciality_name";
+                OracleParameter faculty_name_param = new OracleParameter()
+                {
+                    ParameterName = "faculty_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = faculty_name
+                };
+                OracleParameter speciality_name_param = new OracleParameter()
+                {
+                    ParameterName = "speciality_name",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = speciality_name
+                };
+                command.Parameters.Add(faculty_name_param);
+                command.Parameters.Add(speciality_name_param);
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    List<Disciplines> discyplines = new List<Disciplines>();
+                    while (reader.Read())
+                    {
+                        discyplines.Add(new Disciplines
+                        {
+                            disciplineCode = Convert.ToInt32(reader["Код_дисциплины"].ToString()),
+                            disciplineName = reader["Наименование_дисциплины"].ToString(),
+                            facultyName = reader["Название_факультета"].ToString(),
+                            specialityCode = reader["Код_специальности"].ToString(),
+                            specialityName = reader["Имя_специальности"].ToString()
+                        });
+                    }
+                    return discyplines;
+                }
+            }
+        }
         public static void AddDiscipline(Disciplines discipline)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
@@ -345,6 +350,7 @@ namespace ElectronDecanat.Code
                 command.ExecuteNonQuery();
             }
         }
+        #endregion
         public static List<Group> GroupsList(string faculty_name, string speciality_code)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
@@ -375,7 +381,7 @@ namespace ElectronDecanat.Code
                     {
                         groups.Add(new Group
                         {
-                            //Факультет, Специальность, Код_специальности, Курс, Год_поступления, Номер_группы
+                            group_code = Convert.ToInt32(reader["Код_группы"].ToString()),
                             faculty_name = reader["Факультет"].ToString(),
                             speciality_name = reader["Специальность"].ToString(),
                             speciality_code = reader["Код_специальности"].ToString(),
@@ -388,48 +394,41 @@ namespace ElectronDecanat.Code
                 }
             }
         }
-        //public static List<Group> SubgroupsList(string faculty_name, string speciality_code,int group)
-        //{
-        //    OracleConnection connection = SingltoneConnection.GetInstance();
-        //    using (OracleCommand command = connection.CreateCommand())
-        //    {
-        //        command.CommandType = CommandType.Text;
-        //        command.CommandText = "select * from KOORS_LIST where \"Факультет\"=:faculty_name AND \"Код_специальности\"=:speciality_code";
-        //        OracleParameter faculty_name_param = new OracleParameter()
-        //        {
-        //            ParameterName = "faculty_name",
-        //            Direction = ParameterDirection.Input,
-        //            OracleDbType = OracleDbType.Varchar2,
-        //            Value = faculty_name
-        //        };
-        //        OracleParameter speciality_code_param = new OracleParameter()
-        //        {
-        //            ParameterName = "speciality_code",
-        //            Direction = ParameterDirection.Input,
-        //            OracleDbType = OracleDbType.Varchar2,
-        //            Value = speciality_code
-        //        };
-        //        command.Parameters.Add(faculty_name_param);
-        //        command.Parameters.Add(speciality_code_param);
-        //        using (OracleDataReader reader = command.ExecuteReader())
-        //        {
-        //            List<Group> groups = new List<Group>();
-        //            while (reader.Read())
-        //            {
-        //                groups.Add(new Group
-        //                {
-        //                    //Факультет, Специальность, Код_специальности, Курс, Год_поступления, Номер_группы
-        //                    faculty_name = reader["Факультет"].ToString(),
-        //                    speciality_name = reader["Специальность"].ToString(),
-        //                    speciality_code = reader["Код_специальности"].ToString(),
-        //                    coors = Convert.ToInt32(reader["Курс"].ToString()),
-        //                    year = Convert.ToInt32(reader["Год_поступления"].ToString()),
-        //                    group_number = Convert.ToInt32(reader["Номер_группы"].ToString())
-        //                });
-        //            }
-        //            return groups;
-        //        }
-        //    }
-        //}
+        public static List<Subgroup> SubgroupsList(int group_code)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select * from SUBGROUP_LIST where \"Код_группы\"=:code";
+                OracleParameter group_code_param = new OracleParameter()
+                {
+                    ParameterName = "code",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = group_code
+                };
+                command.Parameters.Add(group_code_param);
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    List<Subgroup> subgroups = new List<Subgroup>();
+                    while (reader.Read())
+                    {
+                        subgroups.Add(new Subgroup
+                        {
+                            group_code=Convert.ToInt32(reader["Код_группы"].ToString()),
+                            faculty_name = reader["Факультет"].ToString(),
+                            speciality_name = reader["Специальность"].ToString(),
+                            speciality_code = reader["Код_специальности"].ToString(),
+                            coors = Convert.ToInt32(reader["Курс"].ToString()),
+                            year = Convert.ToInt32(reader["Год_поступления"].ToString()),
+                            group_number = Convert.ToInt32(reader["Номер_группы"].ToString()),
+                            subgroup_number = Convert.ToInt32(reader["Номер_подгруппы"].ToString())
+                        });
+                    }
+                    return subgroups;
+                }
+            }
+        }
     }
 }
