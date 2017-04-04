@@ -4,3 +4,4 @@
 @triggers/BI_Подгруппы.sql
 @triggers/BI_Студенты.sql
 @triggers/BI_Факультет.sql
+@triggers/BI_Специальность.sql

@@ -6,11 +6,10 @@ using System.Web;
 
 namespace ElectronDecanat.Code
 {
-    public class Faculty
+    public class NewFaculty :Faculty
     {
-        public int id { get; set; }
         [Required]
-        [Display(Name = "Факультет")]
-        public string Name { get; set; }
+        [Display(Name = "Новое название")]
+        public string NewName { get; set; }
     }
 }

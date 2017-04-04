@@ -1,5 +1,6 @@
 CREATE sequence "Факультет_SEQ";
 CREATE sequence "Дисциплина_SEQ";
+CREATE sequence "Специальность_SEQ";
 CREATE sequence "Преподаватель_SEQ";
 CREATE sequence "Лабораторные_SEQ";
 CREATE sequence "Студенты_SEQ";

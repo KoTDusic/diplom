@@ -171,6 +171,8 @@
     <Compile Include="Code\Group.cs" />
     <Compile Include="Code\Lab.cs" />
     <Compile Include="Code\LabProgress.cs" />
+    <Compile Include="Code\NewFaculty.cs" />
+    <Compile Include="Code\NewSpeciality.cs" />
     <Compile Include="Code\Speciality.cs" />
     <Compile Include="Code\Subgroup.cs" />
     <Compile Include="Code\TeacherRequestHelper.cs" />
@@ -189,6 +191,10 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repozitory\FacultiesRepository.cs" />
+    <Compile Include="Repozitory\IRepository.cs" />
+    <Compile Include="Repozitory\SpecialityRepozitory.cs" />
+    <Compile Include="Repozitory\UnitOfWork.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

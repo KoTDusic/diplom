@@ -3,10 +3,11 @@
     ViewBag.Title = "DeleteSpeciality";
 }
 
-<h2>DeleteSpeciality</h2>
+<h2>Удаление специальности с факультета "@Model.faculty_name"</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.faculty_code);
     <div class="form-horizontal">
         <div class="form-group">
             @Html.LabelFor(model => model.faculty_name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -16,10 +17,10 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.speciality_code, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.speciality_number, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.speciality_code, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.speciality_code, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.speciality_number, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.speciality_number, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -38,6 +39,6 @@
 }
 
 <div>
-    @Html.ActionLink("Назад", "Specialitis", new { faculty_name = ViewBag.faculty_name })
+    @Html.ActionLink("Назад", "Specialitis", new { faculty_id = Model.faculty_code })
 </div>
 

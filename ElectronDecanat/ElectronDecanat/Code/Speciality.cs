@@ -9,18 +9,16 @@ namespace ElectronDecanat.Code
     public class Speciality
     {
         public int faculty_code{get;set;}
+        public int id{get;set;}
         [Required]
         [Display(Name = "Код специальности")]
-        public string speciality_code{get;set;}
+        public int speciality_number { get; set; }
         [Required]
         [Display(Name = "Специальность")]
         public string speciality_name{get;set;}
         [Required]
         [Display(Name = "Факультет")]
         public string faculty_name { get; set; }
-        [Required]
-        [Display(Name = "Новое название специальности")]
-        public string new_speciality_name { get; set; }
         public int group_count { get; set; }
     }
 }

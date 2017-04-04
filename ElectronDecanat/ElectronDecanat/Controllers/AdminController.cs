@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ElectronDecanat.Repozitory;
 
 namespace ElectronDecanat.Controllers
 {
@@ -13,35 +14,50 @@ namespace ElectronDecanat.Controllers
         #region FACULTY
         public ActionResult Facultes()
         {
-            List<Faculty> facultys = AdminRequestHelper.getFaculties();
-            return View(facultys);
+            return View(UnitOfWork.Faculties.GetAll());
         }
         public ActionResult AddFaculty()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddFaculty(Faculty faculty)
+        public ActionResult AddFaculty(NewFaculty faculty)
         {
-            AdminRequestHelper.AddFaculty(faculty);
-            List<Faculty> facultys = AdminRequestHelper.getFaculties();
-            return View("Facultes", facultys);
+            try
+            {
+                UnitOfWork.Faculties.Create(faculty);
+                return RedirectToAction("Facultes");
+            }
+            catch
+            {
+                ModelState.AddModelError("Name", "ошибка добавления, возможно такой факультет уже есть?");
+                return View(faculty);
+            }
         }
-        public ActionResult EditFaculty(string faculty_name)
+        public ActionResult EditFaculty(int id)
         {
-            Faculty faculty = new Faculty { Name = faculty_name };
+            Faculty oldFaculty = UnitOfWork.Faculties.Get(id);
+            NewFaculty faculty = new NewFaculty { Name = oldFaculty.Name };
             return View(faculty);
         }
         [HttpPost]
-        public ActionResult EditFaculty(Faculty faculty)
+        public ActionResult EditFaculty(NewFaculty faculty)
         {
-            AdminRequestHelper.EditFaculty(faculty);
-            List<Faculty> facultys = AdminRequestHelper.getFaculties();
-            return View("Facultes",facultys);
+            try
+            {
+                UnitOfWork.Faculties.Update(faculty);
+            }
+            catch
+            {
+                ModelState.AddModelError("NewName", "Не удалось переименовать факультет, возможно, факультет с таким именем уже есть?");
+                return View(faculty);
+            }
+            return RedirectToAction("Facultes");
         }
-        public ActionResult DeleteFaculty(string faculty_name)
+        public ActionResult DeleteFaculty(int id)
         {
-            Faculty faculty = new Faculty { Name = faculty_name, NewName="_" };
+            Faculty oldFaculty = UnitOfWork.Faculties.Get(id);
+            Faculty faculty = new Faculty { Name = oldFaculty.Name };
             return View(faculty);
         }
         [HttpPost]
@@ -49,7 +65,7 @@ namespace ElectronDecanat.Controllers
         {
             try
             {
-                AdminRequestHelper.DeleteFaculty(faculty);
+                UnitOfWork.Faculties.Delete(faculty.id);
             }
             catch(Exception)
             {
@@ -57,8 +73,7 @@ namespace ElectronDecanat.Controllers
             }
             if (ModelState.IsValid)
             {
-                List<Faculty> facultys = AdminRequestHelper.getFaculties();
-                return View("Facultes", facultys);
+                return RedirectToAction("Facultes");
             }
             else
             {
@@ -67,52 +82,52 @@ namespace ElectronDecanat.Controllers
         }
         #endregion
         #region SPECIALITIS
-        public ActionResult Specialitis(string faculty_name)
+        public ActionResult Specialitis(int faculty_id)
         {
-            ViewBag.faculty_name = faculty_name;
-            List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(faculty_name);
-            return View(specialitys);
+            ViewBag.faculty_id = faculty_id;
+            return View(UnitOfWork.Specialitys.GetAll("where \"Код_факультета\"="+faculty_id));
         }
-        public ActionResult AddSpeciality(string faculty_name)
+        public ActionResult AddSpeciality(int faculty_id)
         {
-            ViewBag.faculty_name = faculty_name;
-            return View();
+            Faculty faculty = UnitOfWork.Faculties.Get(faculty_id);
+            Speciality speciality = new Speciality { faculty_code = faculty_id, faculty_name = faculty.Name };
+            return View(speciality);
         }
         [HttpPost]
         public ActionResult AddSpeciality(Speciality speciality)
         {
             try 
             {
-                AdminRequestHelper.AddSpeciality(speciality);
-                List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(speciality.faculty_name);
-                ViewBag.faculty_name = speciality.faculty_name;
-                return View("Specialitis", specialitys);
+                UnitOfWork.Specialitys.Create(speciality);
+                return RedirectToAction("Specialitis", new { faculty_id=speciality.faculty_code });
             }
-            catch { return View(speciality); }
+            catch
+            {
+                ModelState.AddModelError("speciality_name", "ошибка добавления, возможно такая специальность уже есть?");
+                return View(speciality);
+            }
             
         }
-        public ActionResult EditSpeciality(string faculty_name, string speciality_name, string speciality_code)
+        public ActionResult EditSpeciality(int faculty_id, int id)
         {
-            Speciality speciality = new Speciality { faculty_name=faculty_name, speciality_code=speciality_code, speciality_name=speciality_name };
-            ViewBag.faculty_name = speciality.faculty_name;
+            NewSpeciality speciality = new NewSpeciality(UnitOfWork.Specialitys.Get(id));
+            speciality.new_speciality_number = speciality.speciality_number;
+            speciality.new_speciality_name = speciality.speciality_name;
             return View(speciality);
         }
         [HttpPost]
-        public ActionResult EditSpeciality(Speciality speciality)
+        public ActionResult EditSpeciality(NewSpeciality speciality)
         {
             try
             {
-                AdminRequestHelper.EditSpeciality(speciality);
-                List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(speciality.faculty_name);
-                ViewBag.faculty_name = speciality.faculty_name;
-                return View("Specialitis", specialitys);
+                UnitOfWork.Specialitys.Update(speciality);
+                return RedirectToAction("Specialitis", new { faculty_id = speciality.faculty_code });
             }
             catch { return View(speciality); }
         }
-        public ActionResult DeleteSpeciality(string faculty_name, string speciality_name, string speciality_code)
+        public ActionResult DeleteSpeciality(int faculty_id, int id)
         {
-            Speciality speciality = new Speciality { faculty_name = faculty_name, speciality_code = speciality_code, speciality_name = speciality_name, new_speciality_name="_" };
-            ViewBag.faculty_name = speciality.faculty_name;
+            Speciality speciality = UnitOfWork.Specialitys.Get(id);
             return View(speciality);
         }
         [HttpPost]
@@ -120,11 +135,8 @@ namespace ElectronDecanat.Controllers
         {
             try
             {
-                ViewBag.faculty_name = speciality.faculty_name;
-                AdminRequestHelper.DeleteSpeciality(speciality);
-                List<Speciality> specialitys = AdminRequestHelper.getSpecialitys(speciality.faculty_name);
-                ViewBag.faculty_name = speciality.faculty_name;
-                return View("Specialitis", specialitys);
+                UnitOfWork.Specialitys.Delete(speciality.id);
+                return RedirectToAction("Specialitis", new { faculty_id = speciality.faculty_code });
             }
             catch (Exception)
             {

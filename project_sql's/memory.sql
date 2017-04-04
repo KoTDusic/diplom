@@ -9,6 +9,17 @@ ALTER USER apex_public_user ACCOUNT UNLOCK;
 ALTER USER flows_files ACCOUNT UNLOCK;
 
 
+--убить заблокированную сессию
+select c.owner, c.object_name, c.object_type,b.sid, b.serial#, b.status, b.osuser, b.machine
+from v$locked_object a , v$session b, dba_objects c
+where b.sid = a.session_id and a.object_id = c.object_id;
+
+ALTER SYSTEM KILL SESSION '27, 54297';
+
+
+
+
+
 select * from PDB_PLUG_IN_VIOLATIONS order by 1;  
 select message,time from pdb_plug_in_violations;
 //запуск pdb
