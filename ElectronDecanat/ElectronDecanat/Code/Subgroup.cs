@@ -11,5 +11,6 @@ namespace ElectronDecanat.Code
         [Required]
         [Display(Name = "Подгруппа")]
         public int subgroup_number { get; set; }
+        public int peoples_count { get; set; }
     }
 }

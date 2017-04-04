@@ -218,12 +218,64 @@ namespace ElectronDecanat.Controllers
             }
         }
         #endregion
-        public ActionResult Groups(string faculty_name, string speciality_code)
+        #region GROUPS
+        public ActionResult Groups(string faculty_name, string speciality_code,string speciality_name)
         {
             ViewBag.faculty_name = faculty_name;
-            List<Group> groups = AdminRequestHelper.GroupsList(faculty_name, speciality_code);
+            ViewBag.speciality_code = speciality_code;
+            ViewBag.speciality_name = speciality_name;
+            List<Group> groups = AdminRequestHelper.getGroops(faculty_name, speciality_code);
             return View(groups);
         }
+        public ActionResult AddGroup(string speciality_code, string faculty_name, string speciality_name)
+        {
+            Group group = new Group { speciality_code = speciality_code, faculty_name = faculty_name, speciality_name = speciality_name };
+            return View(group);
+        }
+        [HttpPost]
+        public ActionResult AddGroup(Group group)
+        {
+            try
+            {
+                AdminRequestHelper.AddGroup(group);
+                List<Group> groups = AdminRequestHelper.getGroops(group.faculty_name, group.speciality_code);
+                ViewBag.faculty_name = group.faculty_name;
+                ViewBag.speciality_code = group.speciality_code;
+                ViewBag.speciality_name = group.speciality_name;
+                return View("Groups", groups);
+            }
+            catch
+            {
+                ModelState.AddModelError("group_number", "ошибка добавления, возможно такая группа уже есть?");
+                return View(group);
+            }
+
+        }
+        public ActionResult DeleteGroup(string speciality_code, string faculty_name, string speciality_name, int group_number, int year)
+        {
+            Group group = new Group { speciality_code = speciality_code, faculty_name = faculty_name, speciality_name = speciality_name, group_number=group_number, year=year };
+            return View(group);
+        }
+        [HttpPost]
+        public ActionResult DeleteGroup(Group group)
+        {
+            try
+            {
+                AdminRequestHelper.DeleteGroup(group);
+                List<Group> groups = AdminRequestHelper.getGroops(group.faculty_name, group.speciality_code);
+                ViewBag.faculty_name = group.faculty_name;
+                ViewBag.speciality_code = group.speciality_code;
+                ViewBag.speciality_name = group.speciality_name;
+                return View("Groups", groups);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("group_number", "ошибка удаления, данная группа не пуста");
+                return View(group);
+            }
+        }
+        #endregion
+        #region SUBGROUPS
         public ActionResult Subgroups(string faculty_name, string speciality_code, int group_number, int year,int group_code)
         {
             ViewBag.faculty_name = faculty_name;
@@ -231,8 +283,69 @@ namespace ElectronDecanat.Controllers
             ViewBag.group_number = group_number;
             ViewBag.year = year;
             ViewBag.group_code = group_code;
-            List<Subgroup> subgroups = AdminRequestHelper.SubgroupsList(group_code);
+            List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(group_code);
             return View(subgroups);
         }
+        public ActionResult AddSubgroup(string speciality_code, string faculty_name, string speciality_name, int group_code, int group_number)
+        {
+            Subgroup subgroup = new Subgroup { speciality_code = speciality_code, faculty_name = faculty_name, speciality_name = speciality_name, group_code = group_code, group_number=group_number };
+            return View(subgroup);
+        }
+        [HttpPost]
+        public ActionResult AddSubgroup(Subgroup subgroup)
+        {
+            try
+            {
+                AdminRequestHelper.AddSubgroup(subgroup);
+                List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(subgroup.group_code);
+                ViewBag.faculty_name = subgroup.faculty_name;
+                ViewBag.speciality_code = subgroup.speciality_code;
+                ViewBag.group_number = subgroup.group_number;
+                ViewBag.year = subgroup.year;
+                ViewBag.group_code = subgroup.group_code;
+                return View("Subgroups", subgroups);
+            }
+            catch
+            {
+                ModelState.AddModelError("subgroup_number", "ошибка добавления, возможно такая группа уже есть?");
+                return View(subgroup);
+            }
+
+        }
+        public ActionResult DeleteSubgroup(string speciality_code, string faculty_name, string speciality_name, int group_number, int year, int group_code, int subgroup_number)
+        {
+            Subgroup subgroup = new Subgroup 
+            { 
+                speciality_code = speciality_code,
+                faculty_name = faculty_name,
+                speciality_name = speciality_name,
+                group_number = group_number,
+                year = year,
+                group_code = group_code,
+                subgroup_number = subgroup_number, 
+            };
+            return View(subgroup);
+        }
+        [HttpPost]
+        public ActionResult DeleteSubgroup(Subgroup subgroup)
+        {
+            try
+            {
+                AdminRequestHelper.DeleteSubgroup(subgroup);
+                List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(subgroup.group_code);
+                ViewBag.faculty_name = subgroup.faculty_name;
+                ViewBag.speciality_code = subgroup.speciality_code;
+                ViewBag.group_number = subgroup.group_number;
+                ViewBag.year = subgroup.year;
+                ViewBag.group_code = subgroup.group_code;
+                return View("Subgroups", subgroups);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("subgroup_number", "ошибка удаления, данная подгруппа не пуста");
+                return View(subgroup);
+            }
+        }
+        #endregion
     }
 }

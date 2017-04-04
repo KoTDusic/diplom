@@ -28,5 +28,6 @@ namespace ElectronDecanat.Code
         [Required]
         [Display(Name = "Номер группы")]
         public int group_number { get; set; }
+        public int subgroups_count { get; set; }
     }
 }

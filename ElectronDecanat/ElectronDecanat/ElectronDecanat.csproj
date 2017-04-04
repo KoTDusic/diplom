@@ -224,7 +224,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -275,6 +277,9 @@
     <Content Include="Views\Admin\DeleteDiscipline.cshtml" />
     <Content Include="Views\Admin\Groups.cshtml" />
     <Content Include="Views\Admin\Subgroups.cshtml" />
+    <Content Include="Views\Admin\AddGroup.cshtml" />
+    <Content Include="Views\Admin\DeleteGroup.cshtml" />
+    <Content Include="Views\Admin\AddSubgroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -29,7 +29,7 @@
                             @Html.ActionLink("Подробнее", "Disciplines", new { faculty_name = Model[i].faculty_name, speciality_name = Model[i].speciality_name, speciality_code = Model[i].speciality_code })
                         </td>
                         <td class="clicable" onclick="this.getElementsByTagName('a')[0].click()">
-                            @Html.ActionLink("Группы", "Groups", new { faculty_name = Model[i].faculty_name, speciality_code = Model[i].speciality_code })
+                            @Html.ActionLink("Группы(" + Model[i].group_count + ")", "Groups", new { faculty_name = Model[i].faculty_name, speciality_code = Model[i].speciality_code, speciality_name = Model[i].speciality_name })
                         </td>
                         <td class="clicable" onclick="this.getElementsByTagName('a')[0].click()">
                             @Html.ActionLink("Редактировать", "EditSpeciality", new { faculty_name = Model[i].faculty_name, speciality_name = Model[i].speciality_name, speciality_code = Model[i].speciality_code })

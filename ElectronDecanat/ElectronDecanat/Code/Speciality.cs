@@ -21,5 +21,6 @@ namespace ElectronDecanat.Code
         [Required]
         [Display(Name = "Новое название специальности")]
         public string new_speciality_name { get; set; }
+        public int group_count { get; set; }
     }
 }

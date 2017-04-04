@@ -120,7 +120,8 @@ namespace ElectronDecanat.Code
                             faculty_name = reader["Название_факультета"].ToString(),
                             faculty_code = Convert.ToInt32(reader["Код_факультета"].ToString()),
                             speciality_code = reader["Код_специальности"].ToString(),
-                            speciality_name = reader["Имя_специальности"].ToString()
+                            speciality_name = reader["Имя_специальности"].ToString(),
+                            group_count = Convert.ToInt32(reader["Групп"].ToString())
                         });
                     }
                     return specyalitys;
@@ -351,7 +352,8 @@ namespace ElectronDecanat.Code
             }
         }
         #endregion
-        public static List<Group> GroupsList(string faculty_name, string speciality_code)
+        #region GROOPS
+        public static List<Group> getGroops(string faculty_name, string speciality_code)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
@@ -387,14 +389,85 @@ namespace ElectronDecanat.Code
                             speciality_code = reader["Код_специальности"].ToString(),
                             coors = Convert.ToInt32(reader["Курс"].ToString()),
                             year = Convert.ToInt32(reader["Год_поступления"].ToString()),
-                            group_number = Convert.ToInt32(reader["Номер_группы"].ToString())
+                            group_number = Convert.ToInt32(reader["Номер_группы"].ToString()),
+                            subgroups_count = Convert.ToInt32(reader["Подгрупп"].ToString())
                         });
                     }
                     return groups;
                 }
             }
         }
-        public static List<Subgroup> SubgroupsList(int group_code)
+        public static void AddGroup(Group group)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ADD_GROUP";
+                OracleParameter speciality_code_param = new OracleParameter()
+                {
+                    ParameterName = "speciality_code",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = group.speciality_code
+                };
+                OracleParameter age_param = new OracleParameter()
+                {
+                    ParameterName = "age",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = group.year
+                };
+                OracleParameter group_number_param = new OracleParameter()
+                {
+                    ParameterName = "group_number",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = group.group_number
+                };
+                command.Parameters.Add(speciality_code_param);
+                command.Parameters.Add(age_param);
+                command.Parameters.Add(group_number_param);
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void DeleteGroup(Group group)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "REMOVE_GROUP";
+                OracleParameter speciality_code_param = new OracleParameter()
+                {
+                    ParameterName = "speciality_code",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = group.speciality_code
+                };
+                OracleParameter age_param = new OracleParameter()
+                {
+                    ParameterName = "age",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = group.year
+                };
+                OracleParameter group_number_param = new OracleParameter()
+                {
+                    ParameterName = "group_number",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = group.group_number
+                };
+                command.Parameters.Add(speciality_code_param);
+                command.Parameters.Add(age_param);
+                command.Parameters.Add(group_number_param);
+                command.ExecuteNonQuery();
+            }
+        }
+        #endregion
+        #region SUBGROUPS
+        public static List<Subgroup> getSubgroups(int group_code)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
@@ -423,12 +496,66 @@ namespace ElectronDecanat.Code
                             coors = Convert.ToInt32(reader["Курс"].ToString()),
                             year = Convert.ToInt32(reader["Год_поступления"].ToString()),
                             group_number = Convert.ToInt32(reader["Номер_группы"].ToString()),
-                            subgroup_number = Convert.ToInt32(reader["Номер_подгруппы"].ToString())
+                            subgroup_number = Convert.ToInt32(reader["Номер_подгруппы"].ToString()),
+                            peoples_count = Convert.ToInt32(reader["Студентов"].ToString())
                         });
                     }
                     return subgroups;
                 }
             }
         }
+        public static void AddSubgroup(Subgroup subgroup)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ADD_SUBGROUP";
+                OracleParameter group_code_param = new OracleParameter()
+                {
+                    ParameterName = "group_code",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Int32,
+                    Value = subgroup.group_code
+                };
+                OracleParameter subgroup_number_param = new OracleParameter()
+                {
+                    ParameterName = "subgroup_number",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Int32,
+                    Value = subgroup.subgroup_number
+                };
+                command.Parameters.Add(group_code_param);
+                command.Parameters.Add(subgroup_number_param);
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void DeleteSubgroup(Subgroup subgroup)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "REMOVE_SUBGROUP";
+                OracleParameter group_code_param = new OracleParameter()
+                {
+                    ParameterName = "group_code",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Int32,
+                    Value = subgroup.group_code
+                };
+                OracleParameter subgroup_number_param = new OracleParameter()
+                {
+                    ParameterName = "subgroup_number",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Int32,
+                    Value = subgroup.subgroup_number
+                };
+                command.Parameters.Add(group_code_param);
+                command.Parameters.Add(subgroup_number_param);
+                command.ExecuteNonQuery();
+            }
+        }
+        #endregion
     }
 }
