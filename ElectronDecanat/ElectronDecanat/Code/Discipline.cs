@@ -6,23 +6,23 @@ using System.Web;
 
 namespace ElectronDecanat.Code
 {
-    public class Disciplines
+    public class Discipline
     {
+        public int faculty_code { get; set; }
         [Required]
         [Display(Name = "Факультет")]
-        public string facultyName { get; set; }
+        public string faculty_name { get; set; }
+        public int speciality_code { get; set; }
         [Required]
         [Display(Name = "Код специальности")]
-        public string specialityCode { get; set; }
+        public int speciality_number { get; set; }
         [Required]
         [Display(Name = "Специальность")]
-        public string specialityName { get; set; }
-        public int disciplineCode { get; set; }
+        public string speciality_name { get; set; }
+        public int id { get; set; }
         [Required]
         [Display(Name = "Дисциплина")]
-        public string disciplineName { get; set; }
-        [Required]
-        [Display(Name = "Новое название дисциплины")]
-        public string newDisciplineName { get; set; }
+        public string discipline_name { get; set; }
+        
     }
 }

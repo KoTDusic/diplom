@@ -108,7 +108,7 @@ namespace ElectronDecanat.Controllers
             }
             
         }
-        public ActionResult EditSpeciality(int faculty_id, int id)
+        public ActionResult EditSpeciality(int id)
         {
             NewSpeciality speciality = new NewSpeciality(UnitOfWork.Specialitys.Get(id));
             speciality.new_speciality_number = speciality.speciality_number;
@@ -125,7 +125,7 @@ namespace ElectronDecanat.Controllers
             }
             catch { return View(speciality); }
         }
-        public ActionResult DeleteSpeciality(int faculty_id, int id)
+        public ActionResult DeleteSpeciality(int id)
         {
             Speciality speciality = UnitOfWork.Specialitys.Get(id);
             return View(speciality);
@@ -146,54 +146,53 @@ namespace ElectronDecanat.Controllers
         }
         #endregion
         #region DISCIPLINES
-        public ActionResult Disciplines(string faculty_name, string speciality_name, string speciality_code)
+        public ActionResult Disciplines(int speciality_id)
         {
-            ViewBag.faculty_name = faculty_name;
-            ViewBag.speciality_name = speciality_name;
-            ViewBag.speciality_code = speciality_code;
-            List<Disciplines> disciplines = AdminRequestHelper.getDiscyplines(faculty_name, speciality_name);
-            return View(disciplines);
+            Speciality speciality = UnitOfWork.Specialitys.Get(speciality_id);
+            ViewBag.faculty_id = speciality.faculty_code;
+            ViewBag.speciality_id = speciality_id;
+            return View(UnitOfWork.Disciplines.GetAll("where \"Код_специальности\"=" + speciality_id));
         }
-        public ActionResult AddDiscipline(string faculty_name, string speciality_name, string speciality_code)
+        public ActionResult AddDiscipline(int speciality_id)
         {
-            Code.Disciplines discipline = new Disciplines { facultyName = faculty_name, specialityName = speciality_name, specialityCode=speciality_code };
+            Speciality speciality = UnitOfWork.Specialitys.Get(speciality_id);
+            Discipline discipline = new Discipline 
+            {
+                faculty_name = speciality.faculty_name,
+                faculty_code = speciality.faculty_code,
+                speciality_code = speciality.id,
+                speciality_name = speciality.speciality_name,
+                speciality_number = speciality.speciality_number
+            };
             return View(discipline);
         }
         [HttpPost]
-        public ActionResult AddDiscipline(Disciplines discipline)
+        public ActionResult AddDiscipline(Discipline discipline)
         {
             try
             {
-                AdminRequestHelper.AddDiscipline(discipline);
-                List<Disciplines> disciplines = AdminRequestHelper.getDiscyplines(discipline.facultyName,discipline.specialityName);
-                ViewBag.faculty_name = discipline.facultyName;
-                ViewBag.speciality_name = discipline.specialityName;
-                ViewBag.speciality_code = discipline.specialityCode;
-                return View("Disciplines", disciplines);
+                UnitOfWork.Disciplines.Create(discipline);
+                return RedirectToAction("Disciplines", new { speciality_id=discipline.speciality_code });
             }
             catch 
             {
-                ModelState.AddModelError("disciplineName", "ошибка добавления, возможно такая дисциплина уже есть?");
+                ModelState.AddModelError("discipline_name", "ошибка добавления, возможно такая дисциплина уже есть?");
                 return View(discipline); 
             }
 
         }
-        public ActionResult EditDiscipline(string faculty_name, string speciality_name, string speciality_code, string discipline_name)
+        public ActionResult EditDiscipline(int id)
         {
-            Code.Disciplines discipline = new Disciplines { facultyName = faculty_name, specialityName = speciality_name, specialityCode = speciality_code, disciplineName=discipline_name };
+            NewDiscipline discipline = UnitOfWork.Disciplines.Get(id);
             return View(discipline);
         }
         [HttpPost]
-        public ActionResult EditDiscipline(Disciplines discipline)
+        public ActionResult EditDiscipline(NewDiscipline discipline)
         {
             try
             {
-                AdminRequestHelper.EditDiscipline(discipline);
-                List<Disciplines> disciplines = AdminRequestHelper.getDiscyplines(discipline.facultyName, discipline.specialityName);
-                ViewBag.faculty_name = discipline.facultyName;
-                ViewBag.speciality_name = discipline.specialityName;
-                ViewBag.speciality_code = discipline.specialityCode;
-                return View("Disciplines", disciplines);
+                UnitOfWork.Disciplines.Update(discipline);
+                return RedirectToAction("Disciplines", new { speciality_id = discipline.speciality_code });
             }
             catch 
             {
@@ -201,47 +200,43 @@ namespace ElectronDecanat.Controllers
                 return View(discipline);
             }
         }
-        public ActionResult DeleteDiscipline(string faculty_name, string speciality_name, string speciality_code, string discipline_name)
+        public ActionResult DeleteDiscipline(int id)
         {
-            Code.Disciplines discipline = new Disciplines { 
-                facultyName = faculty_name,
-                specialityName = speciality_name, 
-                specialityCode = speciality_code,
-                disciplineName=discipline_name,
-                newDisciplineName="_" };
+            Discipline discipline = UnitOfWork.Disciplines.Get(id);
             return View(discipline);
         }
         [HttpPost]
-        public ActionResult DeleteDiscipline(Disciplines discipline)
+        public ActionResult DeleteDiscipline(Discipline discipline)
         {
             try
             {
-                AdminRequestHelper.DeleteDiscipline(discipline);
-                List<Disciplines> disciplines = AdminRequestHelper.getDiscyplines(discipline.facultyName, discipline.specialityName);
-                ViewBag.faculty_name = discipline.facultyName;
-                ViewBag.speciality_name = discipline.specialityName;
-                ViewBag.speciality_code = discipline.specialityCode;
-                return View("Disciplines", disciplines);
+                UnitOfWork.Disciplines.Delete(discipline.id);
+                return RedirectToAction("Disciplines", new { speciality_id = discipline.speciality_code });
             }
             catch (Exception)
             {
-                ModelState.AddModelError("disciplineName", "Невозможно удалить эту дисциплину, так как она не пустая");
+                ModelState.AddModelError("discipline_name", "Невозможно удалить эту дисциплину, так как она не пустая");
                 return View(discipline);
             }
         }
         #endregion
         #region GROUPS
-        public ActionResult Groups(string faculty_name, string speciality_code,string speciality_name)
+        public ActionResult Groups(int speciality_id)
         {
-            ViewBag.faculty_name = faculty_name;
-            ViewBag.speciality_code = speciality_code;
-            ViewBag.speciality_name = speciality_name;
-            List<Group> groups = AdminRequestHelper.getGroops(faculty_name, speciality_code);
-            return View(groups);
+            ViewBag.faculty_id = UnitOfWork.Specialitys.Get(speciality_id).faculty_code;
+            ViewBag.speciality_id = speciality_id;
+            return View(UnitOfWork.Groups.GetAll("where \"Код_специальности\"=" + speciality_id));
         }
-        public ActionResult AddGroup(string speciality_code, string faculty_name, string speciality_name)
+        public ActionResult AddGroup(int speciality_id)
         {
-            Group group = new Group { speciality_code = speciality_code, faculty_name = faculty_name, speciality_name = speciality_name };
+            Speciality speciality = UnitOfWork.Specialitys.Get(speciality_id);
+            Group group = new Group 
+            {
+                faculty_name = speciality.faculty_name,
+                speciality_number = speciality.speciality_number,
+                speciality_name = speciality.speciality_name,
+                speciality_id = speciality.id
+            };
             return View(group);
         }
         [HttpPost]
@@ -249,12 +244,8 @@ namespace ElectronDecanat.Controllers
         {
             try
             {
-                AdminRequestHelper.AddGroup(group);
-                List<Group> groups = AdminRequestHelper.getGroops(group.faculty_name, group.speciality_code);
-                ViewBag.faculty_name = group.faculty_name;
-                ViewBag.speciality_code = group.speciality_code;
-                ViewBag.speciality_name = group.speciality_name;
-                return View("Groups", groups);
+                UnitOfWork.Groups.Create(group);
+                return RedirectToAction("Groups", new { speciality_id = group.speciality_id });
             }
             catch
             {
@@ -263,22 +254,17 @@ namespace ElectronDecanat.Controllers
             }
 
         }
-        public ActionResult DeleteGroup(string speciality_code, string faculty_name, string speciality_name, int group_number, int year)
+        public ActionResult DeleteGroup(int id)
         {
-            Group group = new Group { speciality_code = speciality_code, faculty_name = faculty_name, speciality_name = speciality_name, group_number=group_number, year=year };
-            return View(group);
+            return View(UnitOfWork.Groups.Get(id));
         }
         [HttpPost]
         public ActionResult DeleteGroup(Group group)
         {
             try
             {
-                AdminRequestHelper.DeleteGroup(group);
-                List<Group> groups = AdminRequestHelper.getGroops(group.faculty_name, group.speciality_code);
-                ViewBag.faculty_name = group.faculty_name;
-                ViewBag.speciality_code = group.speciality_code;
-                ViewBag.speciality_name = group.speciality_name;
-                return View("Groups", groups);
+                UnitOfWork.Groups.Delete(group.id);
+                return RedirectToAction("Groups", new { speciality_id = group.speciality_id });
             }
             catch (Exception)
             {
@@ -298,10 +284,10 @@ namespace ElectronDecanat.Controllers
             List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(group_code);
             return View(subgroups);
         }
-        public ActionResult AddSubgroup(string speciality_code, string faculty_name, string speciality_name, int group_code, int group_number)
+        public ActionResult AddSubgroup(int speciality_code, string faculty_name, string speciality_name, int group_code, int group_number)
         {
-            Subgroup subgroup = new Subgroup { speciality_code = speciality_code, faculty_name = faculty_name, speciality_name = speciality_name, group_code = group_code, group_number=group_number };
-            return View(subgroup);
+            //Subgroup subgroup = new Subgroup { speciality_number = speciality_code, faculty_name = faculty_name, speciality_name = speciality_name, id = group_code, group_number=group_number };
+            return View();
         }
         [HttpPost]
         public ActionResult AddSubgroup(Subgroup subgroup)
@@ -309,12 +295,7 @@ namespace ElectronDecanat.Controllers
             try
             {
                 AdminRequestHelper.AddSubgroup(subgroup);
-                List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(subgroup.group_code);
-                ViewBag.faculty_name = subgroup.faculty_name;
-                ViewBag.speciality_code = subgroup.speciality_code;
-                ViewBag.group_number = subgroup.group_number;
-                ViewBag.year = subgroup.year;
-                ViewBag.group_code = subgroup.group_code;
+                List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(subgroup.id);
                 return View("Subgroups", subgroups);
             }
             catch
@@ -324,16 +305,16 @@ namespace ElectronDecanat.Controllers
             }
 
         }
-        public ActionResult DeleteSubgroup(string speciality_code, string faculty_name, string speciality_name, int group_number, int year, int group_code, int subgroup_number)
+        public ActionResult DeleteSubgroup(int speciality_code, string faculty_name, string speciality_name, int group_number, int year, int group_code, int subgroup_number)
         {
             Subgroup subgroup = new Subgroup 
             { 
-                speciality_code = speciality_code,
+                id = speciality_code,
                 faculty_name = faculty_name,
                 speciality_name = speciality_name,
                 group_number = group_number,
                 year = year,
-                group_code = group_code,
+                speciality_number = group_code,
                 subgroup_number = subgroup_number, 
             };
             return View(subgroup);
@@ -344,12 +325,12 @@ namespace ElectronDecanat.Controllers
             try
             {
                 AdminRequestHelper.DeleteSubgroup(subgroup);
-                List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(subgroup.group_code);
+                List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(subgroup.id);
                 ViewBag.faculty_name = subgroup.faculty_name;
-                ViewBag.speciality_code = subgroup.speciality_code;
+                ViewBag.speciality_code = subgroup.subgroup_number;
                 ViewBag.group_number = subgroup.group_number;
                 ViewBag.year = subgroup.year;
-                ViewBag.group_code = subgroup.group_code;
+                ViewBag.group_code = subgroup.id;
                 return View("Subgroups", subgroups);
             }
             catch (Exception)

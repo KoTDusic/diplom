@@ -25,5 +25,23 @@ namespace ElectronDecanat.Repozitory
                 return specialitys;
             }
         }
+        private static DisciplineRepozitory disciplines;
+        public static DisciplineRepozitory Disciplines
+        {
+            get
+            {
+                if (disciplines == null) disciplines = new DisciplineRepozitory();
+                return disciplines;
+            }
+        }
+        private static GroupRepozitory groups;
+        public static GroupRepozitory Groups
+        {
+            get
+            {
+                if (groups == null) groups = new GroupRepozitory();
+                return groups;
+            }
+        }
     }
 }

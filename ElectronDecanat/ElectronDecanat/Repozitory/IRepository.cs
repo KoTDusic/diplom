@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ElectronDecanat.Repozitory
 {
-    interface IRepository<T,new_T> 
+    interface IRepository<T,base_T> 
     {
-        IEnumerable<T> GetAll(string querry=null);
+        IEnumerable<base_T> GetAll(string querry = null);
         T Get(int id);
-        void Create(T item);
-        void Update(new_T item);
+        void Create(base_T item);
+        void Update(T item);
         void Delete(int id);
     }
 }

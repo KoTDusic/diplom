@@ -8,7 +8,7 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace ElectronDecanat.Repozitory
 {
-    public class FacultiesRepository : IRepository<Faculty,NewFaculty>
+    public class FacultiesRepository : IRepository<NewFaculty,Faculty>
     {
         public IEnumerable<Faculty> GetAll(string querry = null)
         {
@@ -22,7 +22,7 @@ namespace ElectronDecanat.Repozitory
                     List<Faculty> facultys = new List<Faculty>();
                     while (reader.Read())
                     {
-                        facultys.Add(new Faculty
+                        facultys.Add(new NewFaculty
                         {
                             Name = reader["Название_факультета"].ToString(),
                             id = Convert.ToInt32(reader["Код_факультета"].ToString())
@@ -32,7 +32,7 @@ namespace ElectronDecanat.Repozitory
                 }
             }
         }
-        public Faculty Get(int id)
+        public NewFaculty Get(int id)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
@@ -51,7 +51,7 @@ namespace ElectronDecanat.Repozitory
                 {
 
                     reader.Read();
-                    Faculty faculty = new Faculty()
+                    NewFaculty faculty = new NewFaculty()
                     {
                         Name = reader["Название_факультета"].ToString(),
                         id = Convert.ToInt32(reader["Код_факультета"].ToString())

@@ -11,7 +11,7 @@ namespace ElectronDecanat.Code
 {
     public static class TeacherRequestHelper
     {
-        public static List<Disciplines> getTeacherDisciplines(string name)
+        public static List<Discipline> getTeacherDisciplines(string name)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
@@ -28,14 +28,14 @@ namespace ElectronDecanat.Code
                 command.Parameters.Add(name_param);
                 using (OracleDataReader reader = command.ExecuteReader())
                 {
-                    List<Disciplines> disciplines = new List<Disciplines>();
+                    List<Discipline> disciplines = new List<Discipline>();
                     while (reader.Read())
                     {
-                        disciplines.Add(new Disciplines
+                        disciplines.Add(new Discipline
                         {
-                            disciplineName = reader["Наименование_дисциплины"].ToString(),
-                            disciplineCode = Convert.ToInt32(reader["Код_дисциплины"].ToString()),
-                            specialityName = reader["Имя_специальности"].ToString()
+                            discipline_name = reader["Наименование_дисциплины"].ToString(),
+                            id = Convert.ToInt32(reader["Код_дисциплины"].ToString()),
+                            speciality_name = reader["Имя_специальности"].ToString()
                         } );
                     }
                     return disciplines;

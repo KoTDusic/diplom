@@ -31,7 +31,7 @@ namespace ElectronDecanat.Controllers
         public ActionResult LabsList()
         {
             string name = User.Identity.GetUserName();
-            List<Disciplines> disciplines = TeacherRequestHelper.getTeacherDisciplines(name);
+            List<Discipline> disciplines = TeacherRequestHelper.getTeacherDisciplines(name);
             return View(disciplines);
         }
         public ActionResult LabsOnDisciplineList(string discipline, string speciality)

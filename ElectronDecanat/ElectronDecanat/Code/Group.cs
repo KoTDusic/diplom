@@ -10,7 +10,8 @@ namespace ElectronDecanat.Code
     {
         [Required]
         
-        public int group_code { get; set; }
+        public int id { get; set; }
+        public int speciality_id { get; set; }
         [Required]
         [Display(Name = "Факультет")]
         public string faculty_name { get; set; }
@@ -19,7 +20,7 @@ namespace ElectronDecanat.Code
         public string speciality_name { get; set; }
         [Required]
         [Display(Name = "Код специальности")]
-        public string speciality_code { get; set; }
+        public int speciality_number { get; set; }
         [Display(Name = "Курс")]
         public int coors { get; set; }
         [Required]

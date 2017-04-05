@@ -8,7 +8,7 @@ using System.Data;
 
 namespace ElectronDecanat.Repozitory
 {
-    public class SpecialityRepozitory :IRepository<Speciality,NewSpeciality>
+    public class SpecialityRepozitory :IRepository<NewSpeciality,Speciality>
     {
         public IEnumerable<Speciality> GetAll(string querry = null)
         {
@@ -26,7 +26,7 @@ namespace ElectronDecanat.Repozitory
                     List<Speciality> specyalitys = new List<Speciality>();
                     while (reader.Read())
                     {
-                        specyalitys.Add(new Speciality
+                        specyalitys.Add(new NewSpeciality
                         {
                             faculty_name = reader["Название_факультета"].ToString(),
                             faculty_code = Convert.ToInt32(reader["Код_факультета"].ToString()),
@@ -41,7 +41,7 @@ namespace ElectronDecanat.Repozitory
             }
         }
 
-        public Speciality Get(int id)
+        public NewSpeciality Get(int id)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
             using (OracleCommand command = connection.CreateCommand())
@@ -59,7 +59,7 @@ namespace ElectronDecanat.Repozitory
                 using (OracleDataReader reader = command.ExecuteReader())
                 {
                     reader.Read();
-                    Speciality specyality = new Speciality
+                    NewSpeciality specyality = new NewSpeciality
                     {
                         faculty_name = reader["Название_факультета"].ToString(),
                         faculty_code = Convert.ToInt32(reader["Код_факультета"].ToString()),

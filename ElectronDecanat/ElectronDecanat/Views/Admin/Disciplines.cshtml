@@ -1,4 +1,4 @@
-﻿@model List<ElectronDecanat.Code.Disciplines>
+﻿@model List<ElectronDecanat.Code.Discipline>
     @{
         ViewBag.Title = "Disciplines";
     }
@@ -9,7 +9,6 @@
         <thead>
             <tr>
                 <th>Специальность</th>
-                <th>Код специальности</th>
                 <th>Дисциплина</th>
                 <th></th>
                 <th></th>
@@ -20,14 +19,13 @@
                 for (int i = 0; i < Model.Count; i++)
                 {
                     <tr>
-                        <td>@Model[i].specialityName</td>
-                        <td>@Model[i].specialityCode</td>
-                        <td>@Model[i].disciplineName</td>
+                        <td>@Model[i].speciality_name (@Model[i].speciality_number)</td>
+                        <td>@Model[i].discipline_name</td>
                         <td class="clicable" onclick="this.getElementsByTagName('a')[0].click()">
-                            @Html.ActionLink("Редактировать", "EditDiscipline", new { faculty_name = Model[i].facultyName, speciality_name = Model[i].specialityName, speciality_code = Model[i].specialityCode,discipline_name = Model[i].disciplineName })
+                            @Html.ActionLink("Редактировать", "EditDiscipline", new { id=Model[i].id })
                         </td>
                         <td class="clicable" onclick="this.getElementsByTagName('a')[0].click()">
-                            @Html.ActionLink("Удалить", "DeleteDiscipline", new { faculty_name = Model[i].facultyName, speciality_name = Model[i].specialityName, speciality_code = Model[i].specialityCode, discipline_name = Model[i].disciplineName })
+                            @Html.ActionLink("Удалить", "DeleteDiscipline", new { id = Model[i].id })
                         </td>
                     </tr>
                 }
@@ -36,12 +34,10 @@
     </table>
     <div>
         <button class="clicable btn btn-default" onclick="this.getElementsByTagName('a')[0].click()">@Html.ActionLink("Добавить", "AddDiscipline", new {
-                                                                                                    faculty_name = ViewBag.faculty_name,
-                                                                                                    speciality_name = ViewBag.speciality_name,
-                                                                                                    speciality_code = ViewBag.speciality_code 
+                                                                                                    speciality_id = ViewBag.speciality_id
                                                                                                 })</button>
         <br />
-        @Html.ActionLink("Назад", "Specialitis", new { faculty_name = ViewBag.faculty_name })
+        @Html.ActionLink("Назад", "Specialitis", new { faculty_id = ViewBag.faculty_id })
     </div>
     <script type="text/javascript">
         document.onload=new function () {

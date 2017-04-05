@@ -9,136 +9,7 @@ namespace ElectronDecanat.Code
 {
     public static class AdminRequestHelper
     {
-        #region DISCYPLINES
-        public static List<Disciplines> getDiscyplines(string faculty_name, string speciality_name)
-        {
-            OracleConnection connection = SingltoneConnection.GetInstance();
-            using (OracleCommand command = connection.CreateCommand())
-            {
-                command.CommandType = CommandType.Text;
-                command.CommandText = "select * from DISCIPLINE_LIST where \"Название_факультета\"=:faculty_name AND \"Имя_специальности\"=:speciality_name";
-                OracleParameter faculty_name_param = new OracleParameter()
-                {
-                    ParameterName = "faculty_name",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = faculty_name
-                };
-                OracleParameter speciality_name_param = new OracleParameter()
-                {
-                    ParameterName = "speciality_name",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = speciality_name
-                };
-                command.Parameters.Add(faculty_name_param);
-                command.Parameters.Add(speciality_name_param);
-                using (OracleDataReader reader = command.ExecuteReader())
-                {
-                    List<Disciplines> discyplines = new List<Disciplines>();
-                    while (reader.Read())
-                    {
-                        discyplines.Add(new Disciplines
-                        {
-                            disciplineCode = Convert.ToInt32(reader["Код_дисциплины"].ToString()),
-                            disciplineName = reader["Наименование_дисциплины"].ToString(),
-                            facultyName = reader["Название_факультета"].ToString(),
-                            specialityCode = reader["Код_специальности"].ToString(),
-                            specialityName = reader["Имя_специальности"].ToString()
-                        });
-                    }
-                    return discyplines;
-                }
-            }
-        }
-        public static void AddDiscipline(Disciplines discipline)
-        {
-            OracleConnection connection = SingltoneConnection.GetInstance();
-            using (OracleCommand command = connection.CreateCommand())
-            {
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "ADD_DISCIPLINE";
-                OracleParameter speciality_code_param = new OracleParameter()
-                {
-                    ParameterName = "speciality_code",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = discipline.specialityCode
-                };
-                OracleParameter discipline_name_param = new OracleParameter()
-                {
-                    ParameterName = "discipline_name",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = discipline.disciplineName
-                };
-                command.Parameters.Add(speciality_code_param);
-                command.Parameters.Add(discipline_name_param);
-                command.ExecuteNonQuery();
-            }
-        }
-        public static void EditDiscipline(Disciplines discipline)
-        {
-            OracleConnection connection = SingltoneConnection.GetInstance();
-            using (OracleCommand command = connection.CreateCommand())
-            {
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "EDIT_DISCIPLINE";
-                OracleParameter speciality_code_param = new OracleParameter()
-                {
-                    ParameterName = "speciality_code",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = discipline.specialityCode 
-                };
-                OracleParameter discipline_name_param = new OracleParameter()
-                {
-                    ParameterName = "discipline_name",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = discipline.disciplineName
-                };
-                OracleParameter new_discipline_name_param = new OracleParameter()
-                {
-                    ParameterName = "new_discipline_name",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = discipline.newDisciplineName
-                };
-                command.Parameters.Add(speciality_code_param);
-                command.Parameters.Add(discipline_name_param);
-                command.Parameters.Add(new_discipline_name_param);
-                command.ExecuteNonQuery();
-            }
-        }
-        public static void DeleteDiscipline(Disciplines discipline)
-        {
-            OracleConnection connection = SingltoneConnection.GetInstance();
-            using (OracleCommand command = connection.CreateCommand())
-            {
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "REMOVE_DISCIPLINE";
-                OracleParameter speciality_code_param = new OracleParameter()
-                {
-                    ParameterName = "speciality_code",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = discipline.specialityCode
-                };
-                OracleParameter discipline_name_param = new OracleParameter()
-                {
-                    ParameterName = "discipline_name",
-                    Direction = ParameterDirection.Input,
-                    OracleDbType = OracleDbType.Varchar2,
-                    Value = discipline.disciplineName
-                };
-                command.Parameters.Add(speciality_code_param);
-                command.Parameters.Add(discipline_name_param);
-                command.ExecuteNonQuery();
-            }
-        }
-        #endregion
-        #region GROOPS
+        /*#region GROOPS
         public static List<Group> getGroops(string faculty_name, string speciality_code)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
@@ -251,7 +122,7 @@ namespace ElectronDecanat.Code
                 command.ExecuteNonQuery();
             }
         }
-        #endregion
+        #endregion*/
         #region SUBGROUPS
         public static List<Subgroup> getSubgroups(int group_code)
         {
@@ -275,10 +146,10 @@ namespace ElectronDecanat.Code
                     {
                         subgroups.Add(new Subgroup
                         {
-                            group_code=Convert.ToInt32(reader["Код_группы"].ToString()),
+                            id=Convert.ToInt32(reader["Код_группы"].ToString()),
                             faculty_name = reader["Факультет"].ToString(),
                             speciality_name = reader["Специальность"].ToString(),
-                            speciality_code = reader["Код_специальности"].ToString(),
+                            speciality_number = Convert.ToInt32(reader["Код_специальности"].ToString()),
                             coors = Convert.ToInt32(reader["Курс"].ToString()),
                             year = Convert.ToInt32(reader["Год_поступления"].ToString()),
                             group_number = Convert.ToInt32(reader["Номер_группы"].ToString()),
@@ -302,7 +173,7 @@ namespace ElectronDecanat.Code
                     ParameterName = "group_code",
                     Direction = ParameterDirection.Input,
                     OracleDbType = OracleDbType.Int32,
-                    Value = subgroup.group_code
+                    Value = subgroup.id
                 };
                 OracleParameter subgroup_number_param = new OracleParameter()
                 {
@@ -328,7 +199,7 @@ namespace ElectronDecanat.Code
                     ParameterName = "group_code",
                     Direction = ParameterDirection.Input,
                     OracleDbType = OracleDbType.Int32,
-                    Value = subgroup.group_code
+                    Value = subgroup.id
                 };
                 OracleParameter subgroup_number_param = new OracleParameter()
                 {
