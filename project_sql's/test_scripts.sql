@@ -17,7 +17,6 @@ select * from LABS_DISCIPLINE;
 select * from LABS_DISCIPLINE where "Наименование_дисциплины" = 'Программирование в Интернет' AND "Имя_специальности"= 'Информационные системы и технологии (издательско-полиграфический комплекс)'
 
 
-
 select STUDENT_DISCIPLINE."Код_дисциплины","Преподаватель","Код_студента",
         "Название_лабораторной" from STUDENT_DISCIPLINE,"Лабораторные" 
         where "Лабораторные"."Код_дисциплины"=STUDENT_DISCIPLINE."Код_дисциплины" AND "Код_студента"=28;
@@ -25,6 +24,17 @@ select count(*) from "Нагрузка_преподавателя"
 where "Код_подгруппы" = 42 AND "Код_преподавателя" = 23 AND "Код_дисциплины" = 123;
 
 select * from STUDENT_LIST;
+select * from SUBGROUP_LIST;
+
+exec ADD_STUDENT(41,'test1')
+exec ADD_STUDENT(41,'test2')
+exec ADD_STUDENT(41,'test3')
+exec ADD_STUDENT(42,'test4')
+exec ADD_STUDENT(42,'test5')
+exec ADD_STUDENT(42,'test6')
+exec ADD_STUDENT(44,'test7')
+exec ADD_STUDENT(44,'test8')
+exec ADD_STUDENT(44,'test9')
 
 select * from STUDENT_LIST;
 select * from LAB_LIST;

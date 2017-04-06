@@ -33,9 +33,9 @@
         </tbody>
     </table>
     <div>
-        <button class="clicable btn btn-default" onclick="this.getElementsByTagName('a')[0].click()">@Html.ActionLink("Добавить", "AddDiscipline", new {
-                                                                                                    speciality_id = ViewBag.speciality_id
-                                                                                                })</button>
+        <button class="clicable btn btn-default" onclick="this.getElementsByTagName('a')[0].click()">
+            @Html.ActionLink("Добавить", "AddDiscipline", new {speciality_id = ViewBag.speciality_id})
+        </button>
         <br />
         @Html.ActionLink("Назад", "Specialitis", new { faculty_id = ViewBag.faculty_id })
     </div>

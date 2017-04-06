@@ -123,7 +123,7 @@ namespace ElectronDecanat.Code
             }
         }
         #endregion*/
-        #region SUBGROUPS
+        /*#region SUBGROUPS
         public static List<Subgroup> getSubgroups(int group_code)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();
@@ -213,6 +213,6 @@ namespace ElectronDecanat.Code
                 command.ExecuteNonQuery();
             }
         }
-        #endregion
+        #endregion*/
     }
 }

@@ -224,7 +224,6 @@ namespace ElectronDecanat.Controllers
         public ActionResult Groups(int speciality_id)
         {
             ViewBag.faculty_id = UnitOfWork.Specialitys.Get(speciality_id).faculty_code;
-            ViewBag.speciality_id = speciality_id;
             return View(UnitOfWork.Groups.GetAll("where \"Код_специальности\"=" + speciality_id));
         }
         public ActionResult AddGroup(int speciality_id)
@@ -274,29 +273,34 @@ namespace ElectronDecanat.Controllers
         }
         #endregion
         #region SUBGROUPS
-        public ActionResult Subgroups(string faculty_name, string speciality_code, int group_number, int year,int group_code)
+        public ActionResult Subgroups(int group_id)
         {
-            ViewBag.faculty_name = faculty_name;
-            ViewBag.speciality_code = speciality_code;
-            ViewBag.group_number = group_number;
-            ViewBag.year = year;
-            ViewBag.group_code = group_code;
-            List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(group_code);
+            ViewBag.speciality_id = UnitOfWork.Groups.Get(group_id).speciality_id;
+            ViewBag.group_id = group_id;
+            IEnumerable<Subgroup> subgroups = UnitOfWork.Subgroups.GetAll("where \"Код_группы\"=" + group_id);
             return View(subgroups);
         }
-        public ActionResult AddSubgroup(int speciality_code, string faculty_name, string speciality_name, int group_code, int group_number)
+        public ActionResult AddSubgroup(int group_id)
         {
-            //Subgroup subgroup = new Subgroup { speciality_number = speciality_code, faculty_name = faculty_name, speciality_name = speciality_name, id = group_code, group_number=group_number };
-            return View();
+            Group group = UnitOfWork.Groups.Get(group_id);
+            Subgroup subgroup = new Subgroup 
+            {
+                speciality_number = group.speciality_number,
+                faculty_name = group.faculty_name,
+                speciality_name = group.speciality_name,
+                group_id = group.id,
+                group_number = group.group_number,
+                coors=group.coors
+            };
+            return View(subgroup);
         }
         [HttpPost]
         public ActionResult AddSubgroup(Subgroup subgroup)
         {
             try
             {
-                AdminRequestHelper.AddSubgroup(subgroup);
-                List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(subgroup.id);
-                return View("Subgroups", subgroups);
+                UnitOfWork.Subgroups.Create(subgroup);
+                return RedirectToAction("Subgroups", new { group_id = subgroup.group_id });
             }
             catch
             {
@@ -305,18 +309,9 @@ namespace ElectronDecanat.Controllers
             }
 
         }
-        public ActionResult DeleteSubgroup(int speciality_code, string faculty_name, string speciality_name, int group_number, int year, int group_code, int subgroup_number)
+        public ActionResult DeleteSubgroup(int id)
         {
-            Subgroup subgroup = new Subgroup 
-            { 
-                id = speciality_code,
-                faculty_name = faculty_name,
-                speciality_name = speciality_name,
-                group_number = group_number,
-                year = year,
-                speciality_number = group_code,
-                subgroup_number = subgroup_number, 
-            };
+            Subgroup subgroup = UnitOfWork.Subgroups.Get(id);
             return View(subgroup);
         }
         [HttpPost]
@@ -324,14 +319,8 @@ namespace ElectronDecanat.Controllers
         {
             try
             {
-                AdminRequestHelper.DeleteSubgroup(subgroup);
-                List<Subgroup> subgroups = AdminRequestHelper.getSubgroups(subgroup.id);
-                ViewBag.faculty_name = subgroup.faculty_name;
-                ViewBag.speciality_code = subgroup.subgroup_number;
-                ViewBag.group_number = subgroup.group_number;
-                ViewBag.year = subgroup.year;
-                ViewBag.group_code = subgroup.id;
-                return View("Subgroups", subgroups);
+                UnitOfWork.Subgroups.Delete(subgroup.id);
+                return RedirectToAction("Subgroups", new { group_id = subgroup.group_id });
             }
             catch (Exception)
             {

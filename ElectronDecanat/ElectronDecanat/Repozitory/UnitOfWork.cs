@@ -43,5 +43,23 @@ namespace ElectronDecanat.Repozitory
                 return groups;
             }
         }
+        private static SubgroupRepozitory subgroups;
+        public static SubgroupRepozitory Subgroups
+        {
+            get
+            {
+                if (subgroups == null) subgroups = new SubgroupRepozitory();
+                return subgroups;
+            }
+        }
+        private static StudentRepozitory students;
+        public static StudentRepozitory Students
+        {
+            get
+            {
+                if (students == null) students = new StudentRepozitory();
+                return students;
+            }
+        }
     }
 }
