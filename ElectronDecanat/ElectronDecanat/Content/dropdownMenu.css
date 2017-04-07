@@ -43,7 +43,7 @@ ul.nav > li:hover > ul.dropdown-menu{
     display:block;
 }
 
-h2{
-    color:white;
-    text-align:center;
+.dataTables_wrapper
+{
+    margin-top: 20px;
 }

@@ -1,7 +1,7 @@
 
 
 set serveroutput on;
-delete from "Преподаватель" where "ФИО"='Смелов'
+
 select * from "Преподаватель"
 select * from "Лабораторные";
 delete from "Лабораторные";
@@ -16,6 +16,8 @@ exec LOAD_LABS(22);
 select * from LABS_DISCIPLINE;
 select * from LABS_DISCIPLINE where "Наименование_дисциплины" = 'Программирование в Интернет' AND "Имя_специальности"= 'Информационные системы и технологии (издательско-полиграфический комплекс)'
 
+exec ADD_WORK(,,437)
+select * from DISCIPLINE_LIST
 
 select STUDENT_DISCIPLINE."Код_дисциплины","Преподаватель","Код_студента",
         "Название_лабораторной" from STUDENT_DISCIPLINE,"Лабораторные" 

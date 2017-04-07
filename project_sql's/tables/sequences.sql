@@ -6,3 +6,4 @@ CREATE sequence "Лабораторные_SEQ";
 CREATE sequence "Студенты_SEQ";
 CREATE sequence "Подгруппы_SEQ";
 CREATE sequence "Группы_SEQ";
+CREATE sequence "Нагрузка_преподавателя_SEQ";

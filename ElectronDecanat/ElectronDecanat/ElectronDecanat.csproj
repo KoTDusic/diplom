@@ -165,7 +165,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Code\AdminRequestHelper.cs" />
     <Compile Include="Code\Discipline.cs" />
     <Compile Include="Code\Faculty.cs" />
     <Compile Include="Code\Group.cs" />
@@ -181,6 +180,7 @@
     <Compile Include="Code\TeacherRequestHelper.cs" />
     <Compile Include="Code\SingltoneConnection.cs" />
     <Compile Include="Code\TeacherWork.cs" />
+    <Compile Include="Code\Work.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -195,6 +195,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repozitory\DisciplineRepozitory.cs" />
+    <Compile Include="Repozitory\WorkRepository.cs" />
     <Compile Include="Repozitory\FacultiesRepository.cs" />
     <Compile Include="Repozitory\GroupRepozitory.cs" />
     <Compile Include="Repozitory\IRepository.cs" />
@@ -294,6 +295,10 @@
     <Content Include="Views\Admin\DeleteGroup.cshtml" />
     <Content Include="Views\Admin\AddSubgroup.cshtml" />
     <Content Include="Views\Admin\DeleteSubgroup.cshtml" />
+    <Content Include="Views\Admin\Students.cshtml" />
+    <Content Include="Views\Admin\AddStudent.cshtml" />
+    <Content Include="Views\Admin\DeleteStudent.cshtml" />
+    <Content Include="Views\Admin\EditStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

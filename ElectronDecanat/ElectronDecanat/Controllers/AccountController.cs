@@ -166,31 +166,33 @@ namespace ElectronDecanat.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                switch(user.UserName)
-                {
-                    case "ADMIN":
-                        await UserManager.AddToRoleAsync(user.Id, "admin");
-                        break;
-                    default: await UserManager.AddToRoleAsync(user.Id, "teacher");
-                        break;
-                }
-                
                 if (result.Succeeded)
                 {
                     string id = user.Id;
-                    if (TeacherRequestHelper.RegistrationTeacher(user.UserName, user.Id))
+                    switch (user.UserName)
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        // Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см. по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
-                        // Отправка сообщения электронной почты с этой ссылкой
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // await UserManager.SendEmailAsync(user.Id, "Подтверждение учетной записи", "Подтвердите вашу учетную запись, щелкнув <a href=\"" + callbackUrl + "\">здесь</a>");
+                        case "ADMIN":
+                            await UserManager.AddToRoleAsync(user.Id, "admin");
+                            if (TeacherRequestHelper.RegistrationTeacher(user.UserName, user.Id))
+                            {
+                                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                                // Дополнительные сведения о том, как включить подтверждение учетной записи и сброс пароля, см. по адресу: http://go.microsoft.com/fwlink/?LinkID=320771
+                                // Отправка сообщения электронной почты с этой ссылкой
+                                // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                                // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                                // await UserManager.SendEmailAsync(user.Id, "Подтверждение учетной записи", "Подтвердите вашу учетную запись, щелкнув <a href=\"" + callbackUrl + "\">здесь</a>");
+                            }
+                            else
+                            {
+                                UserManager.Delete(user);
+                            }
+                            break;
+                        default: 
+                            await UserManager.AddToRoleAsync(user.Id, "teacher");
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            break;
                     }
-                    else
-                    {
-                        UserManager.Delete(user);
-                    }
+                    
                     switch (user.UserName)
                     {
                         case "ADMIN": return RedirectToAction("Index", "Main");
