@@ -61,5 +61,14 @@ namespace ElectronDecanat.Repozitory
                 return students;
             }
         }
+        private static WorkRepository works;
+        public static WorkRepository Works
+        {
+            get
+            {
+                if (works == null) works = new WorkRepository();
+                return works;
+            }
+        }
     }
 }

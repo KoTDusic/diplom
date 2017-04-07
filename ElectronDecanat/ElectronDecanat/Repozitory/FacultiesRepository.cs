@@ -17,6 +17,7 @@ namespace ElectronDecanat.Repozitory
             {
                 command.CommandType = CommandType.Text;
                 command.CommandText = "select * from FACULTY_LIST";
+                if (querry != null) command.CommandText += " " + querry;
                 using (OracleDataReader reader = command.ExecuteReader())
                 {
                     List<Faculty> facultys = new List<Faculty>();

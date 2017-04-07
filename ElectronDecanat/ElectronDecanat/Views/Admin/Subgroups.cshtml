@@ -13,6 +13,7 @@
                 <th>Подгруппа</th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,9 @@
                         <td>@Model[i].subgroup_number</td>
                         <td class="clicable" onclick="this.getElementsByTagName('a')[0].click()">
                             @Html.ActionLink("Подробнее(" + @Model[i].peoples_count + ")", "Students", new { subgroup_id = Model[i].id })
+                        </td>
+                        <td class="clicable" onclick="this.getElementsByTagName('a')[0].click()">
+                            @Html.ActionLink("Редактирование нагрузки", "Works", new { subgroup_id = Model[i].id })
                         </td>
                         <td class="clicable" onclick="this.getElementsByTagName('a')[0].click()">
                             @Html.ActionLink("Удалить", "DeleteSubgroup", new {id=Model[i].id})

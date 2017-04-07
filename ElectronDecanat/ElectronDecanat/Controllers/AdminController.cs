@@ -232,6 +232,7 @@ namespace ElectronDecanat.Controllers
             ViewBag.faculty=speciality.faculty_name;
             ViewBag.speciality_name=speciality.speciality_name;
             ViewBag.speciality_number = speciality.speciality_number;
+            ViewBag.speciality_id = speciality.id;
             return View(UnitOfWork.Groups.GetAll("where \"Код_специальности\"=" + speciality_id));
         }
         public ActionResult AddGroup(int speciality_id)
@@ -424,6 +425,68 @@ namespace ElectronDecanat.Controllers
             {
                 ModelState.AddModelError("FIO", "ошибка удаления студента");
                 return View(student);
+            }
+        }
+        #endregion
+        #region WORKS
+        public ActionResult Works(int subgroup_id)
+        {
+            Subgroup subgroup = UnitOfWork.Subgroups.Get(subgroup_id);
+            ViewBag.speciality_name = subgroup.speciality_name;
+            ViewBag.speciality_number = subgroup.speciality_number;
+            ViewBag.coors = subgroup.coors;
+            ViewBag.group_number = subgroup.group_number;
+            ViewBag.subgroup_number = subgroup.subgroup_number;
+            ViewBag.subgroup_id = subgroup.id;
+            ViewBag.group_id = subgroup.group_id;
+            return View(UnitOfWork.Works.GetAll("where \"Код_подгруппы\"=" + subgroup_id));
+        }
+        public ActionResult AddWork(int subgroup_id)
+        {
+            Subgroup subgroup = UnitOfWork.Subgroups.Get(subgroup_id);
+            Work work = new Work
+            {
+                faculty_name = subgroup.faculty_name,
+                speciality_name = subgroup.speciality_name,
+                subgroup_id=subgroup.id,
+                group_number=subgroup.group_number,
+                subgroup_number=subgroup.subgroup_number,
+                coors=subgroup.coors
+            };
+            return View(work);
+        }
+        [HttpPost]
+        public ActionResult AddWork(Work work)
+        {
+            try
+            {
+                UnitOfWork.Works.Create(work);
+                return RedirectToAction("Subgroups", new { group_id = work.group_id });
+            }
+            catch
+            {
+                ModelState.AddModelError("subgroup_number", "ошибка добавления, возможно такая группа уже есть?");
+                return View(subgroup);
+            }
+
+        }
+        public ActionResult DeleteWork(int id)
+        {
+            Subgroup subgroup = UnitOfWork.Subgroups.Get(id);
+            return View(subgroup);
+        }
+        [HttpPost]
+        public ActionResult DeleteWork(Work work)
+        {
+            try
+            {
+                UnitOfWork.Subgroups.Delete(work.id);
+                return RedirectToAction("Works", new { subgroup_id = work.subgroup_id });
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("discipline_name", "ошибка удаления, данная подгруппа не пуста");
+                return View(work);
             }
         }
         #endregion
