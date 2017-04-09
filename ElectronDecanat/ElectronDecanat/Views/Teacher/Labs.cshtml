@@ -8,9 +8,7 @@
             <tr>
                 <th>Дисциплина</th>
                 <th>Студент</th>
-                <th>Курс</th>
-                <th>Группа</th>
-                <th>Подгруппа</th>
+                <th>Курс-группа-подгруппа</th>
                 <th>Лабораторная</th>
                 <th>Статус</th>
             </tr>
@@ -24,9 +22,7 @@
                     <tr>
                         <td>@Model[i].disciplineName</td>
                         <td>@Model[i].studentName</td>
-                        <td>@Model[i].coors</td>
-                        <td>@Model[i].groupNumber</td>
-                        <td>@Model[i].subgroopNumber</td>
+                        <td>@Model[i].coors-@Model[i].groupNumber-@Model[i].subgroopNumber</td>
                         <td>@Model[i].labName</td>
                         <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink(status, "ChangeLabStatus",
                         new 

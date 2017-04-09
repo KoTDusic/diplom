@@ -37,7 +37,9 @@ namespace ElectronDecanat.Repozitory
                             subgroup_number = Convert.ToInt32(reader["Номер_подгруппы"].ToString()),
                             subgroup_id = Convert.ToInt32(reader["Код_подгруппы"].ToString()),
                             faculty_name = reader["Название_факультета"].ToString(),
-                            speciality_number = Convert.ToInt32(reader["Номер_специальности"].ToString())
+                            speciality_number = Convert.ToInt32(reader["Номер_специальности"].ToString()),
+                            group_id = Convert.ToInt32(reader["Код_группы"].ToString()),
+                            speciality_id = Convert.ToInt32(reader["Код_специальности"].ToString())
                         });
                     }
                     return works;
@@ -61,7 +63,8 @@ namespace ElectronDecanat.Repozitory
                 command.Parameters.Add(id_param);
                 using (OracleDataReader reader = command.ExecuteReader())
                 {
-                    Work work = new Work
+                    reader.Read();
+                    Work work = new Work 
                         {
                             id = Convert.ToInt32(reader["Код_нагрузки"].ToString()),
                             teacher_id = reader["Код_преподавателя"].ToString(),
@@ -74,7 +77,9 @@ namespace ElectronDecanat.Repozitory
                             subgroup_number = Convert.ToInt32(reader["Номер_подгруппы"].ToString()),
                             subgroup_id = Convert.ToInt32(reader["Код_подгруппы"].ToString()),
                             faculty_name = reader["Название_факультета"].ToString(),
-                            speciality_number = Convert.ToInt32(reader["Номер_специальности"].ToString())
+                            speciality_number = Convert.ToInt32(reader["Номер_специальности"].ToString()),
+                            group_id = Convert.ToInt32(reader["Код_группы"].ToString()),
+                            speciality_id = Convert.ToInt32(reader["Код_специальности"].ToString())
                         };
                     return work;
                 }
@@ -107,7 +112,7 @@ namespace ElectronDecanat.Repozitory
                     ParameterName = "discipline_code",
                     Direction = ParameterDirection.Input,
                     OracleDbType = OracleDbType.Varchar2,
-                    Value = item.subgroup_id
+                    Value = item.discipline_id
                 };
                 command.Parameters.Add(subgroup_id_param);
                 command.Parameters.Add(teacher_id_param);

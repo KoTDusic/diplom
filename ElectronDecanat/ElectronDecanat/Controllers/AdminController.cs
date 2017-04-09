@@ -5,12 +5,31 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ElectronDecanat.Repozitory;
+using ElectronDecanat.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ElectronDecanat.Controllers
 {
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
+        private string ParseOracleError(string error)
+        {
+            return error.Split(':').ElementAt(1).Split('O').ElementAt(0);
+        }
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
         #region FACULTY
         public ActionResult Facultes()
         {
@@ -444,16 +463,20 @@ namespace ElectronDecanat.Controllers
         public ActionResult AddWork(int subgroup_id)
         {
             Subgroup subgroup = UnitOfWork.Subgroups.Get(subgroup_id);
-            Work work = new Work
+            NewWork workload=new NewWork();
+            workload.work = new Work
             {
                 faculty_name = subgroup.faculty_name,
                 speciality_name = subgroup.speciality_name,
+                speciality_number=subgroup.speciality_number,
                 subgroup_id=subgroup.id,
                 group_number=subgroup.group_number,
                 subgroup_number=subgroup.subgroup_number,
                 coors=subgroup.coors
             };
-            return View(work);
+            workload.teachers = UnitOfWork.Works.GetTeachers();
+            workload.disciplines = UnitOfWork.Works.GetDisciplinesFromSpecialityId(subgroup.speciality_id);
+            return View(workload);
         }
         [HttpPost]
         public ActionResult AddWork(Work work)
@@ -461,32 +484,80 @@ namespace ElectronDecanat.Controllers
             try
             {
                 UnitOfWork.Works.Create(work);
-                return RedirectToAction("Subgroups", new { group_id = work.group_id });
+                return RedirectToAction("Works", new { subgroup_id = work.subgroup_id });
             }
-            catch
+            catch(Exception e)
             {
-                ModelState.AddModelError("subgroup_number", "ошибка добавления, возможно такая группа уже есть?");
-                return View(subgroup);
+                ModelState.AddModelError("error", ParseOracleError(e.Message));
+                NewWork workload = new NewWork();
+                workload.work = work;
+                workload.teachers = UnitOfWork.Works.GetTeachers();
+                workload.disciplines = UnitOfWork.Works.GetDisciplinesFromSpecialityId(work.speciality_id);
+                return View(workload);
             }
 
         }
         public ActionResult DeleteWork(int id)
         {
-            Subgroup subgroup = UnitOfWork.Subgroups.Get(id);
-            return View(subgroup);
+            Work work = UnitOfWork.Works.Get(id);
+            return View(work);
         }
         [HttpPost]
         public ActionResult DeleteWork(Work work)
         {
             try
             {
-                UnitOfWork.Subgroups.Delete(work.id);
+                UnitOfWork.Works.Delete(work.id);
                 return RedirectToAction("Works", new { subgroup_id = work.subgroup_id });
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                ModelState.AddModelError("discipline_name", "ошибка удаления, данная подгруппа не пуста");
+                ModelState.AddModelError("error", ParseOracleError(e.Message));
                 return View(work);
+            }
+        }
+        #endregion
+        #region TEACHERS
+        public ActionResult Teachers()
+        {
+            return View(UnitOfWork.Teachers.GetAll(UserManager));
+        }
+        public ActionResult EditTeacher(string id)
+        {
+            NewTeacher student = UnitOfWork.Teachers.Get(UserManager,id);
+            return View(student);
+        }
+        [HttpPost]
+        public ActionResult EditTeacher(NewTeacher teacher)
+        {
+            try
+            {
+                UnitOfWork.Teachers.Update(UserManager,teacher);
+                return RedirectToAction("Teachers");
+            }
+            catch
+            {
+                ModelState.AddModelError("new_username", "ошибка переименования");
+                return View(teacher);
+            }
+        }
+        public ActionResult DeleteTeacher(string id)
+        {
+            Teacher teacher = UnitOfWork.Teachers.Get(UserManager,id);
+            return View(teacher);
+        }
+        [HttpPost]
+        public ActionResult DeleteTeacher(Teacher teacher)
+        {
+            try
+            {
+                UnitOfWork.Teachers.Delete(UserManager,teacher);
+                return RedirectToAction("Teachers");
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("error", ParseOracleError(e.Message));
+                return View(teacher);
             }
         }
         #endregion

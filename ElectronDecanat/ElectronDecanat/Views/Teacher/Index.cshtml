@@ -1,4 +1,5 @@
 ﻿@using ElectronDecanat.Code;
+@model List<TeacherWork>
 @{
     ViewBag.Title = "Преподаватель";
 }
@@ -8,12 +9,8 @@
             <tr>
                 <th>Преподаватель</th>
                 <th>Специальность</th>
-                <!--<th>Код специальности</th>-->
                 <th>Дисциплина</th>
-                <th>Курс</th>
-                <!--<th>Год_поступления</th>-->
-                <th>Группа</th>
-                <th>Подгруппа</th>
+                <th>Курс-группа-подгруппа</th>
                 <th></th>
             </tr>
         </thead>
@@ -23,15 +20,11 @@
                 {
 
                     <tr>
-                        <td>@Model[i].teacherName</td>
-                        <td>@Model[i].specialityName</td>
-                        <!--<td>Model[i].specialityCode</td>-->
-                        <td>@Model[i].disciplineName</td>
-                        <td>@Model[i].coors</td>
-                        <!--<td>Model[i].year</td>-->
-                        <td>@Model[i].groupNumber</td>
-                        <td>@Model[i].subgroopNumber</td>
-                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Подробнее", "Labs", new { discipline = Model[i].disciplineName })</td>
+                        <td>@Model[i].teacher_name</td>
+                        <td>@Model[i].speciality_name (@Model[i].speciality_code)</td>
+                        <td>@Model[i].discipline_name</td>
+                        <td>@Model[i].coors-@Model[i].group_number-@Model[i].subgroop_number</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Подробнее", "Labs", new { discipline = Model[i].discipline_name })</td>
                     </tr>
                 }
             }

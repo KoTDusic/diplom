@@ -70,5 +70,14 @@ namespace ElectronDecanat.Repozitory
                 return works;
             }
         }
+        private static TeacherRepozitory teachers;
+        public static TeacherRepozitory Teachers
+        {
+            get
+            {
+                if (teachers == null) teachers = new TeacherRepozitory();
+                return teachers;
+            }
+        }
     }
 }

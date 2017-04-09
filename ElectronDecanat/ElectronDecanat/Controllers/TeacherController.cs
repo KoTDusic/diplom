@@ -24,7 +24,7 @@ namespace ElectronDecanat.Controllers
         public ActionResult Labs(string discipline )
         {
             string name=User.Identity.GetUserName();
-            List<LabProgress> array = TeacherRequestHelper.getPeopleLabList(new TeacherWork { teacherName = name, disciplineName = discipline });
+            List<LabProgress> array = TeacherRequestHelper.getPeopleLabList(new TeacherWork { teacher_name = name, discipline_name = discipline });
             return View(array);
         }
         
@@ -119,7 +119,7 @@ namespace ElectronDecanat.Controllers
         {
             string name = User.Identity.GetUserName();
             TeacherRequestHelper.UpdateLab(item);
-            List<LabProgress> array = TeacherRequestHelper.getPeopleLabList(new TeacherWork { teacherName = name, disciplineName = item.disciplineName });
+            List<LabProgress> array = TeacherRequestHelper.getPeopleLabList(new TeacherWork { teacher_name = name, discipline_name = item.disciplineName });
             return View("Labs", array);
         }
     }

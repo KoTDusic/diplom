@@ -24,5 +24,6 @@
 @procedures/EDIT_SPECIALITIS.sql
 @procedures/EDIT_DISCIPLINE.sql
 @procedures/EDIT_STUDENT.sql
+@procedures/EDIT_TEACHER.sql
 
 @functions/GET_KOORS_BY_YEAR.sql

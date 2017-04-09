@@ -193,22 +193,21 @@ namespace ElectronDecanat.Code
                 using(OracleDataReader reader = command.ExecuteReader())
                 {
                     List<TeacherWork> result=new List<TeacherWork>();
-                    TeacherWork element;
                     while (reader.Read())
                     {
-                        element=new TeacherWork();
-                        //, , , , 
-                        element.teacherName = reader["Преподаватель"].ToString();
-                        element.specialityCode = reader["Код_специальности"].ToString();
-                        element.specialityName = reader["Имя_специальности"].ToString();
-                        element.disciplineName = reader["Наименование_дисциплины"].ToString();
-                        element.coors = Convert.ToInt32(reader["Курс"]);
-                        element.year = Convert.ToInt32(reader["Год_поступления"]);
-                        element.groupNumber = Convert.ToInt32(reader["Номер_группы"]);
-                        element.subgroopNumber = Convert.ToInt32(reader["Номер_подгруппы"]);
-                        element.subgroopCode = Convert.ToInt32(reader["Код_подгруппы"]);
-                        element.coors = Convert.ToInt32(reader["Номер_подгруппы"]);
-                        result.Add(element);
+                        result.Add(new TeacherWork
+                        {
+                            teacher_name = reader["Преподаватель"].ToString(),
+                            speciality_id = Convert.ToInt32(reader["Код_специальности"].ToString()),
+                            speciality_code = reader["Номер_специальности"].ToString(),
+                            speciality_name = reader["Имя_специальности"].ToString(),
+                            discipline_name = reader["Наименование_дисциплины"].ToString(),
+                            coors = Convert.ToInt32(reader["Курс"]),
+                            year = Convert.ToInt32(reader["Год_поступления"]),
+                            group_number = Convert.ToInt32(reader["Номер_группы"]),
+                            subgroop_number = Convert.ToInt32(reader["Номер_подгруппы"]),
+                            subgroop_code = Convert.ToInt32(reader["Код_подгруппы"])
+                        });
                     }
                     return result;
                 }
@@ -227,14 +226,14 @@ namespace ElectronDecanat.Code
                     ParameterName = "teacher",
                     Direction = ParameterDirection.Input,
                     OracleDbType = OracleDbType.Varchar2,
-                    Value = user.teacherName
+                    Value = user.teacher_name
                 });
                 parametrs.Add(new OracleParameter()
                 {
                     ParameterName = "discipline",
                     Direction = ParameterDirection.Input,
                     OracleDbType = OracleDbType.Varchar2,
-                    Value = user.disciplineName
+                    Value = user.discipline_name
                 });
                 if(for_subgroup)
                 {
@@ -244,7 +243,7 @@ namespace ElectronDecanat.Code
                         ParameterName = "group_code",
                         Direction = ParameterDirection.Input,
                         OracleDbType = OracleDbType.Varchar2,
-                        Value = user.subgroopCode
+                        Value = user.subgroop_code
                     });
                 }
                 command.Parameters.AddRange(parametrs.ToArray());
@@ -279,7 +278,7 @@ namespace ElectronDecanat.Code
             using (OracleCommand command = connection.CreateCommand())
             {
                 command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "ADD_TEACHER";// WHERE AGES < :max_ages;";
+                command.CommandText = "ADD_TEACHER";
                 OracleParameter fio_oracle = new OracleParameter()
                 {
                   ParameterName = "fio",
@@ -314,8 +313,7 @@ namespace ElectronDecanat.Code
             using (OracleCommand command = connection.CreateCommand())
             {
                 command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "SET_PROGRESS";// WHERE AGES < :max_ages;";
-                //discipline_code teacher_name student_code lab_name status
+                command.CommandText = "SET_PROGRESS";
                 OracleParameter discipline_code = new OracleParameter()
                 {
                     ParameterName = "discipline_code",
