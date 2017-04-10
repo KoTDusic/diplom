@@ -130,7 +130,7 @@ namespace ElectronDecanat.Controllers
         }
         public ActionResult EditSpeciality(int id)
         {
-            NewSpeciality speciality = new NewSpeciality(UnitOfWork.Specialitys.Get(id));
+            NewSpeciality speciality = UnitOfWork.Specialitys.Get(id);
             speciality.new_speciality_number = speciality.speciality_number;
             speciality.new_speciality_name = speciality.speciality_name;
             return View(speciality);

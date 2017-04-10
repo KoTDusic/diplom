@@ -5,3 +5,5 @@ drop sequence "Лабораторные_SEQ";
 drop sequence "Студенты_SEQ";
 drop sequence "Подгруппы_SEQ";
 drop sequence "Группы_SEQ";
+drop sequence "Нагрузка_преподавателя_SEQ";
+drop sequence "Успеваемость_SEQ";

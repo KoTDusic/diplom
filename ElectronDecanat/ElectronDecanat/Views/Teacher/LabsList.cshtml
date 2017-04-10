@@ -16,9 +16,9 @@
                 for (int i = 0; i < Model.Count; i++)
                 {
                     <tr>
-                        <td>@Model[i].specialityName</td>
-                        <td>@Model[i].disciplineName</td>
-                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Перейти к лабораторным", "LabsOnDisciplineList", new { discipline = Model[i].disciplineName, speciality = Model[i].specialityName })</td>
+                        <td>@Model[i].speciality_name</td>
+                        <td>@Model[i].discipline_name</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Перейти к лабораторным", "LabsOnDisciplineList", new { discipline_id = Model[i].id })</td>
                     </tr>
                 }
             }

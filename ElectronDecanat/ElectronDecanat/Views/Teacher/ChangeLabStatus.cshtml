@@ -1,7 +1,7 @@
 ﻿@model ElectronDecanat.Code.LabProgress
 @{
     ViewBag.Title = "Зачёт лабораторной работы";
-    string disc=Model.disciplineName;
+    string disc=Model.discipline_name;
 }
 <h2>Зачёт лабораторной работы</h2>
 @using (Html.BeginForm())
@@ -9,47 +9,42 @@
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
         <div class="form-group">
-            @Html.LabelFor(model => model.teacherName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.teacher_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.teacherName, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.teacherName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.teacher_name, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.teacher_name, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.disciplineName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.discipline_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.disciplineName, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.disciplineName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.discipline_name, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.discipline_name, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.studentName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.student_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.studentName, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.studentName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.student_name, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.student_name, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.labName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.lab_name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.labName, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.labName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.lab_name, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.lab_name, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.labStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.lab_status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => Model.labStatus, // 1. Store selected value in Model.State;
-        // 2. Take list of values from Model.States
-                                        Model.Statuses,
-        // 3. Text for the first 'default' option
-                                               "Выберите статус...",
-        //4. A class name to assign to <select> tag
-                                              new { @class = "form-control" })
+                @Html.DropDownListFor(model => Model.lab_status, Model.Statuses,"Выберите статус...",new { @class = "form-control" })
                 </div>
             </div>
-        @Html.HiddenFor(model => model.disciplineCode)
-        @Html.HiddenFor(model => model.studentCode)
+        @Html.HiddenFor(model => model.discipline_id)
+        @Html.HiddenFor(model => model.student_id)
+        @Html.HiddenFor(model => model.teacher_id)
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Сохранить" class="btn btn-default" />
@@ -59,7 +54,7 @@
 }
 
 <div>
-    @Html.ActionLink("Назад", "Labs", new { discipline = disc })
+    @Html.ActionLink("Назад", "Labs", new { discipline_id = Model.discipline_id })
 </div>
 
 @section Scripts {

@@ -6,6 +6,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.discipline_id)
     <div class="form-horizontal">
         <div class="form-group">
             @Html.LabelFor(model => model.speciality, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -22,10 +23,10 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.oldLabName, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.lab_name, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.oldLabName, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.oldLabName, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.lab_name, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.lab_name, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">

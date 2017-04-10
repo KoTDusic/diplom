@@ -1,26 +1,21 @@
 --Добавление дисциплины  на специальность
 create or replace procedure ADD_LAB(
-speciality_name "Специальность"."Имя_специальности"%TYPE,
-discipline_name "Дисциплина"."Наименование_дисциплины"%TYPE,
+discipline_id "Дисциплина"."Код_дисциплины"%TYPE,
 lab_name "Лабораторные"."Название_лабораторной"%TYPE)
 is 
 valid integer;
 kod integer;
 subgroup_kod integer;
-CURSOR get_subgroups IS select "Код_подгруппы" from "Нагрузка_преподавателя" where "Код_дисциплины"=kod;
+CURSOR get_subgroups IS select "Код_подгруппы" from "Нагрузка_преподавателя" where "Код_дисциплины"=discipline_id;
 begin
-if (discipline_name IS NULL OR lab_name IS NULL) then
+if (discipline_id IS NULL OR lab_name IS NULL) then
 raise_application_error(-20001,'Неверные значения');
 end if;
-select "Код_дисциплины" into kod from "Специальность","Дисциплина" 
-where "Специальность"."Код_специальности"="Дисциплина"."Код_специальности"
-AND "Дисциплина"."Наименование_дисциплины"=discipline_name
-AND "Специальность"."Имя_специальности"=speciality_name;
-select count(*) into valid from "Лабораторные" where "Код_дисциплины"=kod AND "Название_лабораторной"=lab_name;
+select count(*) into valid from "Лабораторные" where "Код_дисциплины"=discipline_id AND "Название_лабораторной"=lab_name;
 if valid=0 then
-DBMS_OUTPUT.PUT_LINE(kod||'  '||lab_name);
+DBMS_OUTPUT.PUT_LINE(discipline_id||'  '||lab_name);
 INSERT INTO "Лабораторные"("Код_дисциплины","Название_лабораторной")
-VALUES (kod, lab_name);
+VALUES (discipline_id, lab_name);
 OPEN get_subgroups;
     FETCH get_subgroups INTO subgroup_kod;
     WHILE get_subgroups%FOUND LOOP 

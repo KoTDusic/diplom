@@ -1,5 +1,5 @@
 ﻿@using ElectronDecanat.Code;
-@model List<TeacherWork>
+@model List<Work>
 @{
     ViewBag.Title = "Преподаватель";
 }
@@ -21,10 +21,10 @@
 
                     <tr>
                         <td>@Model[i].teacher_name</td>
-                        <td>@Model[i].speciality_name (@Model[i].speciality_code)</td>
+                        <td>@Model[i].speciality_name (@Model[i].speciality_number)</td>
                         <td>@Model[i].discipline_name</td>
-                        <td>@Model[i].coors-@Model[i].group_number-@Model[i].subgroop_number</td>
-                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Подробнее", "Labs", new { discipline = Model[i].discipline_name })</td>
+                        <td>@Model[i].coors-@Model[i].group_number-@Model[i].subgroup_number</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink("Подробнее", "Labs", new { discipline_id = Model[i].discipline_id })</td>
                     </tr>
                 }
             }

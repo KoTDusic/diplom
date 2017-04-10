@@ -26,6 +26,40 @@ namespace ElectronDecanat.Repozitory
             ApplicationUser user = UserManager.FindById(id);
             return new NewTeacher { id = user.Id, username = user.UserName, email = user.Email }; 
         }
+        public bool Create(string FIO, string id)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "ADD_TEACHER";
+                OracleParameter fio_oracle = new OracleParameter()
+                {
+                    ParameterName = "fio",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = FIO
+                };
+                OracleParameter id_oracle = new OracleParameter()
+                {
+                    ParameterName = "identificator",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = id
+                };
+                command.Parameters.Add(fio_oracle);
+                command.Parameters.Add(id_oracle);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
         public void Delete(ApplicationUserManager UserManager, Teacher teacher)
         {
             OracleConnection connection = SingltoneConnection.GetInstance();

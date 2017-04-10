@@ -183,7 +183,7 @@ namespace ElectronDecanat.Controllers
                             break;
                         default: 
                             await UserManager.AddToRoleAsync(user.Id, "teacher");
-                            if (TeacherRequestHelper.RegistrationTeacher(user.UserName, user.Id))
+                            if (UnitOfWork.Teachers.Create(user.UserName, user.Id))
                             {
                                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                             }
@@ -410,7 +410,7 @@ namespace ElectronDecanat.Controllers
                     if (result.Succeeded)
                     {
                         string id = user.Id;
-                        if (TeacherRequestHelper.RegistrationTeacher(user.UserName, user.Id))
+                        if (UnitOfWork.Teachers.Create(user.UserName, user.Id))
                         {
                             await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         }

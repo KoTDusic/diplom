@@ -11,25 +11,27 @@ namespace ElectronDecanat.Code
     public enum LabStatus{Complete,NotComlete,Wait,Error}
     public class LabProgress
     {
-        public int studentCode { get; set; }
-        public string specialityCode { get; set; }
+        public int id { get; set; }
+        public int student_id { get; set; }
+        public string speciality_id { get; set; }
         [Display(Name = "Дисциплина")]
-        public string disciplineName { get; set; }
-        public int disciplineCode { get; set; }
+        public string discipline_name { get; set; }
+        public int discipline_id { get; set; }
+        public string teacher_id { get; set; }
         [Display(Name = "Преподаватель")]
-        public string teacherName {get;set;}
+        public string teacher_name {get;set;}
         [Display(Name = "Студент")]
-        public string studentName { get; set; }
+        public string student_name { get; set; }
         public int coors { get; set; }
-        public int subgroopCode { get; set; }
-        public int subgroopNumber { get; set; }
-        public int groupNumber { get; set; }
+        public int subgroop_id { get; set; }
+        public int subgroop_number { get; set; }
+        public int group_number { get; set; }
         [Display(Name = "Лабораторная")]
-        public string labName { get; set; }
+        public string lab_name { get; set; }
         private LabStatus status;
         [Required]
         [Display(Name = "Статус лабораторной")]
-        public string labStatus
+        public string lab_status
         {
             get 
             {
@@ -57,14 +59,25 @@ namespace ElectronDecanat.Code
             }
         }
         public IEnumerable<SelectListItem> Statuses { get; set; }
-        public static IEnumerable<string> GetAllStatus()
+        public static List<SelectListItem> GetAllStatus()
         {
-            return new List<string>
+            List<SelectListItem> selectList = new List<SelectListItem>();
+            selectList.Add(new SelectListItem
             {
-                "Сдано",
-                "Не сдано",
-                "Проверяется"
-            };
+                Value = "Сдано",
+                Text = "Сдано"
+            });
+            selectList.Add(new SelectListItem
+            {
+                Value = "Не сдано",
+                Text = "Не сдано"
+            });
+            selectList.Add(new SelectListItem
+            {
+                Value = "Проверяется",
+                Text = "Проверяется"
+            });
+            return selectList;
         }
     }
 }

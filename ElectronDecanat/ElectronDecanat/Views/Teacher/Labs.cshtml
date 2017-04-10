@@ -18,22 +18,13 @@
                 string status;
                 for (int i = 0; i < Model.Count; i++)
                 {
-                    status=Model[i].labStatus;
+                    status = Model[i].lab_status;
                     <tr>
-                        <td>@Model[i].disciplineName</td>
-                        <td>@Model[i].studentName</td>
-                        <td>@Model[i].coors-@Model[i].groupNumber-@Model[i].subgroopNumber</td>
-                        <td>@Model[i].labName</td>
-                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink(status, "ChangeLabStatus",
-                        new 
-                        {
-                            student_code = Model[i].studentCode,
-                            labName = Model[i].labName, 
-                            discipline_code = Model[i].disciplineCode, 
-                            labStatus = status,
-                            discipline = Model[i].disciplineName,
-                            student = Model[i].studentName
-                        })
+                        <td>@Model[i].discipline_name</td>
+                        <td>@Model[i].student_name</td>
+                        <td>@Model[i].coors-@Model[i].group_number-@Model[i].subgroop_number</td>
+                        <td>@Model[i].lab_name</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink(status, "ChangeLabStatus",new {id=Model[i].id})
                         </td>
                 </tr>
                 }

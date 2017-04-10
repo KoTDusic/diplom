@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ElectronDecanat.Code;
 using Microsoft.AspNet.Identity;
+using ElectronDecanat.Repozitory;
  
  
 //https://metanit.com/sharp/mvc5/12.4.php роли
@@ -18,109 +19,98 @@ namespace ElectronDecanat.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-            List<TeacherWork> array = TeacherRequestHelper.getTeacherWork(User.Identity.GetUserId());
-            return View(array);
+            return View(UnitOfWork.Works.GetAll("where \"Код_преподавателя\"='"+User.Identity.GetUserId()+"'"));
         }
-        public ActionResult Labs(string discipline )
+        public ActionResult Labs(int discipline_id )
         {
-            string name=User.Identity.GetUserName();
-            List<LabProgress> array = TeacherRequestHelper.getPeopleLabList(new TeacherWork { teacher_name = name, discipline_name = discipline });
-            return View(array);
+            return View(UnitOfWork.LabProgress.GetAll("WHERE \"Код_преподавателя\" = '" + User.Identity.GetUserId() + "' AND \"Код_дисциплины\"=" + discipline_id));
         }
-        
         public ActionResult LabsList()
         {
-            string name = User.Identity.GetUserName();
-            List<Discipline> disciplines = TeacherRequestHelper.getTeacherDisciplines(name);
+            List<Discipline> disciplines = UnitOfWork.Disciplines.getTeacherDisciplines(User.Identity.GetUserId());
             return View(disciplines);
         }
-        public ActionResult LabsOnDisciplineList(string discipline, string speciality)
+        public ActionResult LabsOnDisciplineList(int discipline_id)
         {
-            string name = User.Identity.GetUserName();
-            List<Lab> labs = TeacherRequestHelper.getLabInDiscipline(discipline, speciality);
-            ViewBag.discipline = discipline;
-            ViewBag.speciality = speciality;
-            return View(labs);
+            string name = User.Identity.GetUserId();
+            ViewBag.discipline_id = discipline_id;
+            return View(UnitOfWork.Labs.GetAll("where \"Код_дисциплины\" =" + discipline_id));
         }
-        public ActionResult AddLab(string discipline, string speciality)
+        public ActionResult AddLab(int discipline_id)
         {
-            Lab lab = new Lab();
-            lab.discipline = discipline;
-            lab.speciality = speciality;
+            Discipline discipline = UnitOfWork.Disciplines.Get(discipline_id);
+            Lab lab = new Lab()
+            {
+                discipline = discipline.discipline_name,
+                discipline_id = discipline.id,
+                speciality = discipline.speciality_name
+            };
             return View(lab);
         }
         [HttpPost]
         public ActionResult AddLab(Lab item)
         {
-            TeacherRequestHelper.AddLab(item);
-            List<Lab> labs = TeacherRequestHelper.getLabInDiscipline(item.discipline,item.speciality);
-            ViewBag.discipline = item.discipline;
-            ViewBag.speciality = item.speciality;
-            return View("LabsOnDisciplineList", labs);
+            try
+            {
+                UnitOfWork.Labs.Create(item);
+                return RedirectToAction("LabsOnDisciplineList", new { discipline_id = item.discipline_id });
+            }
+            catch
+            {
+                ModelState.AddModelError("lab_name", "ошибка добавления, возможно такая лабораторная уже есть?");
+                return View(item);
+            }
         }
-        public ActionResult DeleteLab(string discipline, string speciality, string lab_name)
+        public ActionResult DeleteLab(int id)
         {
-            Lab lab = new Lab() { discipline = discipline, oldLabName = lab_name, speciality = speciality };
+            Lab lab = UnitOfWork.Labs.Get(id);
             return View(lab);
         }
         [HttpPost]
         public ActionResult DeleteLab(Lab item)
         {
-            TeacherRequestHelper.RemoveLab(item);
-            List<Lab> labs = TeacherRequestHelper.getLabInDiscipline(item.discipline,item.speciality);
-            ViewBag.discipline = item.discipline;
-            ViewBag.speciality = item.speciality;
-            return View("LabsOnDisciplineList", labs);
+            try
+            {
+                UnitOfWork.Labs.Delete(item.id);
+                return RedirectToAction("LabsOnDisciplineList", new { discipline_id = item.discipline_id });
+            }
+            catch
+            {
+                ModelState.AddModelError("lab_name", "ошибка удаления");
+                return View(item);
+            }
         }
-        public ActionResult EditLab(string discipline, string speciality, string lab_name)
+        public ActionResult EditLab(int id)
         {
-            Lab lab = new Lab { discipline = discipline, oldLabName = lab_name, speciality = speciality };
+            NewLab lab = UnitOfWork.Labs.Get(id);
             return View(lab);
         }
         [HttpPost]
-        public ActionResult EditLab(Lab item)
+        public ActionResult EditLab(NewLab item)
         {
-            if (item.newLabName != null)
+            try
             {
-                TeacherRequestHelper.EditLab(item);
+                UnitOfWork.Labs.Update(item);
+                return RedirectToAction("LabsOnDisciplineList", new { discipline_id = item.discipline_id });
             }
-            ViewBag.discipline = item.discipline;
-            ViewBag.speciality = item.speciality;
-            List<Lab> labs = TeacherRequestHelper.getLabInDiscipline(item.discipline, item.speciality);
-            return View("LabsOnDisciplineList", labs);
+            catch
+            {
+                ModelState.AddModelError("lab_name", "ошибка редактирования");
+                return View(item);
+            }
         }
-        public ActionResult ChangeLabStatus(int student_code, string discipline, string student, string labName, int discipline_code, string labStatus)
+        public ActionResult ChangeLabStatus(int id)
         {
-            var selectList = new List<SelectListItem>();
-            foreach (var element in LabProgress.GetAllStatus())
-            {
-                selectList.Add(new SelectListItem
-                {
-                    Value = element,
-                    Text = element
-                });
-            }
-            string name = User.Identity.GetUserName();
-            LabProgress lab = new LabProgress
-            {
-                studentCode = student_code,
-                labName = labName,
-                disciplineCode = discipline_code,
-                disciplineName=discipline,
-                studentName=student,
-                teacherName = name,
-                Statuses = selectList,
-                labStatus = labStatus
-            };
-            return View(lab);
+            LabProgress lab_progress  = UnitOfWork.LabProgress.Get(id);
+            lab_progress.Statuses = LabProgress.GetAllStatus();
+            return View(lab_progress);
         }
         [HttpPost]
         public ActionResult ChangeLabStatus(LabProgress item)
         {
-            string name = User.Identity.GetUserName();
-            TeacherRequestHelper.UpdateLab(item);
-            List<LabProgress> array = TeacherRequestHelper.getPeopleLabList(new TeacherWork { teacher_name = name, discipline_name = item.disciplineName });
-            return View("Labs", array);
+            string id = User.Identity.GetUserId();
+            UnitOfWork.LabProgress.Update(item);
+            return RedirectToAction("Labs", new { discipline_id = item.discipline_id });
         }
     }
 }

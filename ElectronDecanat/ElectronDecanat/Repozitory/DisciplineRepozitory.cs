@@ -144,5 +144,36 @@ namespace ElectronDecanat.Repozitory
                 command.ExecuteNonQuery();
             }
         }
+        public List<Discipline> getTeacherDisciplines(string id)
+        {
+            OracleConnection connection = SingltoneConnection.GetInstance();
+            using (OracleCommand command = connection.CreateCommand())
+            {
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select * from \"TEACHER_DISCIPLINE\" where \"Код_преподавателя\" = :id";
+                OracleParameter id_param = new OracleParameter()
+                {
+                    ParameterName = "id",
+                    Direction = ParameterDirection.Input,
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = id
+                };
+                command.Parameters.Add(id_param);
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    List<Discipline> disciplines = new List<Discipline>();
+                    while (reader.Read())
+                    {
+                        disciplines.Add(new Discipline
+                        {
+                            discipline_name = reader["Наименование_дисциплины"].ToString(),
+                            id = Convert.ToInt32(reader["Код_дисциплины"].ToString()),
+                            speciality_name = reader["Имя_специальности"].ToString()
+                        });
+                    }
+                    return disciplines;
+                }
+            }
+        }
     }
 }

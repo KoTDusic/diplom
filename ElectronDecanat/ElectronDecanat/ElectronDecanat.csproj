@@ -172,6 +172,7 @@
     <Compile Include="Code\LabProgress.cs" />
     <Compile Include="Code\NewDiscipline.cs" />
     <Compile Include="Code\NewFaculty.cs" />
+    <Compile Include="Code\NewLab.cs" />
     <Compile Include="Code\NewSpeciality.cs" />
     <Compile Include="Code\NewStudent.cs" />
     <Compile Include="Code\NewTeacher.cs" />
@@ -180,7 +181,6 @@
     <Compile Include="Code\Student.cs" />
     <Compile Include="Code\Subgroup.cs" />
     <Compile Include="Code\Teacher.cs" />
-    <Compile Include="Code\TeacherRequestHelper.cs" />
     <Compile Include="Code\SingltoneConnection.cs" />
     <Compile Include="Code\TeacherWork.cs" />
     <Compile Include="Code\Work.cs" />
@@ -198,6 +198,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repozitory\DisciplineRepozitory.cs" />
+    <Compile Include="Repozitory\LabProgressRepozitory.cs" />
+    <Compile Include="Repozitory\LabRepozitory.cs" />
     <Compile Include="Repozitory\TeacherRepozitory.cs" />
     <Compile Include="Repozitory\WorkRepository.cs" />
     <Compile Include="Repozitory\FacultiesRepository.cs" />
