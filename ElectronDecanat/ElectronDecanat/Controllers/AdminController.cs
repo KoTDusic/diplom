@@ -1,4 +1,4 @@
-п»їusing ElectronDecanat.Code;
+using ElectronDecanat.Code;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +49,7 @@ namespace ElectronDecanat.Controllers
             }
             catch
             {
-                ModelState.AddModelError("Name", "РѕС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ, РІРѕР·РјРѕР¶РЅРѕ С‚Р°РєРѕР№ С„Р°РєСѓР»СЊС‚РµС‚ СѓР¶Рµ РµСЃС‚СЊ?");
+                ModelState.AddModelError("Name", "ошибка добавления, возможно такой факультет уже есть?");
                 return View(faculty);
             }
         }
@@ -68,7 +68,7 @@ namespace ElectronDecanat.Controllers
             }
             catch
             {
-                ModelState.AddModelError("NewName", "РќРµ СѓРґР°Р»РѕСЃСЊ РїРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ С„Р°РєСѓР»СЊС‚РµС‚, РІРѕР·РјРѕР¶РЅРѕ, С„Р°РєСѓР»СЊС‚РµС‚ СЃ С‚Р°РєРёРј РёРјРµРЅРµРј СѓР¶Рµ РµСЃС‚СЊ?");
+                ModelState.AddModelError("NewName", "Не удалось переименовать факультет, возможно, факультет с таким именем уже есть?");
                 return View(faculty);
             }
             return RedirectToAction("Facultes");
@@ -88,7 +88,7 @@ namespace ElectronDecanat.Controllers
             }
             catch(Exception)
             {
-                ModelState.AddModelError("Name", "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ СЌС‚РѕС‚ С„Р°РєСѓР»СЊС‚РµС‚, С‚Р°Рє РєР°Рє РѕРЅ РЅРµ РїСѓСЃС‚РѕР№");
+                ModelState.AddModelError("Name", "Невозможно удалить этот факультет, так как он не пустой");
             }
             if (ModelState.IsValid)
             {
@@ -105,7 +105,7 @@ namespace ElectronDecanat.Controllers
         {
             ViewBag.faculty_id = faculty_id;
             ViewBag.faculty = UnitOfWork.Faculties.Get(faculty_id).Name;
-            return View(UnitOfWork.Specialitys.GetAll("where \"РљРѕРґ_С„Р°РєСѓР»СЊС‚РµС‚Р°\"="+faculty_id));
+            return View(UnitOfWork.Specialitys.GetAll("where \"Код_факультета\"="+faculty_id));
         }
         public ActionResult AddSpeciality(int faculty_id)
         {
@@ -123,7 +123,7 @@ namespace ElectronDecanat.Controllers
             }
             catch
             {
-                ModelState.AddModelError("speciality_name", "РѕС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ, РІРѕР·РјРѕР¶РЅРѕ С‚Р°РєР°СЏ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ СѓР¶Рµ РµСЃС‚СЊ?");
+                ModelState.AddModelError("speciality_name", "ошибка добавления, возможно такая специальность уже есть?");
                 return View(speciality);
             }
             
@@ -160,7 +160,7 @@ namespace ElectronDecanat.Controllers
             }
             catch (Exception)
             {
-                ModelState.AddModelError("speciality_name", "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ СЌС‚Сѓ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ, С‚Р°Рє РєР°Рє РѕРЅР° РЅРµ РїСѓСЃС‚Р°СЏ");
+                ModelState.AddModelError("speciality_name", "Невозможно удалить эту специальность, так как она не пустая");
                 return View(speciality);
             }
         }
@@ -174,7 +174,7 @@ namespace ElectronDecanat.Controllers
             ViewBag.faculty = speciality.faculty_name;
             ViewBag.speciality_name = speciality.speciality_name;
             ViewBag.speciality_number = speciality.speciality_number;
-            return View(UnitOfWork.Disciplines.GetAll("where \"РљРѕРґ_СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё\"=" + speciality_id));
+            return View(UnitOfWork.Disciplines.GetAll("where \"Код_специальности\"=" + speciality_id));
         }
         public ActionResult AddDiscipline(int speciality_id)
         {
@@ -199,7 +199,7 @@ namespace ElectronDecanat.Controllers
             }
             catch 
             {
-                ModelState.AddModelError("discipline_name", "РѕС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ, РІРѕР·РјРѕР¶РЅРѕ С‚Р°РєР°СЏ РґРёСЃС†РёРїР»РёРЅР° СѓР¶Рµ РµСЃС‚СЊ?");
+                ModelState.AddModelError("discipline_name", "ошибка добавления, возможно такая дисциплина уже есть?");
                 return View(discipline); 
             }
 
@@ -219,7 +219,7 @@ namespace ElectronDecanat.Controllers
             }
             catch 
             {
-                ModelState.AddModelError("newDisciplineName", "РѕС€РёР±РєР° РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёСЏ, РІРѕР·РјРѕР¶РЅРѕ С‚Р°РєР°СЏ РґРёСЃС†РёРїР»РёРЅР° СѓР¶Рµ РµСЃС‚СЊ?");
+                ModelState.AddModelError("newDisciplineName", "ошибка переименования, возможно такая дисциплина уже есть?");
                 return View(discipline);
             }
         }
@@ -238,7 +238,7 @@ namespace ElectronDecanat.Controllers
             }
             catch (Exception)
             {
-                ModelState.AddModelError("discipline_name", "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ СЌС‚Сѓ РґРёСЃС†РёРїР»РёРЅСѓ, С‚Р°Рє РєР°Рє РѕРЅР° РЅРµ РїСѓСЃС‚Р°СЏ");
+                ModelState.AddModelError("discipline_name", "Невозможно удалить эту дисциплину, так как она не пустая");
                 return View(discipline);
             }
         }
@@ -252,7 +252,7 @@ namespace ElectronDecanat.Controllers
             ViewBag.speciality_name=speciality.speciality_name;
             ViewBag.speciality_number = speciality.speciality_number;
             ViewBag.speciality_id = speciality.id;
-            return View(UnitOfWork.Groups.GetAll("where \"РљРѕРґ_СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё\"=" + speciality_id));
+            return View(UnitOfWork.Groups.GetAll("where \"Код_специальности\"=" + speciality_id));
         }
         public ActionResult AddGroup(int speciality_id)
         {
@@ -276,7 +276,7 @@ namespace ElectronDecanat.Controllers
             }
             catch
             {
-                ModelState.AddModelError("group_number", "РѕС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ, РІРѕР·РјРѕР¶РЅРѕ С‚Р°РєР°СЏ РіСЂСѓРїРїР° СѓР¶Рµ РµСЃС‚СЊ?");
+                ModelState.AddModelError("group_number", "ошибка добавления, возможно такая группа уже есть?");
                 return View(group);
             }
 
@@ -295,7 +295,7 @@ namespace ElectronDecanat.Controllers
             }
             catch (Exception)
             {
-                ModelState.AddModelError("group_number", "РѕС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ, РґР°РЅРЅР°СЏ РіСЂСѓРїРїР° РЅРµ РїСѓСЃС‚Р°");
+                ModelState.AddModelError("group_number", "ошибка удаления, данная группа не пуста");
                 return View(group);
             }
         }
@@ -311,7 +311,7 @@ namespace ElectronDecanat.Controllers
             ViewBag.speciality_number = group.speciality_number;
             ViewBag.coors=group.coors;
             ViewBag.group_number = group.group_number;
-            IEnumerable<Subgroup> subgroups = UnitOfWork.Subgroups.GetAll("where \"РљРѕРґ_РіСЂСѓРїРїС‹\"=" + group_id);
+            IEnumerable<Subgroup> subgroups = UnitOfWork.Subgroups.GetAll("where \"Код_группы\"=" + group_id);
             return View(subgroups);
         }
         public ActionResult AddSubgroup(int group_id)
@@ -338,7 +338,7 @@ namespace ElectronDecanat.Controllers
             }
             catch
             {
-                ModelState.AddModelError("subgroup_number", "РѕС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ, РІРѕР·РјРѕР¶РЅРѕ С‚Р°РєР°СЏ РіСЂСѓРїРїР° СѓР¶Рµ РµСЃС‚СЊ?");
+                ModelState.AddModelError("subgroup_number", "ошибка добавления, возможно такая группа уже есть?");
                 return View(subgroup);
             }
 
@@ -358,7 +358,7 @@ namespace ElectronDecanat.Controllers
             }
             catch (Exception)
             {
-                ModelState.AddModelError("subgroup_number", "РѕС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ, РґР°РЅРЅР°СЏ РїРѕРґРіСЂСѓРїРїР° РЅРµ РїСѓСЃС‚Р°");
+                ModelState.AddModelError("subgroup_number", "ошибка удаления, данная подгруппа не пуста");
                 return View(subgroup);
             }
         }
@@ -375,7 +375,7 @@ namespace ElectronDecanat.Controllers
             ViewBag.coors = subgroup.coors;
             ViewBag.group_number = subgroup.group_number;
             ViewBag.subgroup_number = subgroup.subgroup_number;
-            IEnumerable<Subgroup> subgroups = UnitOfWork.Students.GetAll("where \"РљРѕРґ_РїРѕРґРіСЂСѓРїРїС‹\"=" + subgroup_id);
+            IEnumerable<Subgroup> subgroups = UnitOfWork.Students.GetAll("where \"Код_подгруппы\"=" + subgroup_id);
             return View(subgroups);
         }
         public ActionResult AddStudent(int subgroup_id)
@@ -403,7 +403,7 @@ namespace ElectronDecanat.Controllers
             }
             catch
             {
-                ModelState.AddModelError("FIO", "РѕС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ, РІРѕР·РјРѕР¶РЅРѕ С‚Р°РєРѕР№ СЃС‚СѓРґРµРЅС‚ СѓР¶Рµ РµСЃС‚СЊ?");
+                ModelState.AddModelError("FIO", "ошибка добавления, возможно такой студент уже есть?");
                 return View(student);
             }
 
@@ -423,7 +423,7 @@ namespace ElectronDecanat.Controllers
             }
             catch
             {
-                ModelState.AddModelError("FIO", "РѕС€РёР±РєР° РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёСЏ, РІРѕР·РјРѕР¶РЅРѕ С‚Р°РєРѕР№ СЃС‚СѓРґРµРЅС‚ СѓР¶Рµ РµСЃС‚СЊ?");
+                ModelState.AddModelError("FIO", "ошибка переименования, возможно такой студент уже есть?");
                 return View(student);
             }
         }
@@ -442,7 +442,7 @@ namespace ElectronDecanat.Controllers
             }
             catch (Exception)
             {
-                ModelState.AddModelError("FIO", "РѕС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ СЃС‚СѓРґРµРЅС‚Р°");
+                ModelState.AddModelError("FIO", "ошибка удаления студента");
                 return View(student);
             }
         }
@@ -458,7 +458,7 @@ namespace ElectronDecanat.Controllers
             ViewBag.subgroup_number = subgroup.subgroup_number;
             ViewBag.subgroup_id = subgroup.id;
             ViewBag.group_id = subgroup.group_id;
-            return View(UnitOfWork.Works.GetAll("where \"РљРѕРґ_РїРѕРґРіСЂСѓРїРїС‹\"=" + subgroup_id));
+            return View(UnitOfWork.Works.GetAll("where \"Код_подгруппы\"=" + subgroup_id));
         }
         public ActionResult AddWork(int subgroup_id)
         {
@@ -520,7 +520,7 @@ namespace ElectronDecanat.Controllers
         #region TEACHERS
         public ActionResult Teachers()
         {
-            return View(UnitOfWork.Teachers.GetAll(UserManager));
+            return View(UnitOfWork.Teachers.GetAllTeachers(UserManager));
         }
         public ActionResult EditTeacher(string id)
         {
@@ -537,7 +537,7 @@ namespace ElectronDecanat.Controllers
             }
             catch
             {
-                ModelState.AddModelError("new_username", "РѕС€РёР±РєР° РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёСЏ");
+                ModelState.AddModelError("new_username", "ошибка переименования");
                 return View(teacher);
             }
         }
@@ -558,6 +558,42 @@ namespace ElectronDecanat.Controllers
             {
                 ModelState.AddModelError("error", ParseOracleError(e.Message));
                 return View(teacher);
+            }
+        }
+        #endregion
+        #region ROLES
+        public ActionResult Users()
+        {
+            return View(UnitOfWork.Teachers.GetAll(UserManager));
+        }
+        public ActionResult Roles(string id)
+        {
+            UserRole roles = UnitOfWork.Roles.Get(UserManager, id);
+            return View(roles);
+        }
+        public ActionResult DeleteRole(string id,string role)
+        {
+            UnitOfWork.Roles.Delete(UserManager, id, role);
+            return RedirectToAction("Roles", new { id = id });
+        }
+        public ActionResult AddRole(string id)
+        {
+            NewUserRole user = UnitOfWork.Roles.Get(UserManager, id);
+            user.roles_list = UnitOfWork.Roles.GetAllRoles();
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult AddRole(NewUserRole user)
+        {
+            try
+            {
+                UnitOfWork.Roles.Add(UserManager, user.id,user.new_role);
+                return RedirectToAction("Roles", new { id=user.id});
+            }
+            catch
+            {
+                ModelState.AddModelError("new_role", "ошибка добавления роли");
+                return View(user);
             }
         }
         #endregion

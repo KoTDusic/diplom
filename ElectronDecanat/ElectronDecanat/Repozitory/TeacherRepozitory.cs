@@ -16,6 +16,10 @@ namespace ElectronDecanat.Repozitory
     {
         public List<Teacher> GetAll(ApplicationUserManager UserManager)
         {
+            return UserManager.Users.ToList().Select(e => new Teacher { id = e.Id, email = e.Email, username = e.UserName }).ToList();
+        }
+        public List<Teacher> GetAllTeachers(ApplicationUserManager UserManager)
+        {
             
             return UserManager.Users.ToList().Where(
                 (user) => { if (UserManager.IsInRole(user.Id, "teacher")) return true; else return false; }

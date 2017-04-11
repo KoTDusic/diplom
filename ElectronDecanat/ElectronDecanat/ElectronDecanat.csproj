@@ -176,6 +176,7 @@
     <Compile Include="Code\NewSpeciality.cs" />
     <Compile Include="Code\NewStudent.cs" />
     <Compile Include="Code\NewTeacher.cs" />
+    <Compile Include="Code\NewUserRole.cs" />
     <Compile Include="Code\NewWork.cs" />
     <Compile Include="Code\Speciality.cs" />
     <Compile Include="Code\Student.cs" />
@@ -183,9 +184,11 @@
     <Compile Include="Code\Teacher.cs" />
     <Compile Include="Code\SingltoneConnection.cs" />
     <Compile Include="Code\TeacherWork.cs" />
+    <Compile Include="Code\UserRole.cs" />
     <Compile Include="Code\Work.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DekanController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
@@ -200,6 +203,7 @@
     <Compile Include="Repozitory\DisciplineRepozitory.cs" />
     <Compile Include="Repozitory\LabProgressRepozitory.cs" />
     <Compile Include="Repozitory\LabRepozitory.cs" />
+    <Compile Include="Repozitory\RolesRepozitory.cs" />
     <Compile Include="Repozitory\TeacherRepozitory.cs" />
     <Compile Include="Repozitory\WorkRepository.cs" />
     <Compile Include="Repozitory\FacultiesRepository.cs" />
@@ -311,6 +315,10 @@
     <Content Include="Views\Admin\Teachers.cshtml" />
     <Content Include="Views\Admin\DeleteTeacher.cshtml" />
     <Content Include="Views\Admin\EditTeacher.cshtml" />
+    <Content Include="Views\Dekan\Facultes.cshtml" />
+    <Content Include="Views\Admin\Roles.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
+    <Content Include="Views\Admin\AddRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
