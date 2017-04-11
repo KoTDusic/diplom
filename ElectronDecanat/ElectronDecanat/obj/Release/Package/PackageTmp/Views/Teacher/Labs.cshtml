@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Labs";
+}
+<body>
+    <table id="main-table">
+        <thead>
+            <tr>
+                <th>Дисциплина</th>
+                <th>Студент</th>
+                <th>Курс-группа-подгруппа</th>
+                <th>Лабораторная</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                string status;
+                for (int i = 0; i < Model.Count; i++)
+                {
+                    status = Model[i].lab_status;
+                    <tr>
+                        <td>@Model[i].discipline_name</td>
+                        <td>@Model[i].student_name</td>
+                        <td>@Model[i].coors-@Model[i].group_number-@Model[i].subgroop_number</td>
+                        <td>@Model[i].lab_name</td>
+                        <td class="clicable" onclick="this.firstChild.click()">@Html.ActionLink(status, "ChangeLabStatus",new {id=Model[i].id})
+                        </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        @Html.ActionLink("Назад", "Index")
+    </div>
+    <script type="text/javascript">
+        document.onload=new function () {
+            $('#main-table').DataTable(russian_lang);
+        };
+    </script>
+</body>
