@@ -106,5 +106,14 @@ namespace ElectronDecanat.Repozitory
                 return roles;
             }
         }
+        private static StudingRepizitory studing;
+        public static StudingRepizitory Studing
+        {
+            get
+            {
+                if (roles == null) studing = new StudingRepizitory();
+                return studing;
+            }
+        }
     }
 }

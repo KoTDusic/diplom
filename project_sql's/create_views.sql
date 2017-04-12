@@ -9,3 +9,5 @@
 @views/LAB_DISCIPLINE.sql
 @views/DISCIPLINE_LIST.sql
 @views/SUBGROUP_LIST.sql
+@views/STUDENT_LABS.sql
+@views/STUDENT_LAB_DISCIPLINE.sql

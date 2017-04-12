@@ -21,9 +21,9 @@ namespace ElectronDecanat.Controllers
         {
             return View(UnitOfWork.Works.GetAll("where \"Код_преподавателя\"='"+User.Identity.GetUserId()+"'"));
         }
-        public ActionResult Labs(int discipline_id )
+        public ActionResult Labs(int discipline_id ,int subgroup_id)
         {
-            return View(UnitOfWork.LabProgress.GetAll("WHERE \"Код_преподавателя\" = '" + User.Identity.GetUserId() + "' AND \"Код_дисциплины\"=" + discipline_id));
+            return View(UnitOfWork.LabProgress.GetAll("WHERE \"Код_преподавателя\" = '" + User.Identity.GetUserId() + "' AND \"Код_дисциплины\"=" + discipline_id + " and \"Код_подгруппы\"=" + subgroup_id));
         }
         public ActionResult LabsList()
         {

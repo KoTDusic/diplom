@@ -83,12 +83,9 @@ namespace ElectronDecanat.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    switch (user.UserName)
-                    {
-                        case "ADMIN":
-                            return RedirectToAction("Facultes", "Admin");
-                            default:return RedirectToAction("Index", "Teacher");
-                    }
+                        if (UserManager.IsInRole(user.Id, "admin"))  return RedirectToAction("Facultes", "Admin");
+                        if (UserManager.IsInRole(user.Id, "decanat")) return RedirectToAction("Facultes", "Dekan");
+                        else return RedirectToAction("Index", "Teacher");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

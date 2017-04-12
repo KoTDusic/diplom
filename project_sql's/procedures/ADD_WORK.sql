@@ -35,6 +35,7 @@ if valid_subgroup_discipline=0 then
 end if;
 INSERT INTO "Нагрузка_преподавателя"("Код_подгруппы","Код_преподавателя","Код_дисциплины") 
 values(subgroup_kode,teacher_kode,discipline_code);
+LOAD_LABS_SUBGROUP(subgroup_kode);
 commit;
 end ADD_WORK;
 

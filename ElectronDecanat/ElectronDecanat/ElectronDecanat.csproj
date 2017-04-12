@@ -166,6 +166,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Code\Discipline.cs" />
+    <Compile Include="Code\DisciplineStudy.cs" />
     <Compile Include="Code\Faculty.cs" />
     <Compile Include="Code\Group.cs" />
     <Compile Include="Code\Lab.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Code\NewWork.cs" />
     <Compile Include="Code\Speciality.cs" />
     <Compile Include="Code\Student.cs" />
+    <Compile Include="Code\Study.cs" />
     <Compile Include="Code\Subgroup.cs" />
     <Compile Include="Code\Teacher.cs" />
     <Compile Include="Code\SingltoneConnection.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="Repozitory\LabProgressRepozitory.cs" />
     <Compile Include="Repozitory\LabRepozitory.cs" />
     <Compile Include="Repozitory\RolesRepozitory.cs" />
+    <Compile Include="Repozitory\StudingRepizitory.cs" />
     <Compile Include="Repozitory\TeacherRepozitory.cs" />
     <Compile Include="Repozitory\WorkRepository.cs" />
     <Compile Include="Repozitory\FacultiesRepository.cs" />
@@ -320,6 +323,10 @@
     <Content Include="Views\Admin\Roles.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\AddRole.cshtml" />
+    <Content Include="Views\Dekan\Specialitis.cshtml" />
+    <Content Include="Views\Dekan\Subgroups.cshtml" />
+    <Content Include="Views\Dekan\Studing.cshtml" />
+    <Content Include="Views\Dekan\DisciplineStuding.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
