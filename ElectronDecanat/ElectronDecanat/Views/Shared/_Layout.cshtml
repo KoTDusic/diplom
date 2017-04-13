@@ -86,6 +86,12 @@
                             <li>@Html.ActionLink("Факультеты", "Facultes", "Dekan")</li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#">Студент</a>
+                        <ul class="dropdown-menu nav navbar-nav">
+                            <li>@Html.ActionLink("Поиск", "Index", "Student")</li>
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

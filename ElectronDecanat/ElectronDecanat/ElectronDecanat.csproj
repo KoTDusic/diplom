@@ -193,6 +193,7 @@
     <Compile Include="Controllers\DekanController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -327,6 +328,8 @@
     <Content Include="Views\Dekan\Subgroups.cshtml" />
     <Content Include="Views\Dekan\Studing.cshtml" />
     <Content Include="Views\Dekan\DisciplineStuding.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\Student.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
