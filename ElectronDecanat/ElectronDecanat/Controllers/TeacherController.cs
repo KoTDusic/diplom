@@ -110,7 +110,7 @@ namespace ElectronDecanat.Controllers
         {
             string id = User.Identity.GetUserId();
             UnitOfWork.LabProgress.Update(item);
-            return RedirectToAction("Labs", new { discipline_id = item.discipline_id });
+            return RedirectToAction("Labs", new { discipline_id = item.discipline_id, subgroup_id=item.subgroop_id });
         }
     }
 }
