@@ -20,15 +20,7 @@
     @{
         for (int i = 0; i < Model.Count; i++)
         {
-            string css_class;
-            switch (Model[i].lab_status)
-            {
-                case "Сдано": css_class = "green"; break;
-                case "Не сдано": css_class = "red"; break;
-                case "Проверяется": css_class = "orange"; break;
-                default: css_class = ""; break;
-            }
-                    <tr class="@css_class">
+                    <tr>
                         <td>@Model[i].discipline_name</td>
                         <td>@Model[i].lab_name</td>
                         <td>@Model[i].lab_status</td>
@@ -45,4 +37,24 @@
     <div>
         @Html.ActionLink("Назад", "Index", new { name = ViewBag.quarry })
     </div>
+    <script type="text/javascript">
+        document.onload = new function () {
+            russian_lang.createdRow = function (row, data, index)
+            {
+                var elem=data[2] ;
+                if (~elem.indexOf("Сдано"))
+                {
+                    $('td', row).addClass("green");
+                }
+                else if (~elem.indexOf("Не сдано"))
+                {
+                    $('td', row).addClass("red");
+                }
+                else if (~elem.indexOf("Проверяется")) {
+                    $('td', row).addClass("orange");
+                }
+            }
+            $('#main-table').DataTable(russian_lang);
+        };
+    </script>
 </body>

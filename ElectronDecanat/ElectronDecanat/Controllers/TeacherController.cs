@@ -23,7 +23,25 @@ namespace ElectronDecanat.Controllers
         }
         public ActionResult Labs(int discipline_id ,int subgroup_id)
         {
-            return View(UnitOfWork.LabProgress.GetAll("WHERE \"Код_преподавателя\" = '" + User.Identity.GetUserId() + "' AND \"Код_дисциплины\"=" + discipline_id + " and \"Код_подгруппы\"=" + subgroup_id));
+            Subgroup subgroup = UnitOfWork.Subgroups.Get(subgroup_id);
+            Discipline discipline = UnitOfWork.Disciplines.Get(discipline_id);
+            ViewBag.coors = subgroup.coors;
+            ViewBag.group_number = subgroup.group_number;
+            ViewBag.subgroup_number = subgroup.subgroup_number;
+            ViewBag.discipline_name = discipline.discipline_name;
+            IEnumerable<LabProgress> array = UnitOfWork.LabProgress.GetAll("WHERE \"Код_преподавателя\" = '" + User.Identity.GetUserId() + "' AND \"Код_дисциплины\"=" + discipline_id + " and \"Код_подгруппы\"=" + subgroup_id);
+            Dictionary<string,List<LabProgress>> grouped_students = new Dictionary<string,List<LabProgress>>();
+            List<LabProgress> current_list;
+            for(int i=0;i<array.Count();i++)
+            {
+                if(!grouped_students.ContainsKey(array.ElementAt(i).student_name))
+                    grouped_students.Add(array.ElementAt(i).student_name, new List<LabProgress>());
+                grouped_students.TryGetValue(array.ElementAt(i).student_name, out current_list);
+                current_list.Add(array.ElementAt(i));
+            }
+            var data = grouped_students.OrderBy(element => element.Key).ToList();
+            return View(grouped_students.OrderBy(element => element.Key).ToList());
+            
         }
         public ActionResult LabsList()
         {
