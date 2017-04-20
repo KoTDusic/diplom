@@ -8,7 +8,7 @@
 @using(Html.BeginForm(FormMethod.Get))
 {
     <div class="form-vertical">
-        @if (ViewBag.querry == ""){<h4>Введите имя студента для поиска</h4>}
+        @if (ViewBag.querry == ""){<h4>Введите часть ФИО студента для поиска</h4>}
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
