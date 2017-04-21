@@ -65,3 +65,26 @@ th {
 {
     background-color:#9ACD32;
 }
+
+.page_menu>div {
+  padding-left: 20px;
+  display: none;
+}
+.page_menu>span{
+    cursor: pointer;
+    font-size:20px;
+}
+.page_menu::before {
+  content: '▶ ';
+  color: green;
+}
+.page_menu_open::before {
+  content: '▼ ';
+}
+.page_menu_open>span{
+    font-size:20px;
+    cursor: pointer;
+}
+.page_menu_open>div {
+  display: block;
+}

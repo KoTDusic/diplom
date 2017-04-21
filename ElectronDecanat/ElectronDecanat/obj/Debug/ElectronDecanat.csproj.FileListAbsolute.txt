@@ -150,3 +150,5 @@ D:\Дмитрий\Программы\диплом\репозиторий\Electro
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\bin\Duke.Owin.VkontakteMiddleware.dll
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.csprojResolveAssemblyReference.cache
 d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.csprojResolveAssemblyReference.cache
+d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\ElectronDecanat.dll.CodeAnalysisLog.xml
+d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\ElectronDecanat.dll.lastcodeanalysissucceeded
