@@ -16,7 +16,7 @@ namespace ElectronDecanat.Controllers
             if (!String.IsNullOrWhiteSpace(name))
             {
                 ViewBag.querry = name;
-                return View(UnitOfWork.Students.GetAll("where \"ФИО\" LIKE '" + name + "%'"));
+                return View(UnitOfWork.Students.GetAll("where \"ФИО\" LIKE '%" + name + "%'"));
             }
             else
             {

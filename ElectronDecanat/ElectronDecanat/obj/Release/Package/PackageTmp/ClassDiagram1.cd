@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ElectronDecanat.Code.Discipline" Collapsed="true">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAIAAAAAQAAAgAAAAAAAAAAACAAAAAAAAAwA=</HashCode>
+      <FileName>Code\Discipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.DisciplineStudy" Collapsed="true">
+    <Position X="0.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\DisciplineStudy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.Faculty" Collapsed="true">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Code\Faculty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.Group" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAgAAQAAAAAAAAAAAAAEACAAIEAAAAAwA=</HashCode>
+      <FileName>Code\Group.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.Lab" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAIAAgAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Code\Lab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.LabProgress" Collapsed="true">
+    <Position X="6.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wQQAACgAgAAAgAAEACAAACAABAAwAEAAAAAEAAAAAgA=</HashCode>
+      <FileName>Code\LabProgress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.NewDiscipline" Collapsed="true">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\NewDiscipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.NewFaculty" Collapsed="true">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Code\NewFaculty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.NewLab" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\NewLab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.NewSpeciality" Collapsed="true">
+    <Position X="4.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\NewSpeciality.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.NewStudent" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\NewStudent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.NewTeacher" Collapsed="true">
+    <Position X="0.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\NewTeacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.NewUserRole" Collapsed="true">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Code\NewUserRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.NewWork" Collapsed="true">
+    <Position X="0.75" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Code\NewWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.Speciality" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAIAAAAAQAAAAAAAAAAAAAAACAAAAAAAAAwA=</HashCode>
+      <FileName>Code\Speciality.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.Student" Collapsed="true">
+    <Position X="8" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.Study" Collapsed="true">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAAAAAAAgAAiAAIAAAAADAAAAAAAEAAAAAAAAAAAEA=</HashCode>
+      <FileName>Code\Study.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.Subgroup" Collapsed="true">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\Subgroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.Teacher" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAEAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Code\Teacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.TeacherWork" Collapsed="true">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEAAgCAAAAgAAQAAAgAAAAAAAQAEAAAAAEAAAAAAA=</HashCode>
+      <FileName>Code\TeacherWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.UserRole" Collapsed="true">
+    <Position X="2.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Code\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronDecanat.Code.Work" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAhggAAAgAAYAAAAAAAABAAAAEACAAAEAAAAAwA=</HashCode>
+      <FileName>Code\Work.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
