@@ -1484,7 +1484,7 @@
 			annotation 	8
 			autoResize 	TRUE)
 		    (object AssociationViewNew "$UNNAMED$0" @30
-			location   	(345, 273)
+			location   	(346, 271)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1501,26 +1501,26 @@
 			roleview_list 	(list RoleViews
 			    (object RoleView "$UNNAMED$1" @31
 				Parent_View 	@30
-				location   	(123, -42)
+				location   	(124, -44)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"58CFC3A50360"
 				client     	@30
 				supplier   	@27
 				vertices   	(list Points
-				    (345, 273)
-				    (654, 177))
+				    (346, 271)
+				    (414, 251))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$2" @32
 				Parent_View 	@30
-				location   	(123, -42)
+				location   	(124, -44)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"58CFC3A50362"
 				client     	@30
 				supplier   	@29
 				vertices   	(list Points
-				    (345, 273)
+				    (346, 271)
 				    (279, 292))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$3" @33
@@ -1561,7 +1561,7 @@
 				supplier   	@29
 				vertices   	(list Points
 				    (403, 413)
-				    (279, 344))
+				    (279, 345))
 				line_style 	0)))
 		    (object UseCaseView "Use Case View::Анализ успеваемости студентов" @36
 			location   	(1515, 2379)
@@ -1644,7 +1644,7 @@
 				supplier   	@36
 				vertices   	(list Points
 				    (1161, 2600)
-				    (1252, 2542))
+				    (1255, 2542))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$14" @40
 				Parent_View 	@38
@@ -1725,7 +1725,7 @@
 			client     	@4
 			supplier   	@42
 			vertices   	(list Points
-			    (3003, 2721)
+			    (3024, 2718)
 			    (2721, 2777))
 			line_style 	0)
 		    (object DependencyView "" @45
@@ -1736,7 +1736,7 @@
 			supplier   	@42
 			vertices   	(list Points
 			    (3234, 2946)
-			    (2933, 2875))
+			    (2721, 2825))
 			line_style 	0)
 		    (object DependencyView "" @46
 			stereotype 	TRUE
@@ -1746,7 +1746,7 @@
 			supplier   	@42
 			vertices   	(list Points
 			    (3249, 3146)
-			    (2918, 2965))
+			    (2819, 2912))
 			line_style 	0)
 		    (object UseCaseView "Use Case View::Просмотр назначенной нагрузки" @47
 			location   	(2616, 2493)
@@ -1829,7 +1829,7 @@
 				supplier   	@41
 				vertices   	(list Points
 				    (2348, 2935)
-				    (2516, 3034))
+				    (2519, 3035))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$32" @51
 				Parent_View 	@49
@@ -1869,7 +1869,7 @@
 				supplier   	@42
 				vertices   	(list Points
 				    (2339, 2801)
-				    (2501, 2800))
+				    (2501, 2801))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$35" @54
 				Parent_View 	@52
@@ -1909,7 +1909,7 @@
 				supplier   	@47
 				vertices   	(list Points
 				    (2266, 2710)
-				    (2353, 2656))
+				    (2355, 2656))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$38" @57
 				Parent_View 	@55
@@ -1921,7 +1921,7 @@
 				supplier   	@48
 				vertices   	(list Points
 				    (2266, 2710)
-				    (2178, 2764))
+				    (2178, 2765))
 				line_style 	0)))
 		    (object UseCaseView "Use Case View::Факультет" @58
 			location   	(2709, 1116)
@@ -1956,7 +1956,7 @@
 			supplier   	@58
 			vertices   	(list Points
 			    (2325, 1412)
-			    (2500, 1279))
+			    (2606, 1193))
 			line_style 	0)
 		    (object DependencyView "" @60
 			stereotype 	TRUE
@@ -1976,7 +1976,7 @@
 			supplier   	@58
 			vertices   	(list Points
 			    (3104, 1418)
-			    (2924, 1279))
+			    (2809, 1191))
 			line_style 	0)
 		    (object UseCaseView "Use Case View::Группы" @62
 			location   	(2187, 998)
@@ -2011,7 +2011,7 @@
 			supplier   	@62
 			vertices   	(list Points
 			    (1652, 1737)
-			    (2070, 1161))
+			    (2111, 1095))
 			line_style 	0)
 		    (object DependencyView "" @64
 			stereotype 	TRUE
@@ -2021,7 +2021,7 @@
 			supplier   	@62
 			vertices   	(list Points
 			    (1668, 1531)
-			    (2030, 1161))
+			    (2112, 1069))
 			line_style 	0)
 		    (object DependencyView "" @65
 			stereotype 	TRUE
@@ -2031,7 +2031,7 @@
 			supplier   	@62
 			vertices   	(list Points
 			    (1695, 1331)
-			    (1949, 1161))
+			    (2099, 1054))
 			line_style 	0)
 		    (object UseCaseView "Use Case View::Студенты" @66
 			location   	(2191, 798)
@@ -2066,7 +2066,7 @@
 			supplier   	@66
 			vertices   	(list Points
 			    (1703, 1103)
-			    (1934, 961))
+			    (2093, 855))
 			line_style 	0)
 		    (object DependencyView "" @68
 			stereotype 	TRUE
@@ -2076,7 +2076,7 @@
 			supplier   	@66
 			vertices   	(list Points
 			    (1722, 917)
-			    (1870, 880))
+			    (2080, 823))
 			line_style 	0)
 		    (object DependencyView "" @69
 			stereotype 	TRUE
@@ -2120,7 +2120,7 @@
 			client     	@9
 			supplier   	@70
 			vertices   	(list Points
-			    (1967, 475)
+			    (1952, 469)
 			    (2072, 521))
 			line_style 	0)
 		    (object DependencyView "" @72
@@ -2185,7 +2185,7 @@
 			client     	@13
 			supplier   	@74
 			vertices   	(list Points
-			    (3492, 466)
+			    (3534, 446)
 			    (3378, 517))
 			line_style 	0)
 		    (object DependencyView "" @77
@@ -2241,7 +2241,7 @@
 			supplier   	@78
 			vertices   	(list Points
 			    (3719, 902)
-			    (3593, 865))
+			    (3381, 801))
 			line_style 	0)
 		    (object DependencyView "" @81
 			stereotype 	TRUE
@@ -2251,7 +2251,7 @@
 			supplier   	@78
 			vertices   	(list Points
 			    (3749, 1076)
-			    (3528, 934))
+			    (3420, 863))
 			line_style 	0)
 		    (object UseCaseView "Use Case View::Подгруппы" @82
 			location   	(3276, 1002)
@@ -2286,7 +2286,7 @@
 			supplier   	@82
 			vertices   	(list Points
 			    (3761, 1346)
-			    (3509, 1165))
+			    (3384, 1077))
 			line_style 	0)
 		    (object DependencyView "" @84
 			stereotype 	TRUE
@@ -2296,7 +2296,7 @@
 			supplier   	@82
 			vertices   	(list Points
 			    (3789, 1537)
-			    (3432, 1165))
+			    (3384, 1115))
 			line_style 	0)
 		    (object DependencyView "" @85
 			stereotype 	TRUE
@@ -2306,7 +2306,7 @@
 			supplier   	@82
 			vertices   	(list Points
 			    (3810, 1729)
-			    (3395, 1165))
+			    (3384, 1152))
 			line_style 	0)
 		    (object UseCaseView "Use Case View::Редактирование нагрузки преподавателей" @86
 			location   	(2664, 159)
@@ -2389,7 +2389,7 @@
 				supplier   	@58
 				vertices   	(list Points
 				    (2704, 1014)
-				    (2709, 1116))
+				    (2705, 1057))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$41" @90
 				Parent_View 	@88
@@ -2401,7 +2401,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2704, 1014)
-				    (2697, 786))
+				    (2703, 971))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$42" @91
 			location   	(2466, 879)
@@ -2441,7 +2441,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2466, 879)
-				    (2638, 806))
+				    (2638, 808))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$45" @94
 			location   	(2468, 789)
@@ -2481,7 +2481,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2468, 789)
-				    (2638, 786))
+				    (2637, 786))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$48" @97
 			location   	(2464, 687)
@@ -2509,7 +2509,7 @@
 				supplier   	@70
 				vertices   	(list Points
 				    (2464, 687)
-				    (2183, 573))
+				    (2291, 615))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$50" @99
 				Parent_View 	@97
@@ -2521,7 +2521,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2464, 687)
-				    (2638, 757))
+				    (2638, 760))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$51" @100
 			location   	(2957, 685)
@@ -2549,7 +2549,7 @@
 				supplier   	@74
 				vertices   	(list Points
 				    (2957, 685)
-				    (3270, 573))
+				    (3160, 610))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$53" @102
 				Parent_View 	@100
@@ -2589,7 +2589,7 @@
 				supplier   	@78
 				vertices   	(list Points
 				    (2958, 776)
-				    (3162, 770))
+				    (3162, 771))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$56" @105
 				Parent_View 	@103
@@ -2629,7 +2629,7 @@
 				supplier   	@82
 				vertices   	(list Points
 				    (2959, 881)
-				    (3165, 957))
+				    (3165, 958))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$59" @108
 				Parent_View 	@106
@@ -2641,7 +2641,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2959, 881)
-				    (2754, 804))
+				    (2754, 805))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$60" @109
 			location   	(2681, 526)
@@ -2669,7 +2669,7 @@
 				supplier   	@86
 				vertices   	(list Points
 				    (2681, 526)
-				    (2670, 322))
+				    (2672, 348))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$62" @111
 				Parent_View 	@109
@@ -2681,7 +2681,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2681, 526)
-				    (2690, 705))
+				    (2690, 704))
 				line_style 	0)))))
 	    (object InteractionDiagram "последовательности_добавление предмета"
 		mechanism_ref 	@1
@@ -2690,7 +2690,7 @@
 		zoom       	100
 		max_height 	28350
 		max_width  	21600
-		origin_x   	518
+		origin_x   	0
 		origin_y   	394
 		items      	(list diagram_item_list
 		    (object InterObjView "$UNNAMED$63" @112
@@ -2856,7 +2856,7 @@
 			    location   	(1893, 250)
 			    anchor_loc 	1
 			    nlines     	2
-			    max_width  	328
+			    max_width  	360
 			    justify    	0
 			    label      	"")
 			icon       	"Actor"
@@ -2864,7 +2864,7 @@
 			line_color 	3342489
 			fill_color 	13434879
 			quidu      	"58CFD9CE02FD"
-			width      	340
+			width      	120
 			height     	1841
 			icon_height 	162
 			icon_width 	120
@@ -2974,7 +2974,7 @@
 			    location   	(2682, 250)
 			    anchor_loc 	1
 			    nlines     	2
-			    max_width  	324
+			    max_width  	360
 			    justify    	0
 			    label      	"")
 			icon       	"Actor"
@@ -2982,10 +2982,10 @@
 			line_color 	3342489
 			fill_color 	13434879
 			quidu      	"58D1B486009F"
-			width      	300
+			width      	120
 			height     	1841
-			icon_height 	150
-			icon_width 	108
+			icon_height 	162
+			icon_width 	120
 			icon_y_offset 	0
 			annotation 	1
 			Focus_Of_Control 	(object Focus_Of_Control "" @137

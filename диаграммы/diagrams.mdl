@@ -1509,7 +1509,7 @@
 				supplier   	@27
 				vertices   	(list Points
 				    (346, 271)
-				    (414, 251))
+				    (654, 177))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$2" @32
 				Parent_View 	@30
@@ -1561,7 +1561,7 @@
 				supplier   	@29
 				vertices   	(list Points
 				    (403, 413)
-				    (279, 345))
+				    (279, 344))
 				line_style 	0)))
 		    (object UseCaseView "Use Case View::Анализ успеваемости студентов" @36
 			location   	(1515, 2379)
@@ -1644,7 +1644,7 @@
 				supplier   	@36
 				vertices   	(list Points
 				    (1161, 2600)
-				    (1255, 2542))
+				    (1252, 2542))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$14" @40
 				Parent_View 	@38
@@ -1725,7 +1725,7 @@
 			client     	@4
 			supplier   	@42
 			vertices   	(list Points
-			    (3024, 2718)
+			    (3003, 2721)
 			    (2721, 2777))
 			line_style 	0)
 		    (object DependencyView "" @45
@@ -1736,7 +1736,7 @@
 			supplier   	@42
 			vertices   	(list Points
 			    (3234, 2946)
-			    (2721, 2825))
+			    (2933, 2875))
 			line_style 	0)
 		    (object DependencyView "" @46
 			stereotype 	TRUE
@@ -1746,7 +1746,7 @@
 			supplier   	@42
 			vertices   	(list Points
 			    (3249, 3146)
-			    (2819, 2912))
+			    (2918, 2965))
 			line_style 	0)
 		    (object UseCaseView "Use Case View::Просмотр назначенной нагрузки" @47
 			location   	(2616, 2493)
@@ -1829,7 +1829,7 @@
 				supplier   	@41
 				vertices   	(list Points
 				    (2348, 2935)
-				    (2519, 3035))
+				    (2516, 3034))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$32" @51
 				Parent_View 	@49
@@ -1869,7 +1869,7 @@
 				supplier   	@42
 				vertices   	(list Points
 				    (2339, 2801)
-				    (2501, 2801))
+				    (2501, 2800))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$35" @54
 				Parent_View 	@52
@@ -1909,7 +1909,7 @@
 				supplier   	@47
 				vertices   	(list Points
 				    (2266, 2710)
-				    (2355, 2656))
+				    (2353, 2656))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$38" @57
 				Parent_View 	@55
@@ -1921,7 +1921,7 @@
 				supplier   	@48
 				vertices   	(list Points
 				    (2266, 2710)
-				    (2178, 2765))
+				    (2178, 2764))
 				line_style 	0)))
 		    (object UseCaseView "Use Case View::Факультет" @58
 			location   	(2709, 1116)
@@ -1956,7 +1956,7 @@
 			supplier   	@58
 			vertices   	(list Points
 			    (2325, 1412)
-			    (2606, 1193))
+			    (2500, 1279))
 			line_style 	0)
 		    (object DependencyView "" @60
 			stereotype 	TRUE
@@ -1976,7 +1976,7 @@
 			supplier   	@58
 			vertices   	(list Points
 			    (3104, 1418)
-			    (2809, 1191))
+			    (2924, 1279))
 			line_style 	0)
 		    (object UseCaseView "Use Case View::Группы" @62
 			location   	(2187, 998)
@@ -2011,7 +2011,7 @@
 			supplier   	@62
 			vertices   	(list Points
 			    (1652, 1737)
-			    (2111, 1095))
+			    (2070, 1161))
 			line_style 	0)
 		    (object DependencyView "" @64
 			stereotype 	TRUE
@@ -2021,7 +2021,7 @@
 			supplier   	@62
 			vertices   	(list Points
 			    (1668, 1531)
-			    (2112, 1069))
+			    (2030, 1161))
 			line_style 	0)
 		    (object DependencyView "" @65
 			stereotype 	TRUE
@@ -2031,7 +2031,7 @@
 			supplier   	@62
 			vertices   	(list Points
 			    (1695, 1331)
-			    (2099, 1054))
+			    (1949, 1161))
 			line_style 	0)
 		    (object UseCaseView "Use Case View::Студенты" @66
 			location   	(2191, 798)
@@ -2066,7 +2066,7 @@
 			supplier   	@66
 			vertices   	(list Points
 			    (1703, 1103)
-			    (2093, 855))
+			    (1934, 961))
 			line_style 	0)
 		    (object DependencyView "" @68
 			stereotype 	TRUE
@@ -2076,7 +2076,7 @@
 			supplier   	@66
 			vertices   	(list Points
 			    (1722, 917)
-			    (2080, 823))
+			    (1870, 880))
 			line_style 	0)
 		    (object DependencyView "" @69
 			stereotype 	TRUE
@@ -2120,7 +2120,7 @@
 			client     	@9
 			supplier   	@70
 			vertices   	(list Points
-			    (1952, 469)
+			    (1967, 475)
 			    (2072, 521))
 			line_style 	0)
 		    (object DependencyView "" @72
@@ -2185,7 +2185,7 @@
 			client     	@13
 			supplier   	@74
 			vertices   	(list Points
-			    (3534, 446)
+			    (3492, 466)
 			    (3378, 517))
 			line_style 	0)
 		    (object DependencyView "" @77
@@ -2241,7 +2241,7 @@
 			supplier   	@78
 			vertices   	(list Points
 			    (3719, 902)
-			    (3381, 801))
+			    (3593, 865))
 			line_style 	0)
 		    (object DependencyView "" @81
 			stereotype 	TRUE
@@ -2251,7 +2251,7 @@
 			supplier   	@78
 			vertices   	(list Points
 			    (3749, 1076)
-			    (3420, 863))
+			    (3528, 934))
 			line_style 	0)
 		    (object UseCaseView "Use Case View::Подгруппы" @82
 			location   	(3276, 1002)
@@ -2286,7 +2286,7 @@
 			supplier   	@82
 			vertices   	(list Points
 			    (3761, 1346)
-			    (3384, 1077))
+			    (3509, 1165))
 			line_style 	0)
 		    (object DependencyView "" @84
 			stereotype 	TRUE
@@ -2296,7 +2296,7 @@
 			supplier   	@82
 			vertices   	(list Points
 			    (3789, 1537)
-			    (3384, 1115))
+			    (3432, 1165))
 			line_style 	0)
 		    (object DependencyView "" @85
 			stereotype 	TRUE
@@ -2306,7 +2306,7 @@
 			supplier   	@82
 			vertices   	(list Points
 			    (3810, 1729)
-			    (3384, 1152))
+			    (3395, 1165))
 			line_style 	0)
 		    (object UseCaseView "Use Case View::Редактирование нагрузки преподавателей" @86
 			location   	(2664, 159)
@@ -2389,7 +2389,7 @@
 				supplier   	@58
 				vertices   	(list Points
 				    (2704, 1014)
-				    (2705, 1057))
+				    (2709, 1116))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$41" @90
 				Parent_View 	@88
@@ -2401,7 +2401,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2704, 1014)
-				    (2703, 971))
+				    (2697, 786))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$42" @91
 			location   	(2466, 879)
@@ -2441,7 +2441,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2466, 879)
-				    (2638, 808))
+				    (2638, 806))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$45" @94
 			location   	(2468, 789)
@@ -2481,7 +2481,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2468, 789)
-				    (2637, 786))
+				    (2638, 786))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$48" @97
 			location   	(2464, 687)
@@ -2509,7 +2509,7 @@
 				supplier   	@70
 				vertices   	(list Points
 				    (2464, 687)
-				    (2291, 615))
+				    (2183, 573))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$50" @99
 				Parent_View 	@97
@@ -2521,7 +2521,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2464, 687)
-				    (2638, 760))
+				    (2638, 757))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$51" @100
 			location   	(2957, 685)
@@ -2549,7 +2549,7 @@
 				supplier   	@74
 				vertices   	(list Points
 				    (2957, 685)
-				    (3160, 610))
+				    (3270, 573))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$53" @102
 				Parent_View 	@100
@@ -2589,7 +2589,7 @@
 				supplier   	@78
 				vertices   	(list Points
 				    (2958, 776)
-				    (3162, 771))
+				    (3162, 770))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$56" @105
 				Parent_View 	@103
@@ -2629,7 +2629,7 @@
 				supplier   	@82
 				vertices   	(list Points
 				    (2959, 881)
-				    (3165, 958))
+				    (3165, 957))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$59" @108
 				Parent_View 	@106
@@ -2641,7 +2641,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2959, 881)
-				    (2754, 805))
+				    (2754, 804))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$60" @109
 			location   	(2681, 526)
@@ -2669,7 +2669,7 @@
 				supplier   	@86
 				vertices   	(list Points
 				    (2681, 526)
-				    (2672, 348))
+				    (2670, 322))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$62" @111
 				Parent_View 	@109
@@ -2681,7 +2681,7 @@
 				supplier   	@87
 				vertices   	(list Points
 				    (2681, 526)
-				    (2690, 704))
+				    (2690, 705))
 				line_style 	0)))))
 	    (object InteractionDiagram "последовательности_добавление предмета"
 		mechanism_ref 	@1
@@ -3709,6 +3709,56 @@
     process_structure 	(object Processes
 	quid       	"58CFB7B20249"
 	ProcsNDevs 	(list
+	    (object Processor "IIS сервер"
+		quid       	"590CF2A200BA"
+		connections 	(list connection_list
+		    (object Connection_Relationship
+			quid       	"590CF304001D"
+			supplier   	"Microsoft SQL Server"
+			quidu      	"590CF2E002F9"
+			supplier_is_device 	FALSE)
+		    (object Connection_Relationship
+			quid       	"590CF3060325"
+			supplier   	"Oracle 12c"
+			quidu      	"590CF2B8030B"
+			supplier_is_device 	FALSE)
+		    (object Connection_Relationship
+			quid       	"590CF32D0224"
+			supplier   	"Клиент 1"
+			quidu      	"590CF30A01F2"
+			supplier_is_device 	TRUE)
+		    (object Connection_Relationship
+			quid       	"590CF360039B"
+			supplier   	"Клиент 2"
+			quidu      	"590CF3370068"
+			supplier_is_device 	TRUE)
+		    (object Connection_Relationship
+			quid       	"590CF3640054"
+			supplier   	"Клиент n"
+			quidu      	"590CF34F0287"
+			supplier_is_device 	TRUE))
+		characteristics 	""
+		scheduling 	"Preemptive"
+		processes  	(list processes))
+	    (object Processor "Oracle 12c"
+		quid       	"590CF2B8030B"
+		characteristics 	""
+		scheduling 	"Preemptive"
+		processes  	(list processes))
+	    (object Processor "Microsoft SQL Server"
+		quid       	"590CF2E002F9"
+		characteristics 	""
+		scheduling 	"Preemptive"
+		processes  	(list processes))
+	    (object Device "Клиент 1"
+		quid       	"590CF30A01F2"
+		characteristics 	"")
+	    (object Device "Клиент 2"
+		quid       	"590CF3370068"
+		characteristics 	"")
+	    (object Device "Клиент n"
+		quid       	"590CF34F0287"
+		characteristics 	"")
 	    (object Process_Diagram "Deployment View"
 		quid       	"58CFB7B2024B"
 		title      	"Deployment View"
@@ -3716,8 +3766,208 @@
 		max_height 	28350
 		max_width  	21600
 		origin_x   	0
-		origin_y   	0
-		items      	(list diagram_item_list))))
+		origin_y   	9
+		items      	(list diagram_item_list
+		    (object ProcessorView "IIS сервер" @171
+			location   	(972, 543)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    charSet    	204
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@171
+			    location   	(802, 440)
+			    nlines     	2
+			    max_width  	269
+			    justify    	0
+			    label      	"IIS сервер")
+			icon_style 	"Icon"
+			line_color 	3342489
+			quidu      	"590CF2A200BA"
+			width      	344
+			height     	275
+			annotation 	0)
+		    (object ProcessorView "Oracle 12c" @172
+			location   	(1533, 741)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    charSet    	204
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@172
+			    location   	(1375, 648)
+			    nlines     	2
+			    max_width  	244
+			    justify    	0
+			    label      	"Oracle 12c")
+			icon_style 	"Icon"
+			line_color 	3342489
+			quidu      	"590CF2B8030B"
+			width      	319
+			height     	256
+			annotation 	0)
+		    (object ProcessorView "Microsoft SQL Server" @173
+			location   	(1542, 255)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    charSet    	204
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@173
+			    location   	(1341, 127)
+			    nlines     	2
+			    max_width  	331
+			    justify    	0
+			    label      	"Microsoft SQL Server")
+			icon_style 	"Icon"
+			line_color 	3342489
+			quidu      	"590CF2E002F9"
+			width      	406
+			height     	325
+			annotation 	0)
+		    (object ConnectionView "" @174
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"590CF304001D"
+			client     	@171
+			supplier   	@173
+			vertices   	(list Points
+			    (1113, 543)
+			    (1339, 255))
+			line_style 	0)
+		    (object ConnectionView "" @175
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"590CF3060325"
+			client     	@171
+			supplier   	@172
+			vertices   	(list Points
+			    (1113, 543)
+			    (1374, 741))
+			line_style 	0)
+		    (object DeviceView "Клиент 1" @176
+			location   	(369, 174)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    charSet    	204
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@176
+			    location   	(230, 96)
+			    nlines     	2
+			    max_width  	206
+			    justify    	0
+			    label      	"Клиент 1")
+			icon_style 	"Icon"
+			line_color 	3342489
+			quidu      	"590CF30A01F2"
+			width      	281
+			height     	225
+			annotation 	0)
+		    (object ConnectionView "" @177
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"590CF32D0224"
+			client     	@171
+			supplier   	@176
+			vertices   	(list Points
+			    (800, 543)
+			    (478, 174))
+			line_style 	0)
+		    (object DeviceView "Клиент 2" @178
+			location   	(363, 447)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    charSet    	204
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@178
+			    location   	(218, 366)
+			    nlines     	2
+			    max_width  	219
+			    justify    	0
+			    label      	"Клиент 2")
+			icon_style 	"Icon"
+			line_color 	3342489
+			quidu      	"590CF3370068"
+			width      	294
+			height     	231
+			annotation 	0)
+		    (object DeviceView "Клиент n" @179
+			location   	(353, 712)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    charSet    	204
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@179
+			    location   	(214, 634)
+			    nlines     	2
+			    max_width  	206
+			    justify    	0
+			    label      	"Клиент n")
+			icon_style 	"Icon"
+			line_color 	3342489
+			quidu      	"590CF34F0287"
+			width      	281
+			height     	225
+			annotation 	0)
+		    (object ConnectionView "" @180
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"590CF360039B"
+			client     	@171
+			supplier   	@178
+			vertices   	(list Points
+			    (800, 543)
+			    (479, 447))
+			line_style 	0)
+		    (object ConnectionView "" @181
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"590CF3640054"
+			client     	@171
+			supplier   	@179
+			vertices   	(list Points
+			    (800, 543)
+			    (462, 712))
+			line_style 	0)))))
     properties 	(object Properties
 	attributes 	(list Attribute_Set
 	    (object Attribute
