@@ -169,7 +169,7 @@
       <publishTime>04/07/2017 19:18:46</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>05/28/2017 13:20:47</publishTime>
+      <publishTime>06/01/2017 22:25:32</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>03/21/2017 22:57:08</publishTime>
@@ -292,16 +292,16 @@
       <publishTime>03/21/2017 22:57:17</publishTime>
     </File>
     <File Include="Views/Admin/AddDiscipline.cshtml">
-      <publishTime>04/05/2017 15:38:33</publishTime>
+      <publishTime>06/01/2017 22:18:51</publishTime>
     </File>
     <File Include="Views/Admin/AddFaculty.cshtml">
-      <publishTime>04/04/2017 21:58:07</publishTime>
+      <publishTime>06/01/2017 22:36:13</publishTime>
     </File>
     <File Include="Views/Admin/AddGroup.cshtml">
       <publishTime>04/05/2017 15:38:33</publishTime>
     </File>
     <File Include="Views/Admin/AddRole.cshtml">
-      <publishTime>04/11/2017 22:22:34</publishTime>
+      <publishTime>06/01/2017 22:19:50</publishTime>
     </File>
     <File Include="Views/Admin/AddSpeciality.cshtml">
       <publishTime>04/05/2017 00:56:10</publishTime>
@@ -319,7 +319,7 @@
       <publishTime>04/05/2017 15:38:33</publishTime>
     </File>
     <File Include="Views/Admin/DeleteFaculty.cshtml">
-      <publishTime>04/04/2017 22:23:58</publishTime>
+      <publishTime>06/01/2017 22:20:35</publishTime>
     </File>
     <File Include="Views/Admin/DeleteGroup.cshtml">
       <publishTime>04/05/2017 15:38:33</publishTime>
@@ -346,7 +346,7 @@
       <publishTime>04/05/2017 15:38:33</publishTime>
     </File>
     <File Include="Views/Admin/EditFaculty.cshtml">
-      <publishTime>04/04/2017 22:24:24</publishTime>
+      <publishTime>06/01/2017 22:22:00</publishTime>
     </File>
     <File Include="Views/Admin/EditSpeciality.cshtml">
       <publishTime>04/05/2017 00:56:45</publishTime>
@@ -400,7 +400,7 @@
       <publishTime>04/12/2017 23:49:32</publishTime>
     </File>
     <File Include="Views/Main/Index.cshtml">
-      <publishTime>05/28/2017 13:36:44</publishTime>
+      <publishTime>05/30/2017 20:17:05</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>03/21/2017 22:57:17</publishTime>
@@ -433,13 +433,13 @@
       <publishTime>03/21/2017 22:57:17</publishTime>
     </File>
     <File Include="Views/Student/Index.cshtml">
-      <publishTime>04/20/2017 23:55:30</publishTime>
+      <publishTime>06/01/2017 22:23:38</publishTime>
     </File>
     <File Include="Views/Student/Student.cshtml">
       <publishTime>04/17/2017 21:13:45</publishTime>
     </File>
     <File Include="Views/Teacher/AddLab.cshtml">
-      <publishTime>04/11/2017 22:22:34</publishTime>
+      <publishTime>06/01/2017 22:23:55</publishTime>
     </File>
     <File Include="Views/Teacher/ChangeLabStatus.cshtml">
       <publishTime>04/15/2017 13:07:58</publishTime>
@@ -469,7 +469,7 @@
       <publishTime>03/21/2017 22:57:08</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/21/2017 22:13:44</publishTime>
+      <publishTime>06/02/2017 00:05:28</publishTime>
     </File>
   </ItemGroup>
 </Project>
