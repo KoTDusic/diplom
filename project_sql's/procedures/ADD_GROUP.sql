@@ -1,4 +1,4 @@
---Добавление/удаление групп
+--Добавление группы
 create or replace procedure ADD_GROUP(
 speciality_code "Группы"."Код_специальности"%TYPE,
 age "Группы"."Год_поступления"%TYPE,

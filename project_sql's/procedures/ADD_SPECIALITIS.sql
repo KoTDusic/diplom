@@ -28,9 +28,3 @@ else begin
 end if;
 commit;
 end ADD_SPECIALITIS;
-
-
-select * from "Специальность" 
-where "Код_факультета" = 42
-AND "Имя_специальности" = 'Химик-технолог' 
-AND "Номер_специальности" = 11103;

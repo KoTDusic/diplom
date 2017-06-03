@@ -1,4 +1,4 @@
---Удаление специальности на факультет
+--Удаление специальности на факультете
 create or replace procedure REMOVE_SPECIALITIS(
 speciality_code "Специальность"."Код_специальности"%TYPE)
 is

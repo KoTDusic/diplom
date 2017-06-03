@@ -1,4 +1,4 @@
---Удаление преподавателей
+--редактирование преподавателя
 create or replace procedure EDIT_TEACHER(
 new_fio "Преподаватель"."ФИО"%TYPE,
 identificator "Преподаватель"."Код_преподавателя"%TYPE)

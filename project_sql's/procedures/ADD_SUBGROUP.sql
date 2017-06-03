@@ -1,4 +1,4 @@
---Добавление подгрупп
+--Добавление подгруппы
 create or replace procedure ADD_SUBGROUP(
 group_code "Группы"."Код_группы"%TYPE,
 subgroup_number "Подгруппы"."Номер_подгруппы"%TYPE)

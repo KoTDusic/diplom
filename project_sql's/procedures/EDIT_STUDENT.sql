@@ -1,4 +1,4 @@
---Добавление/удаление студентов
+--Редактирование студента
 create or replace procedure EDIT_STUDENT(
 student_code "Студенты"."Код_студента"%TYPE,
 new_student_name "Студенты"."ФИО"%TYPE)
