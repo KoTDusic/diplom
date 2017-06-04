@@ -149,4 +149,3 @@ d:\Дмитрий\Программы\диплом\репозиторий\Electro
 D:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\bin\Duke.Owin.VkontakteMiddleware.dll
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\bin\Duke.Owin.VkontakteMiddleware.dll
 C:\Prokopovich\диплом Прокопович\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.csprojResolveAssemblyReference.cache
-d:\Дмитрий\Программы\диплом\репозиторий\ElectronDecanat\ElectronDecanat\obj\Debug\ElectronDecanat.csprojResolveAssemblyReference.cache
